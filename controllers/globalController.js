@@ -1,11 +1,11 @@
 export const home = (req, res) => {
-  return res.send("home");
+  return res.render("home");
 };
 
 export const login = (req, res) => {
-  return res.send("login");
+  return res.render("login");
 };
 
 export const join = (req, res) => {
-  return res.send("join");
+  return res.render("join");
 };
