@@ -3,11 +3,13 @@ extends ./config/base
 block content         
     section
         div.container_form
+            if errorMessage 
+                span=errorMessage
             form(method="post")
                 ul
                     li
-                        label(for="id") 아이디
-                        input(type="text", name="id", id="id", placeholder="아이디", required)
+                        label(for="userId") 아이디
+                        input(type="text", name="userId", id="userId", placeholder="아이디", required)
                     li
                         label(for="password") 비밀번호
                         input(type="password", name="password", id='password',placeholder="비밀번호", required)
@@ -22,13 +24,14 @@ block content
                         input(type="email", id="email", name="email", placeholder="이메일",required)
                     li
                         label(for="mainSports") 주운동종목
-                        select(id="mainSports", required)
+                        select(id="mainSports", name="mainSports", required)
                             option(value="무산소") 무산소
                             option(value="유산소") 유산소
                             option(value="요가/필라테스") 요가/필라테스
                     li 
                         label(for="gender") 성별
-                        select(id="gender")
+                        select(id="gender", name="gender")
+                            option(value="")  성별을 선택하세요
                             option(value="남") 남
                             option(value="여") 여
                 input(type="submit", value="회원가입완료")
