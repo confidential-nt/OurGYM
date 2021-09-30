@@ -1,4 +1,34 @@
 extends ./config/base
 
-block content 
-    h1 이곳은 회원가입 화면입니다.
+block content         
+    section
+        div.container_form
+            form(method="post")
+                ul
+                    li
+                        label(for="id") 아이디
+                        input(type="text", name="id", id="id", placeholder="아이디", required)
+                    li
+                        label(for="password") 비밀번호
+                        input(type="password", name="password", id='password',placeholder="비밀번호", required)
+                    li
+                        label(for="passwordCheck") 비밀번호 확인
+                        input(type="password", name="passwordCheck", id="passwordCheck", placeholder="비밀번호 확인", required)
+                    li
+                        label(for="nickname") 별명
+                        input(type="text", id="nickname", name="nickname", placeholder="별명",required)
+                    li
+                        label(for="email") 이메일
+                        input(type="email", id="email", name="email", placeholder="이메일",required)
+                    li
+                        label(for="mainSports") 주운동종목
+                        select(id="mainSports", required)
+                            option(value="무산소") 무산소
+                            option(value="유산소") 유산소
+                            option(value="요가/필라테스") 요가/필라테스
+                    li 
+                        label(for="gender") 성별
+                        select(id="gender")
+                            option(value="남") 남
+                            option(value="여") 여
+                input(type="submit", value="회원가입완료")
