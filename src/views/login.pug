@@ -1,14 +1,9 @@
 extends ./config/base.pug
-block content
-        
     div
-        a.form_item_name 아이디
-    div        
-        input.form_input(type="text" name="username" placeholder="아이디 입력")
+        label(for="userId") 아이디        
+        input.userId_input(type="text", id="userId", name="userId" placeholder="아이디")
     div
-        a.form_item_name 비밀번호
+        label(for="password") 비밀번호
+        input.password_input(type="password", id="password", name="password" placeholder="비밀번호 입력")
     div
-        input.form_input(type="password" name="password" placeholder="비밀번호 입력")
-    div(style="height: 10px;")
-    div
-        button.form_submit_button(type="button") 로그인
+        input.login_submit_button(type="submit", value="로그인")
