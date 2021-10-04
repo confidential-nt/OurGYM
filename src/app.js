@@ -1,7 +1,7 @@
 import express from "express";
 import morgan from "morgan";
 import globalRouter from "./routers/globalRouter";
-import mongoose from 'mongoose';
+import mongoose from "mongoose";
 
 const app = express();
 
@@ -12,6 +12,8 @@ app.set("view engine", "pug");
 
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+
+app.use("/static", express.static("src/js"));
 
 app.use("/", globalRouter);
 
