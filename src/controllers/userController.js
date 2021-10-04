@@ -26,6 +26,8 @@ export const postJoin = async (req, res) => {
       throw new Error("비밀번호가 일치하지 않습니다.");
     }
 
+    // 비밀번호 유효성 검사
+
     const exists = await User.exists({
       $or: [{ userId }, { email }, { nickname }],
     });
