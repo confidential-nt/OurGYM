@@ -1,24 +1,41 @@
 extends ./config/base.pug
 
-block content
-    section
-        div.profil_img
-            div.profile_img_show
-                img(src=profile1.jpg)
-            
-            div.profile_img_edit
-                a(href='') 편집
-        
-        div.profile_list
-            ul
-                li 
-                    div.profile_list_name
-                        form(method="GET") 
-                li 
-                    div.profile_list_email
-                li
-                    div.profile_list_main_movement
 
+block content
+    section#seeProfile
+        div.seeProfile_background
+            div.seeProfile_content_title
+                p#nickname {{}}님의 프로필 정보
+
+            div.seeProfile_content
+                div.profile_img
+                    div.profile_img_show
+                        img(src="../profile1.jpg")
+                    
+                    div.profile_img_edit
+                        a(href='') 편집
+                table.profile_table
+                    tr 
+                        th.type 별명
+                        td.content 
+                    tr 
+                        th.type 성별
+                        td.content 
+                    tr 
+                        th.type 생일
+                        td.content 
+                    tr 
+                        th.type 이메일 주소
+                        td.content 
+                    tr
+                        th.type 주요 운동
+                        td.content 등산
+                        td.content 헬스   
+                                
+                div.profile_button
+                    div.profile_button_delete
+                        button.account_delete 계정 삭제
+                    div.profile_button_edit(onclick="location.href = '/'")
+                        button.account_edit 계정 편집
+                        
                 
-        div.delete_account
-            
