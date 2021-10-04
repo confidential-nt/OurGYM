@@ -1,20 +1,24 @@
-const timer = document.querySelector('.content timer')
-const timerTime = timer.querySelector('.content_timer_time')
-const timerStartBtn = timer.querySelector('#start_button')
-const timerPauseBtn = timer.querySelector('#pause_button')
+const timer = document.querySelector(".content timer")
+const timerTime = document.querySelector(".content_timer_time")
+const timerStartBtn = document.querySelector("#start_button")
+const timerPauseBtn = document.querySelector("#pause_button")
 
-function startTimer(){
+function startTimer(clickedTime){
     const date = new Date();
-    const hours = String(date.getHours()).padStart(2,"0")
-    const minutes = String(date.getMinutes()).padStart(2,"0")
-    const seconds = String(date.getSeconds()).padStart(2,"0")
-
-    timerTime.innerText = `${hours} : ${minutes} : ${seconds}`
+    const sumOfTime = parseInt((date.getTime()-clickedTime)/1000)
+    console.log(sumOfTime);
+    const hours = parseInt(sumOfTime/3600)
+    const minutes = parseInt((sumOfTime%3600)/60)
+    const seconds = parseInt((sumOfTime%3600)%60)
+    
+    timerTime.innerText = `${String(hours).padStart(2,"0")} : ${String(minutes).padStart(2,"0")} : ${String(seconds).padStart(2,"0")}`
 }
 
 function paintTime(event){
-    console.dir(event)
-    startTimer()
-    setInterval(startTimer, 1000)
+    const date = new Date();
+    const clickedTime = date.getTime();
+    setInterval(function(){
+        startTimer(clickedTime)
+        }, 1000)
 }
 timerStartBtn.addEventListener('click', paintTime)

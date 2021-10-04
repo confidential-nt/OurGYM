@@ -14,7 +14,6 @@ app.use(logger);
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/static", express.static("src/js"));
-
 app.use("/", globalRouter);
 
 export default app;
