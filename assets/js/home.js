@@ -9,7 +9,7 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/client/js/home.js":
+/***/ "../src/client/js/home.js":
 /*!*******************************!*\
   !*** ./src/client/js/home.js ***!
   \*******************************/
@@ -26,7 +26,7 @@ eval("var timer = document.querySelector(\".content timer\");\nvar timerTime = d
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["./src/client/js/home.js"]();
+/******/ 	__webpack_modules__["../src/client/js/home.js"]();
 /******/ 	
 /******/ })()
 ;

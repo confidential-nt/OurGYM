@@ -1,12 +1,12 @@
 const timer = document.querySelector(".content timer")
 const timerTime = document.querySelector(".content_timer_time")
-const timerStartBtn = document.querySelector("#start_button")
-const timerPauseBtn = document.querySelector("#pause_button")
+const timerBtn = document.querySelector("#timer_button")
+
+let run =0;
 
 function startTimer(clickedTime){
     const date = new Date();
     const sumOfTime = parseInt((date.getTime()-clickedTime)/1000)
-    console.log(sumOfTime);
     const hours = parseInt(sumOfTime/3600)
     const minutes = parseInt((sumOfTime%3600)/60)
     const seconds = parseInt((sumOfTime%3600)%60)
@@ -15,10 +15,19 @@ function startTimer(clickedTime){
 }
 
 function paintTime(event){
-    const date = new Date();
-    const clickedTime = date.getTime();
-    setInterval(function(){
-        startTimer(clickedTime)
-        }, 1000)
+    let timerInterval
+    if(timerBtn.innerText=="정지"){
+        timerBtn.innerText="재개"
+        clearInterval(timerInterval);
+    }else{
+        timerBtn.innerText="정지"
+        const date = new Date();
+        const clickedTime = date.getTime();
+        timerInterval = setInterval(function(){
+            startTimer(clickedTime)
+            }, 1000)
+        console.log(timerInterval);
+    }
 }
-timerStartBtn.addEventListener('click', paintTime)
+
+timerBtn.addEventListener('click', paintTime)
