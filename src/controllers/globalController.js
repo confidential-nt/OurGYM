@@ -5,5 +5,13 @@ export const home = (req, res) => {
 };
 
 export const profile = (req, res) => {
-  return res.render("profile", { user });
+  return res.render("profile");
+};
+
+export const calender = (req,res) =>{
+  return res.render("calender");
+};
+
+export const group = (req,res) =>{
+  return res.render("group");
 };

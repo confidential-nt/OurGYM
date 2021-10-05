@@ -6,7 +6,7 @@ let run =0;
 
 function startTimer(clickedTime){
     const date = new Date();
-    const sumOfTime = parseInt((date.getTime()-clickedTime)/1000)9
+    const sumOfTime = parseInt((date.getTime()-clickedTime)/1000)
     const hours = parseInt(sumOfTime/3600)
     const minutes = parseInt((sumOfTime%3600)/60)
     const seconds = parseInt((sumOfTime%3600)%60)

@@ -2,9 +2,35 @@ extends ./config/base
 block scripts
     script(src="/static/js/home.js", defer)
     
-block content 
+block content   
+
+    div.content_top 0000.00.00
     div.content_timer
         div.content_timer_time 00:00:00
         div.content_timer_start
             button#timer_button 시작
             //- if 0 :시작 if 1: 재개
+
+    div.content_movements
+        div.content_movements_title 오늘의 운동
+        div.content_movements_list
+            ul 
+                li 
+                    button#movement_start_timer ▶ 헬스
+                    div#movement_time 00:00:00
+                    button#movement_specific 🔽
+                li 
+                    button#movement_timer ▶ 등산
+                    div#movement_time 00:00:00
+                    button#movement_specific 🔽
+                li.content_movements_add_list
+                    button#add_button_movements ➕
+                    div#add_movements 운동 추가
+    
+    div.content_button
+        div.content_button_Calender
+            button#button_calender(onclick="location.href = '/calender'") 캘린더
+        div.content_button_Home
+            button#button_home(onclick="location.href = '/'") 홈
+        div.content_button_Group
+            button#button_group(onclick="location.href = '/group'") 그룹
