@@ -8,6 +8,7 @@ const userSchema = mongoose.Schema({
   email: { type: String, required: true, unique: true },
   mainSports: { type: String, required: true },
   gender: { type: String },
+  birthday: { type: String },
 });
 
 userSchema.pre("save", async function () {

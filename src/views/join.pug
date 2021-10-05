@@ -30,8 +30,13 @@ block content
                             option(value="요가/필라테스") 요가/필라테스
                     li 
                         label(for="gender") 성별
-                        select(id="gender")
+                        select(id="gender", name="gender")
                             option(value="") 성별을 선택하세요
                             option(value="남") 남
                             option(value="여") 여
+                    li 
+                        label(for="birthday") 생일
+                        input(type="date", id="birthday" name="birthday",
+                            value="",
+                            min=`${new Date(0).getFullYear() - 30}-01-01` max=new Date().toISOString().slice(0, 10))       
                 input(type="submit", value="회원가입완료")

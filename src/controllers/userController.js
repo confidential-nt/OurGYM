@@ -31,6 +31,12 @@ export const postLogin = async (req, res) => {
   return res.redirect("/");
 };
 
+export const logout = (req, res) => {
+  req.session.destroy();
+
+  return res.redirect("/");
+};
+
 export const getJoin = (req, res) => {
   return res.render("join", { pageTitle: "Join" });
 };
@@ -44,6 +50,7 @@ export const postJoin = async (req, res) => {
     email,
     mainSports,
     gender,
+    birthday,
   } = req.body;
 
   try {
@@ -61,7 +68,7 @@ export const postJoin = async (req, res) => {
       throw new Error("이미 존재하는 아이디/이메일/별명 입니다.");
     }
 
-    await User.create({
+    const user = await User.create({
       userId,
       password,
       passwordCheck,
@@ -69,9 +76,12 @@ export const postJoin = async (req, res) => {
       email,
       mainSports,
       gender,
+      birthday,
     });
 
-    return res.redirect("/login"); // 나중에 유저 로그인 시키기
+    req.session.loggedIn = true;
+    req.session.user = user;
+    return res.redirect("/");
   } catch (error) {
     return res
       .status(400)
