@@ -9,13 +9,13 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "../src/client/js/home.js":
+/***/ "./src/client/js/home.js":
 /*!*******************************!*\
   !*** ./src/client/js/home.js ***!
   \*******************************/
 /***/ (() => {
 
-eval("var timer = document.querySelector(\".content timer\");\nvar timerTime = document.querySelector(\".content_timer_time\");\nvar timerStartBtn = document.querySelector(\"#start_button\");\nvar timerPauseBtn = document.querySelector(\"#pause_button\");\n\nfunction startTimer(clickedTime) {\n  var date = new Date();\n  var sumOfTime = parseInt((date.getTime() - clickedTime) / 1000);\n  console.log(sumOfTime);\n  var hours = parseInt(sumOfTime / 3600);\n  var minutes = parseInt(sumOfTime % 3600 / 60);\n  var seconds = parseInt(sumOfTime % 3600 % 60);\n  timerTime.innerText = \"\".concat(String(hours).padStart(2, \"0\"), \" : \").concat(String(minutes).padStart(2, \"0\"), \" : \").concat(String(seconds).padStart(2, \"0\"));\n}\n\nfunction paintTime(event) {\n  var date = new Date();\n  var clickedTime = date.getTime();\n  setInterval(function () {\n    startTimer(clickedTime);\n  }, 1000);\n}\n\ntimerStartBtn.addEventListener('click', paintTime);\n\n//# sourceURL=webpack://web/./src/client/js/home.js?");
+eval("var timer = document.querySelector(\".content timer\");\nvar timerTime = document.querySelector(\".content_timer_time\");\nvar timerBtn = document.querySelector(\"#timer_button\");\nvar run = 0;\n\nfunction startTimer(clickedTime) {\n  var date = new Date();\n  var sumOfTime = parseInt((date.getTime() - clickedTime) / 1000);\n  var hours = parseInt(sumOfTime / 3600);\n  var minutes = parseInt(sumOfTime % 3600 / 60);\n  var seconds = parseInt(sumOfTime % 3600 % 60);\n  timerTime.innerText = \"\".concat(String(hours).padStart(2, \"0\"), \" : \").concat(String(minutes).padStart(2, \"0\"), \" : \").concat(String(seconds).padStart(2, \"0\"));\n}\n\nfunction paintTime(event) {\n  var timerInterval;\n\n  if (timerBtn.innerText == \"정지\") {\n    timerBtn.innerText = \"재개\";\n    clearInterval(timerInterval);\n  } else {\n    timerBtn.innerText = \"정지\";\n    var date = new Date();\n    var clickedTime = date.getTime();\n    timerInterval = setInterval(function () {\n      startTimer(clickedTime);\n    }, 1000);\n    console.log(timerInterval);\n  }\n}\n\ntimerBtn.addEventListener('click', paintTime);\n\n//# sourceURL=webpack://web/./src/client/js/home.js?");
 
 /***/ })
 
@@ -26,7 +26,7 @@ eval("var timer = document.querySelector(\".content timer\");\nvar timerTime = d
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
-/******/ 	__webpack_modules__["../src/client/js/home.js"]();
+/******/ 	__webpack_modules__["./src/client/js/home.js"]();
 /******/ 	
 /******/ })()
 ;
