@@ -1,6 +1,7 @@
 const timer = document.querySelector(".content timer")
 const timerTime = document.querySelector(".content_timer_time")
 const timerBtn = document.querySelector("#timer_button")
+const currentDate = document.querySelector(".content_top")
 
 let run =0;
 
@@ -31,3 +32,13 @@ function paintTime(event){
 }
 
 timerBtn.addEventListener('click', paintTime)
+
+function paintCurrentDate(){
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const dateToday = date.getDate();
+    
+    currentDate.innerText=`${String(year)}. ${String(month).padStart(2,"0")}. ${String(dateToday).padStart(2,"0")}`
+}
+paintCurrentDate();
