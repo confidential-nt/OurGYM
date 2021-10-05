@@ -7,11 +7,12 @@ export const home = (req, res) => {
 export const profile = async (req, res) => {
   const user = await User.findById(req.session.user._id);
   return res.render("profile", { user });
+};
 
-export const calender = (req,res) =>{
+export const calender = (req, res) => {
   return res.render("calender");
 };
 
-export const group = (req,res) =>{
+export const group = (req, res) => {
   return res.render("group");
 };
