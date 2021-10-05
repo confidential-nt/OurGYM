@@ -5,7 +5,7 @@ block content
     section#seeProfile
         div.seeProfile_background
             div.seeProfile_content_title
-                p#nickname {{}}님의 프로필 정보
+                p#nickname #{user.nickname}님의 프로필 정보
 
             div.seeProfile_content
                 div.profile_img
@@ -17,21 +17,22 @@ block content
                 table.profile_table
                     tr 
                         th.type 별명
-                        td.content
+                        td.content=user.nickname
                     tr 
                         th.type 성별
-                        td.content 
+                        if user.gender
+                            td.content=user.gender
+                        else 
+                            td.content #{없음}    
                     tr 
                         th.type 생일
-                        td.content 
+                        td.content=user.birthday 
                     tr 
                         th.type 이메일 주소
-                        td.content 
+                        td.content=user.email
                     tr
                         th.type 주요 운동
-                        td.content 등산
-                        td.content 헬스   
-                                
+                        td.content=user.mainSports   
                 div.profile_button
                     div.profile_button_delete
                         button.account_delete 계정 삭제

@@ -1,10 +1,41 @@
 import User from "../models/User";
+import bcrypt from "bcrypt";
 
 export const getLogin = (req, res) => {
   return res.render("login", { pageTitle: "Login" });
 };
 
-export const postLogin = (req, res) => {};
+export const postLogin = async (req, res) => {
+  const { username, password } = req.body;
+
+  const user = await User.findOne({ username }); // 소셜로그인...에 관한 정책수랍필요
+
+  if (!user) {
+    return res.status(400).render("login", {
+      pageTitle: "Login",
+      errorMessage: "An account with this username doesn't exists.",
+    });
+  }
+
+  // check if password correct
+  const ok = await bcrypt.compare(password, user.password);
+
+  if (!ok) {
+    return res.status(400).render("login", {
+      pageTitle: "Login",
+      errorMessage: "Wrong password",
+    });
+  }
+  req.session.loggedIn = true;
+  req.session.user = user;
+  return res.redirect("/");
+};
+
+export const logout = (req, res) => {
+  req.session.destroy();
+
+  return res.redirect("/");
+};
 
 export const getJoin = (req, res) => {
   return res.render("join", { pageTitle: "Join" });
@@ -19,6 +50,7 @@ export const postJoin = async (req, res) => {
     email,
     mainSports,
     gender,
+    birthday,
   } = req.body;
 
   try {
@@ -36,7 +68,7 @@ export const postJoin = async (req, res) => {
       throw new Error("이미 존재하는 아이디/이메일/별명 입니다.");
     }
 
-    await User.create({
+    const user = await User.create({
       userId,
       password,
       passwordCheck,
@@ -44,9 +76,12 @@ export const postJoin = async (req, res) => {
       email,
       mainSports,
       gender,
+      birthday,
     });
 
-    return res.redirect("/login"); // 나중에 유저 로그인 시키기
+    req.session.loggedIn = true;
+    req.session.user = user;
+    return res.redirect("/");
   } catch (error) {
     return res
       .status(400)

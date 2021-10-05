@@ -2,11 +2,11 @@ extends ./config/base.pug
 
 block content
     form(method="post")
-    div
-        label(for="userId") 아이디        
-        input.userId_input(type="text", id="userId", name="userId" placeholder="아이디")
-    div
-        label(for="password") 비밀번호
-        input.password_input(type="password", id="password", name="password" placeholder="비밀번호 입력")
-    div
-        input.login_submit_button(type="submit", value="로그인")
+        div
+            label(for="userId") 아이디        
+            input.userId_input(type="text", id="userId", name="userId" placeholder="아이디", required)
+        div
+            label(for="password") 비밀번호
+            input.password_input(type="password", id="password", name="password" placeholder="비밀번호 입력", required)
+        div
+            input.login_submit_button(type="submit", value="로그인")
