@@ -9,10 +9,10 @@ export const profile = async (req, res) => {
   return res.render("profile", { user });
 };
 
-export const calender = (req,res) =>{
+export const calender = (req, res) => {
   return res.render("calender");
 };
 
-export const group = (req,res) =>{
+export const group = (req, res) => {
   return res.render("group");
 };
