@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev:server": "nodemon --exec babel-node src/index.js",
-    "dev:assets": "webpack"
+    "dev:assets": "webpack -w"
   },
   "repository": {
     "type": "git",
