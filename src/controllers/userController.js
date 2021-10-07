@@ -88,3 +88,25 @@ export const postJoin = async (req, res) => {
       .render("join", { pageTitle: "Join", errorMessage: error });
   }
 };
+
+export const userDelete = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: { password },
+  } = req;
+
+  const user = await User.findById(_id);
+
+  const ok = await bcrypt.compare(password, user.password);
+
+  if (ok) {
+    await User.findByIdAndDelete(_id);
+    req.session.destroy();
+
+    return res.redirect("/"); // flash 메시지..
+  } else {
+    return res.status(400).redirect("/profile"); //flash 메시지
+  }
+};

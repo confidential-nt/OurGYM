@@ -4,6 +4,7 @@ import globalRouter from "./routers/globalRouter";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import { localsMiddleare } from "./middlewares";
+import userRouter from "./routers/userRouter";
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use(localsMiddleare);
 
 app.use("/static", express.static("assets"));
 app.use("/", globalRouter);
+app.use("/users", userRouter);
 
 export default app;
