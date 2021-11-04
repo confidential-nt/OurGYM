@@ -1,17 +1,17 @@
 extends ./config/base.pug
 
+block scripts 
+    script(src="/static/js/profile.js", defer) 
 
 block content
     section#seeProfile
         div.seeProfile_background
             div.seeProfile_content_title
                 p#nickname #{user.nickname}님의 프로필 정보
-
             div.seeProfile_content
                 div.profile_img
                     div.profile_img_show
                         img(src="../profile1.jpg")
-                    
                     div.profile_img_edit
                         a(href='') 편집
                 table.profile_table
@@ -35,8 +35,8 @@ block content
                         td.content=user.mainSports   
                 div.profile_button
                     div.profile_button_delete
-                        button.account_delete 계정 삭제
+                        button.account_delete-btn 계정 삭제
                     div.profile_button_edit(onclick="location.href = '/'")
                         button.account_edit 계정 편집
-                        
+    include component/modal.pug                    
                 
