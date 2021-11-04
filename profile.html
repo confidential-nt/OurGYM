@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="profile.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <section id="seeProfile">
+      <div class="seeProfile_background">
+        <div class="seeProfile_content_title">
+          <div class="profile_img">
+            <div class="profile_img_show">
+              <img src="../profile1.jpg" />
+            </div>
+          </div>
+          <div id="nickname_box">
+            <p id="nickname_notice">Nickname</p>
+            <p id="nickname"></p>
+          </div>
+          <div id="id_box">
+            <p id="id_notice">ID</p>
+            <p id="id"></p>
+          </div>
+        </div>
+        <div class="seeProfile_content">
+          <div class="profile_img_edit">
+            <button class="btn_change_img">프로필 이미지 변경</button>
+          </div>
+          <table class="profile_table">
+            <tr>
+              <th type 별명></th>
+              <td content="user" class="nickname"></td>
+            </tr>
+            <tr>
+              <!-- th.type 성별
+                        if user.gender
+                            td.content=user.gender
+                        else 
+                            td.content #{없음} -->
+            </tr>
+            <tr>
+              <th type 생일></th>
+              <td content="user" class="birthday"></td>
+            </tr>
+            <tr>
+              <th type 이메일 주소></th>
+              <td content="user" class="email"></td>
+            </tr>
+            <tr>
+              <th type 주요 운동></th>
+              <td content="user" class="mainSports"></td>
+            </tr>
+          </table>
+          <div class="profile_button">
+            <div class="profile_button_delete">
+              <button class="account_delete-btn">계정 삭제</button>
+            </div>
+            <div class="my_diary_link1">
+              <a class="my_diary_link" href="/">나의 홈트일지</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- include component/modal.pug -->
+    </section>
+  </body>
+</html>
