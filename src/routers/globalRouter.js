@@ -1,5 +1,5 @@
 import express from "express";
-import { home, profile, calender, group } from "../controllers/globalController";
+import { home, profile, calender, ranking } from "../controllers/globalController";
 import {
   getJoin,
   getLogin,
@@ -16,5 +16,5 @@ globalRouter.get("/logout", logout);
 globalRouter.route("/join").get(getJoin).post(postJoin);
 globalRouter.get("/profile", profile);
 globalRouter.get("/calender", calender);
-globalRouter.get("/group", group);
+globalRouter.get("/ranking", ranking);
 export default globalRouter;

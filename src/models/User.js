@@ -9,6 +9,12 @@ const userSchema = mongoose.Schema({
   mainSports: { type: String, required: true },
   gender: { type: String },
   birthday: { type: String },
+  //like this?
+  exrs : {
+    index : {type : Int16Array},
+    exrname : { type:String, required:true},
+    exrtime : {type:TimeRanges, required:true}
+  }
 });
 
 userSchema.pre("save", async function () {

@@ -6,26 +6,28 @@ block content
 
     div.content_top 0000.00.00
     div.content_timer
-        div.content_timer_time 00:00:00
+        div.content_timer_time 00 : 00 : 00
         div.content_timer_start
             button#timer_button 시작
             //- if 0 :시작 if 1: 재개
 
-    div.content_movements
-        div.content_movements_title 오늘의 운동
-        div.content_movements_list
+    div.content_exrs
+        div.content_exrs_title 오늘의 운동
+        div.content_exrs_list
             ul 
                 li 
-                    button#movement_start_timer ▶ 헬스
-                    div#movement_time 00:00:00
-                    button#movement_specific 🔽
+                    button#exr_start_timer ▶ 헬스
+                    div#exr_time 00 : 00 : 00
+                    button#exr_specific 🔽
                 li 
-                    button#movement_timer ▶ 등산
-                    div#movement_time 00:00:00
-                    button#movement_specific 🔽
-                li.content_movements_add_list
-                    button#add_button_movements ➕
-                    div#add_movements 운동 추가
+                    button#exr_start_timer ▶ 등산
+                    div#exr_time 00 : 00 : 00
+                    button#exr_specific 🔽
+                li.content_exrs_add_list
+                    button#add_button_exrs ➕
+                    form(method="POST")
+                        input(name="add",type="text",placeholder="운동 입력", required) 
+                    div#add_exrs 운동 추가
     
     div.content_button
         div.content_button_Calender
@@ -33,4 +35,4 @@ block content
         div.content_button_Home
             button#button_home(onclick="location.href = '/'") 홈
         div.content_button_Group
-            button#button_group(onclick="location.href = '/group'") 그룹
+            button#button_group(onclick="location.href = '/ranking'") 랭킹
