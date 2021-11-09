@@ -30,7 +30,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mini-css-extract-plugin": "^2.3.0",
-    "mongoose": "^6.0.9",
+    "mongoose": "^6.0.12",
     "morgan": "^1.10.0",
     "pug": "^3.0.2",
     "sass": "^1.42.1",
