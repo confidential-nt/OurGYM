@@ -206,3 +206,44 @@
   left: 46%;
   margin-top: 100px;
 }
+
+#plus_box {
+  border: 2px solid white;
+  outline-color: #22577a;
+}
+
+#plus_input {
+  background-color: white;
+  border: 1px solid white;
+}
+
+#exr_specific {
+  background-color: white;
+  border: 1px solid white;
+}
+
+#timer_button {
+  background-color: white;
+  border: 1px solid white;
+  color: #22577a;
+}
+
+#exr_start_timer {
+  background-color: white;
+  border: 1px solid white;
+}
+
+.exr {
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+}
+
+#exr_time {
+  position: absolute;
+  right: 50px;
+}
+
+#exr_specific {
+  position: absolute;
+  right: 0px;
+}
