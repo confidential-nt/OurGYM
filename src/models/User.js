@@ -9,6 +9,9 @@ const userSchema = mongoose.Schema({
   mainSports: { type: String, required: true },
   gender: { type: String },
   birthday: { type: String },
+  //like this?
+  timePerDay : [],
+  exercises : [{type:mongoose.Schema.Types.ObjectId, ref:"Exercise"}],
 });
 
 userSchema.pre("save", async function () {
