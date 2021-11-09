@@ -13,7 +13,10 @@ block content
             //- if 0 :시작 if 1: 재개
 
     div.content_exrs
-        div.content_exrs_title 오늘의 운동
+        div.content_exrs_title
+        div.content_exrs_title_char_divbox
+            span.content_exrs_title_chars1 오늘의 운동
+            span.content_exrs_title_chars2 운동 시간
         div.content_exrs_list
             ul
                 if Object.keys(exercises).length > 0
