@@ -4,8 +4,8 @@ html(lang="en")
         meta(charset="UTF-8")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        //- link(rel="stylesheet", href="https://unpkg.com/mvp.css")
-        link(rel="stylesheet", href="/static/css/styles.css")
+        link(rel="stylesheet", href="https://unpkg.com/mvp.css")
+        //- link(rel="stylesheet", href="/static/css/styles.css")
         title #{pageTitle}| #{siteName}
         block scripts
         script(src="https://kit.fontawesome.com/6478f529f2.js",crossorigin="anonymous")
@@ -14,11 +14,11 @@ html(lang="en")
         block content
         nav.navi
             ul.navi__list
-                a.navi__link(href="src/views/calender.pug")
+                a.navi__link(href="/calender")
                     i.fas.fa-calendar-alt.fa-2x
                 
-                a.navi__link(href="src/views/home.pug")
+                a.navi__link(href="/")
                     i.fas.fa-home.fa-2x
                 
-                a.navi__link(href="src/views/ranking.pug")
+                a.navi__link(href="/ranking")
                     i.fas.fa-user-friends.fa-2x
