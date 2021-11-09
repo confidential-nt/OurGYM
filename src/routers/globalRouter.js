@@ -3,7 +3,7 @@ import {
   getHome,
   postHome,
   profile,
-  calender,
+  getStats,
   ranking,
 } from "../controllers/globalController";
 import {
@@ -21,6 +21,6 @@ globalRouter.route("/login").get(getLogin).post(postLogin);
 globalRouter.get("/logout", logout);
 globalRouter.route("/join").get(getJoin).post(postJoin);
 globalRouter.get("/profile", profile);
-globalRouter.get("/calender", calender);
+globalRouter.get("/stats", getStats);
 globalRouter.get("/ranking", ranking);
 export default globalRouter;

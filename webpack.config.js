@@ -9,6 +9,7 @@ module.exports = {
     main: BASE_JS + "main.js",
     home: BASE_JS + "home.js",
     profile: BASE_JS + "profile.js",
+    stats: BASE_JS + "stats.js",
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -32,9 +33,17 @@ module.exports = {
         },
       },
       {
-        test: /\.scss$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        test: /\.css$/,
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: "css-loader", options: { importLoaders: 1 } },
+        ],
       },
     ],
   },
 };
+
+// {
+//   test: /\.scss$/,
+//   use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+// },

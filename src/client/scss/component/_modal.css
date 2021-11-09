@@ -58,7 +58,7 @@
   right: 15px;
 }
 
-//nav_bar
+/* nav_bar */
 body {
   background-color: #22577a;
 }
@@ -82,7 +82,7 @@ body {
   justify-content: space-between;
 }
 
-//limit
+/* limit */
 #limit {
   position: absolute;
   z-index: 99;
@@ -101,7 +101,7 @@ body {
   }
 }
 
-//home
+/* home */
 .content_top {
   display: flex;
   justify-content: center;
