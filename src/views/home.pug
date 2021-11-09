@@ -15,15 +15,15 @@ block content
         div.content_exrs_title 오늘의 운동
         div.content_exrs_list
             ul
-                if Object.keys(exercises).length === 0
-                    li 
-                        div 👇👇👇 운동을 추가해주세요! 👇👇👇
-                else
+                if Object.keys(exercises).length > 0
                     each exercise in exercises
                         li 
                             button#exr_start_timer ▶ #{exercise.exrname}
                             div#exr_time 00 : 00 : 00
                             button#exr_specific 🔽
+                else
+                    li 
+                        div 👇👇👇 운동을 추가해주세요! 👇👇👇
 
                 li.content_exrs_add_list
                     div#add_exrs 운동 추가
@@ -31,10 +31,3 @@ block content
                         input(type="submit", value="➕")
                         input(name="exrname",type="text",placeholder="운동 입력", required)
     
-    div.content_button
-        div.content_button_Calender
-            button#button_calender(onclick="location.href = '/calender'") 캘린더
-        div.content_button_Home
-            button#button_home(onclick="location.href = '/'") 홈
-        div.content_button_Group
-            button#button_group(onclick="location.href = '/ranking'") 랭킹
