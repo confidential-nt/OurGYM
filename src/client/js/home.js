@@ -38,7 +38,7 @@ timerBtn.addEventListener("click", paintTime);
 function paintCurrentDate() {
   const date = new Date();
   const year = date.getFullYear();
-  const month = date.getMonth();
+  const month = date.getMonth() + 1;
   const dateToday = date.getDate();
 
   currentDate.innerText = `${String(year)}. ${String(month).padStart(
