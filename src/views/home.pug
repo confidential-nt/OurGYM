@@ -14,20 +14,22 @@ block content
     div.content_exrs
         div.content_exrs_title 오늘의 운동
         div.content_exrs_list
-            ul 
-                li 
-                    button#exr_start_timer ▶ 헬스
-                    div#exr_time 00 : 00 : 00
-                    button#exr_specific 🔽
-                li 
-                    button#exr_start_timer ▶ 등산
-                    div#exr_time 00 : 00 : 00
-                    button#exr_specific 🔽
+            ul
+                if Object.keys(exercises).length === 0
+                    li 
+                        div 👇👇👇 운동을 추가해주세요! 👇👇👇
+                else
+                    each exercise in exercises
+                        li 
+                            button#exr_start_timer ▶ #{exercise.exrname}
+                            div#exr_time 00 : 00 : 00
+                            button#exr_specific 🔽
+
                 li.content_exrs_add_list
-                    button#add_button_exrs ➕
-                    form(method="POST")
-                        input(name="add",type="text",placeholder="운동 입력", required) 
                     div#add_exrs 운동 추가
+                    form(method="POST")
+                        input(type="submit", value="➕")
+                        input(name="exrname",type="text",placeholder="운동 입력", required)
     
     div.content_button
         div.content_button_Calender

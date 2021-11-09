@@ -1,16 +1,22 @@
 import express from "express";
-import { home, profile, calender, ranking } from "../controllers/globalController";
+import {
+  getHome,
+  postHome,
+  profile,
+  calender,
+  ranking,
+} from "../controllers/globalController";
 import {
   getJoin,
-  getLogin,
-  logout,
   postJoin,
+  getLogin,
   postLogin,
+  logout,
 } from "../controllers/userController";
 
 const globalRouter = express.Router();
 
-globalRouter.get("/", home);
+globalRouter.route("/").get(getHome).post(postHome);
 globalRouter.route("/login").get(getLogin).post(postLogin);
 globalRouter.get("/logout", logout);
 globalRouter.route("/join").get(getJoin).post(postJoin);

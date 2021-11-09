@@ -57,3 +57,102 @@
   top: 10px;
   right: 15px;
 }
+
+//nav_bar
+body {
+  background-color: #22577a;
+}
+
+.navi__link {
+  color: white;
+}
+
+.navi {
+  position: fixed;
+  bottom: 50%;
+  width: 100%;
+  background-color: #22577a;
+  padding: 0px 50px 0px 0px;
+  box-sizing: border-box;
+  border-top: 1px solid black;
+}
+
+.navi__list {
+  display: flex;
+  justify-content: space-between;
+}
+
+//limit
+#limit {
+  position: absolute;
+  z-index: 99;
+  height: 100vh;
+  background-color: white;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  top: 0;
+}
+@media screen and (min-width: 300px) and (max-width: 800px) {
+  #limit {
+    display: none;
+  }
+}
+
+//home
+.content_top {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.content_timer_time {
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  font-size: 30px;
+}
+
+.top_border {
+  border: 2px solid blue;
+}
+
+.content_movements_title {
+  justify-content: right;
+}
+
+.content_title {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+
+.movement_time {
+  margin-right: 5px;
+  position: absolute;
+  right: 50px;
+}
+
+#movement_specific {
+  position: absolute;
+  right: 0px;
+  margin-left: 30px;
+}
+
+.movement_box {
+  position: relative;
+  border-bottom: 1px solid black;
+  margin-right: 20px;
+  margin-top: 10px;
+}
+
+#content_ul {
+  padding-left: 0px;
+}
+
+.content_movements_add_list {
+  margin-top: 10px;
+}

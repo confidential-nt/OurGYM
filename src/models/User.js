@@ -10,11 +10,8 @@ const userSchema = mongoose.Schema({
   gender: { type: String },
   birthday: { type: String },
   //like this?
-  exrs : {
-    index : {type : Int16Array},
-    exrname : { type:String, required:true},
-    exrtime : {type:TimeRanges, required:true}
-  }
+  timePerDay : [],
+  exercises : [{type:mongoose.Schema.Types.ObjectId, ref:"Exercise"}],
 });
 
 userSchema.pre("save", async function () {
