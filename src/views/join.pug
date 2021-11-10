@@ -1,5 +1,4 @@
 extends ./config/base.pug
-
 block content         
     section
         div.container_form
@@ -9,34 +8,34 @@ block content
                 ul
                     li
                         label(for="userId") 아이디
-                        input(type="text", name="userId", id="userId", placeholder="아이디", required)
+                        input(type="text", name="userId", id="userId", placeholder="아이디", class="box", required)
                     li
                         label(for="password") 비밀번호
-                        input(type="password", name="password", id='password',placeholder="비밀번호", required)
+                        input(type="password", name="password", id='password',placeholder="비밀번호", class="box", required)
                     li
                         label(for="passwordCheck") 비밀번호 확인
-                        input(type="password", name="passwordCheck", id="passwordCheck", placeholder="비밀번호 확인", required)
+                        input(type="password", name="passwordCheck", id="passwordCheck", placeholder="비밀번호 확인", class="box", required)
                     li
                         label(for="nickname") 별명
-                        input(type="text", id="nickname", name="nickname", placeholder="별명",required)
+                        input(type="text", id="nickname", name="nickname", placeholder="별명", class="box", required)
                     li
                         label(for="email") 이메일
-                        input(type="email", id="email", name="email", placeholder="이메일",required)
+                        input(type="email", id="email", name="email", placeholder="이메일", class="box", required)
                     li
                         label(for="mainSports") 주운동종목
-                        select(id="mainSports", name="mainSports",required)
+                        select(id="mainSports", name="mainSports",class="box", required)
                             option(value="무산소") 무산소
                             option(value="유산소") 유산소
                             option(value="요가/필라테스") 요가/필라테스
                     li 
                         label(for="gender") 성별
-                        select(id="gender", name="gender")
+                        select(id="gender", name="gender" class="box")
                             option(value="") 성별을 선택하세요
                             option(value="남") 남
                             option(value="여") 여
                     li 
                         label(for="birthday") 생일
                         input(type="date", id="birthday" name="birthday",
-                            value="",
+                            value="", class="box",
                             min=`${new Date(0).getFullYear() - 30}-01-01` max=new Date().toISOString().slice(0, 10))       
-                input(type="submit", value="회원가입완료")
+                input(type="submit" id="btnJoin", value="회원가입완료")

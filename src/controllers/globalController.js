@@ -8,13 +8,23 @@ export const getHome = async (req, res) => {
 };
 
 export const postHome = async (req, res) => {
-  const { _id } = req.session.user;
-  const { exrname } = req.body;
+  const {
+    session: {
+      user: { _id, exercises },
+    },
+    body: { exrname },
+  } = req;
   try {
     await Exercise.create({
       exrname,
     });
-    await User.findByIdAndUpdate(_id, )
+    await User.findByIdAndUpdate(
+      _id,
+      {
+        exercises,
+      },
+      { new: true }
+    );
     return res.redirect("/");
   } catch (error) {
     console.log(error);
