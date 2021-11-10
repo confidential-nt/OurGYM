@@ -1,7 +1,9 @@
 import "dotenv/config";
 import "./db";
 import "./models/User";
-import "./models/Exercise";
+import "./models/TimePerDay";
+import "./models/TimePerWeek";
+import "./models/TimePerMonth";
 import app from "./app";
 
 const PORT = 4000;

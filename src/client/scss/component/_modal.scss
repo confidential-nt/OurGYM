@@ -21,6 +21,12 @@
     #363636e6 100%
   );
 }
+.content_exr{
+  display: flex;
+  #exr_timer{
+    display: flex;
+  }
+}
 
 .show {
   display: block;
@@ -31,7 +37,7 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 50%;
   z-index: 1;
   display: none;
 }

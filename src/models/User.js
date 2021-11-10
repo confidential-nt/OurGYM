@@ -1,17 +1,26 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 
+const objectId = mongoose.Schema.Types.ObjectId;
+
 const userSchema = mongoose.Schema({
   userId: { type: String, required: true, unique: true },
   password: { type: String, required: true },
   nickname: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   mainSports: { type: String, required: true },
+  exercises: [
+    {
+      exrname: { type: String, required: true, unique:true },
+      exrtime: { type: String, required: true, default: "00 : 00 : 00" },
+    },
+  ],
   gender: { type: String },
   birthday: { type: String },
   //like this?
-  timePerDay : [],
-  exercises : [{type:mongoose.Schema.Types.ObjectId, ref:"Exercise"}],
+  timePerDay: [{ type: objectId, ref: "TimePerDay" }],
+  timePerWeek: [{ type: objectId, ref: "TimePerWeek" }],
+  timePerMonth: [{ type: objectId, ref: "TimePerMonth" }],
 });
 
 userSchema.pre("save", async function () {

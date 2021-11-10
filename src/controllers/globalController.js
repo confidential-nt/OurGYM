@@ -1,29 +1,30 @@
+import session from "express-session";
 import User from "../models/User";
-import Exercise from "../models/Exercise";
 
 export const getHome = async (req, res) => {
-  const exercises = await Exercise.find({});
-  console.log(req.session);
-  return res.render("home", { pageTitle: "Our GYM", exercises });
+  try{
+    const id = req.session.user._id;
+    const user = await User.findById(id);
+    console.log(user);
+    return res.render("home", { pageTitle: "Our GYM", user });
+  } catch(error){
+    console.log(error);
+    return res.render("home",{ pageTitle: "Our GYM" });
+  }
 };
+
 
 export const postHome = async (req, res) => {
   const {
     session: {
-      user: { _id, exercises },
+      user: { _id },
     },
     body: { exrname },
   } = req;
   try {
-    await Exercise.create({
-      exrname,
-    });
     await User.findByIdAndUpdate(
       _id,
-      {
-        exercises,
-      },
-      { new: true }
+      { $push : {exercises: { exrname }} },
     );
     return res.redirect("/");
   } catch (error) {
