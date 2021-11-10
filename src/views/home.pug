@@ -8,26 +8,33 @@ block content
     div.content_timer
         div.content_timer_time 00 : 00 : 00
         div.content_timer_start
-            button#timer_button 시작
+            button#timer_button
+                i.fas.fa-play-circle.fa-2x
             //- if 0 :시작 if 1: 재개
 
     div.content_exrs
-        div.content_exrs_title 오늘의 운동
+        div.content_exrs_title
+        div.content_exrs_title_char_divbox
+            span.content_exrs_title_chars1 오늘의 운동
+            span.content_exrs_title_chars2 운동 시간
         div.content_exrs_list
             ul
                 if Object.keys(exercises).length > 0
                     each exercise in exercises
-                        li 
+                        li.exr
                             button#exr_start_timer ▶ #{exercise.exrname}
-                            div#exr_time 00 : 00 : 00
-                            button#exr_specific 🔽
+                            span#exr_time 00 : 00 : 00
+                            button#exr_specific
+                                i.fas.fa-ellipsis-v
                 else
                     li 
                         div 👇👇👇 운동을 추가해주세요! 👇👇👇
 
                 li.content_exrs_add_list
                     div#add_exrs 운동 추가
+                    
                     form(method="POST")
-                        input(type="submit", value="➕")
-                        input(name="exrname",type="text",placeholder="운동 입력", required)
+                        input(id="plus_input"  type="submit" value="➕")
+                            //- i.fas.fa-plus
+                        input(id="plus_box" name="exrname",type="text",placeholder="운동 입력", required)
     
