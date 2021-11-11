@@ -21,11 +21,36 @@
     #363636e6 100%
   );
 }
-.content_exr{
+.content_exr {
   display: flex;
-  #exr_timer{
-    display: flex;
-  }
+}
+#exr_timer {
+  display: flex;
+}
+
+// #exr_timer_time1 {
+//   font-size: 20px;
+// }
+
+// #exr_timer_1 {
+//   background-color: #f5f6f7;
+//   border: 1px solid #f5f6f7;
+// }
+
+// #exr_timer_specific1 {
+//   background-color: #f5f6f7;
+//   border: 1px solid #f5f6f7;
+// }
+
+.plz_signup {
+  margin-top: 200px;
+  justify-content: center;
+  text-align: center;
+}
+
+td {
+  color: #22577a;
+  // font-size: 20px;
 }
 
 body {
@@ -164,6 +189,10 @@ body {
   padding-left: 0px;
 }
 
+.content_exrs_add_list {
+  margin-left: -23px;
+}
+
 .content_movements_add_list {
   margin-top: 10px;
 }
@@ -186,9 +215,8 @@ body {
 }
 
 #nickname {
-  margin-left: 100px;
-  width: 250px;
-  border-bottom: 1px solid black;
+  width: 320px;
+  // border-bottom: 1px solid black;
 }
 
 #id {
@@ -212,6 +240,15 @@ body {
   left: 48%;
   margin-top: 40px;
   margin-bottom: 30px;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+}
+
+.account_edit {
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  position: absolute;
+  left: 48%;
 }
 
 .my_diary_link {
@@ -221,14 +258,18 @@ body {
 }
 
 #plus_box {
+  display: inline-block;
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
   outline-color: #22577a;
+  width: 60%;
 }
 
 #plus_input {
+  display: inline-block;
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
+  width: 15%;
 }
 
 #exr_specific {
@@ -240,6 +281,7 @@ body {
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
   color: #22577a;
+  margin-left: 15px;
 }
 
 #exr_start_timer {
@@ -264,13 +306,21 @@ body {
 
 .content_exrs_title_chars1 {
   padding-left: 15px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
 }
 
 .content_exrs_title_chars2 {
   position: absolute;
-  right: 55px;
+  right: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
 }
 
 .content_exrs_title_char_divbox {
-  border-bottom: 1px solid gray;
+  border-bottom: 3px solid gray;
 }
