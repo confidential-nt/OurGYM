@@ -5,39 +5,39 @@ block scripts
     
 block content   
     if loggedIn
-        form(method="POST")
-            div.content_top 0000.00.00
-            div.content_timer
-                div.content_timer_time 00 : 00 : 00
-                div.content_timer_start
-                    button#timer_button
-                        i.fas.fa-play-circle.fa-2x
+        div.content_top 0000.00.00
+        div.content_timer
+            div.content_timer_time 00 : 00 : 00
+            div.content_timer_start
+                button#timer_button
+                    i.fas.fa-play-circle.fa-2x
                     //- if 0 :시작 if 1: 재개
-
+        div.minvh
             div.content_exrs
                 div.content_exrs_title
                 div.content_exrs_title_char_divbox
                     span.content_exrs_title_chars1 오늘의 운동
                     span.content_exrs_title_chars2 운동 시간
                 div.content_exrs_list
-                    ul
+                    ul.exrs_ui
                         if(user.exercises !== null)
                             each exercise, index in user.exercises
                                 li.content_exr(id="content_exr_"+(index+1))
                                     div.exr_timer
-                                        button(id="exr_timer_"+(index+1), type="button") ▶
-                                        div#exr_timer_name #{exercise.exrname}
-                                    span(id="exr_timer_time_"+(index+1)) 00 : 00 : 00
-                                    button(id = "exr_timer_specific"+(index+1), type="button")
+                                        button.exr_timer_parent(id="exr_timer_"+(index+1), type="button") ▶
+                                            div#exr_timer_name #{exercise.exrname}
+                                    span.exr_timer_time_parent(id="exr_timer_time"+(index+1)) 00 : 00 : 00
+                                    button.exr_timer_specific_parent(id = "exr_timer_specific"+(index+1), type="button")
                                         i.fas.fa-ellipsis-v
                         else
                             li 
                                 div 👇👇👇 운동을 추가해주세요! 👇👇👇
 
-                        li.content_exrs_add_list
-                            div#add_exrs 운동 추가
-                            input(id="plus_box", name="exrname",type="text",placeholder="운동 입력", required)
-                            input(id="plus_input", type="submit" value="➕")
+            form.content_exrs_add_list(method="POST")
+                div#add_exrs 운동 추가
+                input(id="plus_input", type="submit" value="➕")
+                input(id="plus_box", name="exrname",type="text",placeholder="운동 입력", required)
+                                            
                                     //- i.fas.fa-plus
     else
-        div 👆👆👆 회원가입을 완료해주세요! 👆👆👆
+        div.plz_signup 👆👆👆 회원가입을 완료해주세요! 👆👆👆

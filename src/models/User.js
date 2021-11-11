@@ -11,8 +11,8 @@ const userSchema = mongoose.Schema({
   mainSports: { type: String, required: true },
   exercises: [
     {
-      exrname: { type: String, required: true, unique:true },
-      exrtime: { type: String, required: true, default: "00 : 00 : 00" },
+      exrname: { type: String },
+      exrtime: { type: String, default: "00 : 00 : 00" },
     },
   ],
   gender: { type: String },
