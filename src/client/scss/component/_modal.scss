@@ -28,6 +28,13 @@
   }
 }
 
+body {
+  margin: 0;
+  height: 150vh;
+  background: #f5f6f7;
+  font-family: Dotum, "돋움", Helvetica, sans-serif;
+}
+
 .show {
   display: block;
 }
@@ -214,13 +221,14 @@
 }
 
 #plus_box {
-  border: 2px solid white;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
   outline-color: #22577a;
 }
 
 #plus_input {
-  background-color: white;
-  border: 1px solid white;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
 }
 
 #exr_specific {
@@ -229,8 +237,8 @@
 }
 
 #timer_button {
-  background-color: white;
-  border: 1px solid white;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
   color: #22577a;
 }
 
