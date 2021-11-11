@@ -1,19 +1,16 @@
-import session from "express-session";
 import User from "../models/User";
 
 export const getHome = async (req, res) => {
- 
-  try{
+  try {
     const id = req.session.user._id;
     const user = await User.findById(id);
     console.log(req.session);
     return res.render("home", { pageTitle: "Our GYM", user });
-  } catch(error){
+  } catch (error) {
     console.log(error);
-    return res.render("home",{ pageTitle: "Our GYM" });
+    return res.render("home", { pageTitle: "Our GYM" });
   }
 };
-
 
 export const postHome = async (req, res) => {
   const {
@@ -23,10 +20,7 @@ export const postHome = async (req, res) => {
     body: { exrname },
   } = req;
   try {
-    await User.findByIdAndUpdate(
-      _id,
-      { $push : {exercises: { exrname }} },
-    );
+    await User.findByIdAndUpdate(_id, { $push: { exercises: { exrname } } });
     return res.redirect("/");
   } catch (error) {
     console.log(error);

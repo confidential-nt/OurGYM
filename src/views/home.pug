@@ -8,10 +8,7 @@ block content
         div.content_top 0000.00.00
         div.content_timer
             div.content_timer_time 00 : 00 : 00
-            div.content_timer_start
-                button#timer_button
-                    i.fas.fa-play-circle.fa-2x
-                    //- if 0 :시작 if 1: 재개
+        br
         div.minvh
             div.content_exrs
                 div.content_exrs_title
@@ -25,8 +22,8 @@ block content
                                 li.content_exr(id="content_exr_"+(index+1))
                                     div.exr_timer
                                         button.exr_timer_parent(id="exr_timer_"+(index+1), type="button") ▶
-                                            div#exr_timer_name #{exercise.exrname}
-                                    span.exr_timer_time_parent(id="exr_timer_time"+(index+1)) 00 : 00 : 00
+                                        div#exr_timer_name #{exercise.exrname}
+                                    span.exr_timer_time_parent(id="exr_timer_time_"+(index+1)) 00 : 00 : 00
                                     button.exr_timer_specific_parent(id = "exr_timer_specific"+(index+1), type="button")
                                         i.fas.fa-ellipsis-v
                         else
