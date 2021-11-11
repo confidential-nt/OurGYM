@@ -28,19 +28,45 @@
   display: flex;
 }
 
-// #exr_timer_time1 {
-//   font-size: 20px;
-// }
+.content_exrs_list {
+  margin-bottom: 5px;
+}
 
-// #exr_timer_1 {
-//   background-color: #f5f6f7;
-//   border: 1px solid #f5f6f7;
-// }
+.exrs_ui {
+  margin-bottom: 10px;
+}
 
-// #exr_timer_specific1 {
-//   background-color: #f5f6f7;
-//   border: 1px solid #f5f6f7;
-// }
+.exr_timer_parent {
+  width: 500px;
+  height: 18.4px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  background-color: #f5f6f7;
+  border: none;
+}
+
+.exr_timer_time_parent {
+  position: absolute;
+  font-size: 15px;
+  right: 40px;
+}
+
+.exr_timer_specific_parent {
+  position: absolute;
+  right: 3px;
+  width: 10px;
+  background-color: #f5f6f7;
+  border: none;
+}
+
+.content_exr {
+  border-bottom: 1px solid rgb(116, 113, 113);
+  margin-left: -38px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
 
 .plz_signup {
   margin-top: 200px;
@@ -141,7 +167,7 @@ body {
 .content_top {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
   font-size: 20px;
 }
 
@@ -189,9 +215,14 @@ body {
   padding-left: 0px;
 }
 
-.content_exrs_add_list {
-  margin-left: -23px;
-}
+// .content_exrs {
+//   min-height: 50;
+// }
+
+// .content_exrs_add_list {
+// //   margin-left: -23px;
+// //   margin-right: -8px;
+// // }
 
 .content_movements_add_list {
   margin-top: 10px;
@@ -215,7 +246,7 @@ body {
 }
 
 #nickname {
-  width: 320px;
+  width: 100%;
   // border-bottom: 1px solid black;
 }
 
@@ -302,6 +333,18 @@ body {
 #exr_specific {
   position: absolute;
   right: 0px;
+}
+
+#add_exrs {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
+}
+
+.minvh {
+  min-height: auto;
 }
 
 .content_exrs_title_chars1 {
