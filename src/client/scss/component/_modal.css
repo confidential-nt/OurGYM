@@ -23,11 +23,10 @@
 }
 .content_exr{
   display: flex;
-  #exr_timer{
-    display: flex;
-  }
 }
-
+.content_exr #exr_timer{
+  display: flex;
+}
 body {
   margin: 0;
   height: 150vh;
@@ -71,7 +70,10 @@ body {
   right: 15px;
 }
 
-//nav_bar
+/* nav_bar */
+body {
+  background-color: #22577a;
+}
 
 .navi__link {
   color: white;
@@ -93,7 +95,7 @@ body {
   justify-content: space-between;
 }
 
-//limit
+/* limit */
 #limit {
   position: absolute;
   z-index: 99;
@@ -112,7 +114,7 @@ body {
   }
 }
 
-//home
+/* home */
 .content_top {
   display: flex;
   justify-content: center;
@@ -168,7 +170,7 @@ body {
   margin-top: 10px;
 }
 
-//profile
+/*profile */
 
 #seeProfile {
   display: flex;

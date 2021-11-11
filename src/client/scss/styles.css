@@ -1,0 +1,14 @@
+@import "./component/_modal.css";
+
+#calendar {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.highlightCell {
+  border: 10px solid #c0eb02 !important;
+}
+
+.selectedCell {
+  border: 10px solid #4ceb02 !important;
+}

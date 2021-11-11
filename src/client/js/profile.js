@@ -19,7 +19,10 @@ class Profile {
 
   handleDisplayModal(e) {
     if (!this.Modal.isDisplayed) {
-      this.Modal.display();
+      const {
+        dataset: { btntype },
+      } = e.target;
+      this.Modal.display(btntype);
     }
   }
 }

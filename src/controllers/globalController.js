@@ -38,8 +38,8 @@ export const profile = async (req, res) => {
   return res.render("profile", { user });
 };
 
-export const calender = (req, res) => {
-  return res.render("calender");
+export const getStats = (req, res) => {
+  return res.render("stats");
 };
 
 export const ranking = (req, res) => {

@@ -35,8 +35,8 @@ block content
                         td.content=user.mainSports   
                 div.profile_button
                     div.profile_button_delete
-                        button.account_delete-btn 계정 삭제
-                    div.profile_button_edit(onclick="location.href = '/'")
-                        button.account_edit 계정 편집
+                        button.account_delete-btn(data-btntype="deleteAccount") 계정 삭제
+                    div.profile_button_edit
+                        button.account_edit-btn(data-btntype="editAccount") 계정 편집
     include component/modal.pug                    
                 
