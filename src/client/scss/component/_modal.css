@@ -21,8 +21,62 @@
     #363636e6 100%
   );
 }
-.content_exr{
+.content_exr {
   display: flex;
+}
+#exr_timer {
+  display: flex;
+}
+
+.content_exrs_list {
+  margin-bottom: 5px;
+}
+
+.exrs_ui {
+  margin-bottom: 10px;
+}
+
+.exr_timer_parent {
+  width: 500px;
+  height: 18.4px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f6f7;
+  border: none;
+}
+
+.exr_timer_time_parent {
+  position: absolute;
+  font-size: 15px;
+  right: 40px;
+}
+
+.exr_timer_specific_parent {
+  position: absolute;
+  right: 3px;
+  width: 10px;
+  background-color: #f5f6f7;
+  border: none;
+}
+
+.content_exr {
+  border-bottom: 1px solid rgb(116, 113, 113);
+  margin-left: -38px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.plz_signup {
+  margin-top: 200px;
+  justify-content: center;
+  text-align: center;
+}
+
+td {
+  color: #22577a;
+  font-size: 20px;
 }
 .content_exr #exr_timer{
   display: flex;
@@ -118,7 +172,7 @@ body {
 .content_top {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 40px;
   font-size: 20px;
 }
 
@@ -166,6 +220,14 @@ body {
   padding-left: 0px;
 }
 
+ .content_exrs {
+   min-height: 50;
+}
+
+ .content_exrs_add_list {
+   margin-right: -8px;
+ } 
+
 .content_movements_add_list {
   margin-top: 10px;
 }
@@ -188,8 +250,7 @@ body {
 }
 
 #nickname {
-  margin-left: 100px;
-  width: 250px;
+  width: 100%;
   border-bottom: 1px solid black;
 }
 
@@ -214,6 +275,15 @@ body {
   left: 48%;
   margin-top: 40px;
   margin-bottom: 30px;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+}
+
+.account_edit {
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  position: absolute;
+  left: 48%;
 }
 
 .my_diary_link {
@@ -223,14 +293,18 @@ body {
 }
 
 #plus_box {
+  display: inline-block;
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
   outline-color: #22577a;
+  width: 60%;
 }
 
 #plus_input {
+  display: inline-block;
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
+  width: 15%;
 }
 
 #exr_specific {
@@ -242,6 +316,7 @@ body {
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
   color: #22577a;
+  margin-left: 15px;
 }
 
 #exr_start_timer {
@@ -264,15 +339,35 @@ body {
   right: 0px;
 }
 
+#add_exrs {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
+}
+
+.minvh {
+  min-height: auto;
+}
+
 .content_exrs_title_chars1 {
   padding-left: 15px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
 }
 
 .content_exrs_title_chars2 {
   position: absolute;
-  right: 55px;
+  right: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
 }
 
 .content_exrs_title_char_divbox {
-  border-bottom: 1px solid gray;
+  border-bottom: 3px solid gray;
 }

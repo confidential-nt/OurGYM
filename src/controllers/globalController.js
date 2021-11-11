@@ -2,10 +2,11 @@ import session from "express-session";
 import User from "../models/User";
 
 export const getHome = async (req, res) => {
+ 
   try{
     const id = req.session.user._id;
     const user = await User.findById(id);
-    // console.log(user);
+    console.log(req.session);
     return res.render("home", { pageTitle: "Our GYM", user });
   } catch(error){
     console.log(error);

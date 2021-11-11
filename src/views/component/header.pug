@@ -1,18 +1,20 @@
 header 
     nav
-        div.container
-            div.title
+        span.container
+            span.title
                 i.fab.fa-pied-piper-square
-                a(href="/") OURGYM
+                a.ourgym_title(href="/") OURGYM
             div.menu_bar
                 ul
                     if loggedIn
-                        li
-                            a(href="/profile") 내 정보
-                        li 
-                            a(href="/logout") 로그아웃    
-                    else            
-                        li
-                            a(href="/login") 로그인
-                        li 
-                            a(href="/join") 회원가입
+                        span.after_login_text
+                            span.profile_text
+                                a(href="/profile") 내 정보
+                            span.logout_text 
+                                a(href="/logout") 로그아웃    
+                    else
+                        span.before_login_text            
+                            span.login_text
+                                a(href="/login") 로그인
+                            span.signup_text
+                                a(href="/join") 회원가입
