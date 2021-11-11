@@ -21,7 +21,8 @@
     #363636e6 100%
   );
 }
-.content_exr {
+
+.content_exr{
   display: flex;
 }
 #exr_timer {
