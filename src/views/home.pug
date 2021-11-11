@@ -1,6 +1,7 @@
 extends ./config/base
 block scripts
-    script(src="/static/js/home.js", defer)
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    script(type="text/javascript",src="/static/js/home.js",  defer)
     
 block content   
     if loggedIn
@@ -23,10 +24,11 @@ block content
                         if(user.exercises !== null)
                             each exercise, index in user.exercises
                                 li.content_exr(id="content_exr_"+(index+1))
-                                    button(id="exr_timer_"+(index+1))(type="button") ▶
-                                        div#exr_timer_name #{exercise.exrname}
+                                    div.exr_timer
+                                        button(id="exr_timer_"+(index+1), type="button") ▶
+                                            div#exr_timer_name #{exercise.exrname}
                                     span(id="exr_timer_time"+(index+1)) 00 : 00 : 00
-                                    button(id = "exr_timer_specific"+(index+1))(type="button")
+                                    button(id = "exr_timer_specific"+(index+1), type="button")
                                         i.fas.fa-ellipsis-v
                         else
                             li 

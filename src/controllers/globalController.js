@@ -5,7 +5,7 @@ export const getHome = async (req, res) => {
   try{
     const id = req.session.user._id;
     const user = await User.findById(id);
-    console.log(user);
+    // console.log(user);
     return res.render("home", { pageTitle: "Our GYM", user });
   } catch(error){
     console.log(error);
