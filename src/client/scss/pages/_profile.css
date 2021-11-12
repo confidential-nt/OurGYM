@@ -1,0 +1,137 @@
+#seeProfile {
+  display: flex;
+  justify-content: center;
+}
+
+.profile_img {
+  position: absolute;
+  left: 50%;
+  top: 10px;
+}
+
+#nickname_box {
+  margin-top: 50px;
+}
+
+#nickname {
+  width: 100%;
+  border-bottom: 1px solid black;
+}
+
+#id {
+  margin-left: 100px;
+  width: 250px;
+  border-bottom: 1px solid black;
+}
+
+#id_notice {
+  margin-left: 30px;
+}
+
+.btn_change_img {
+  position: absolute;
+  left: 45%;
+  margin-top: 10px;
+}
+
+.account_delete-btn {
+  position: absolute;
+  left: 48%;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+}
+
+.account_edit {
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  position: absolute;
+  left: 48%;
+}
+
+.my_diary_link {
+  position: absolute;
+  left: 46%;
+  margin-top: 100px;
+}
+
+#plus_box {
+  display: inline-block;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  outline-color: #22577a;
+  width: 60%;
+}
+
+#plus_input {
+  display: inline-block;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  width: 15%;
+}
+
+#exr_specific {
+  background-color: white;
+  border: 1px solid white;
+}
+
+#timer_button {
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  color: #22577a;
+  margin-left: 15px;
+}
+
+#exr_start_timer {
+  background-color: white;
+  border: 1px solid white;
+}
+
+.exr {
+  margin-top: 7.5px;
+  margin-bottom: 7.5px;
+}
+
+#exr_time {
+  position: absolute;
+  right: 50px;
+}
+
+#exr_specific {
+  position: absolute;
+  right: 0px;
+}
+
+#add_exrs {
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
+}
+
+.minvh {
+  min-height: auto;
+}
+
+.content_exrs_title_chars1 {
+  padding-left: 15px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
+}
+
+.content_exrs_title_chars2 {
+  position: absolute;
+  right: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
+}
+
+.content_exrs_title_char_divbox {
+  border-bottom: 3px solid gray;
+}

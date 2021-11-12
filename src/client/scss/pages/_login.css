@@ -23,16 +23,16 @@ body {
 }
 
 header {
-  //   text-align: center;
+  /* text-align: center; */
   font-size: 35px;
 }
 
-// form {
-//   position: absolute;
-//   left: 50%;
-//   transform: translate(-50%);
-//   width: 360px;
-// }
+/* form { */
+/* position: absolute; */
+/* left: 50%; */
+/* transform: translate(-50%); */
+/* width: 360px; */
+/* } */
 
 .fab.fa-pied-piper-square {
   position: absolute;
@@ -99,9 +99,9 @@ input {
   position: relative;
 }
 
-// div {
-//   margin: 25px 0 8px;
-// }
+/* div {
+   margin: 25px 0 8px;
+ } */
 
 .login_submit_button {
   width: 100%;
