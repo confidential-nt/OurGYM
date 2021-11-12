@@ -1,3 +1,7 @@
+@import "./pages/_header.css";
+@import "./pages/_join.css";
+@import "./pages/_login.css";
+
 @import "./component/_modal.css";
 
 #calendar {
