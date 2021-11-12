@@ -1,19 +1,14 @@
-@import "./pages/_header.css";
+/* Config */
+@import "./config/_limit.css";
+
+/* Components */
+@import "./component/_header.css";
+@import "./component/_modal.css";
+@import "./component/_nav-bar.css";
+
+/* Pages */
 @import "./pages/_join.css";
 @import "./pages/_login.css";
-
-@import "./component/_modal.css";
-
-#calendar {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.highlightCell {
-  border: 10px solid #c0eb02 !important;
-  background-color: transparent;
-}
-
-.selectedCell {
-  border: 10px solid #4ceb02 !important;
-}
+@import "./pages/_home.css";
+@import "./pages/_profile.css";
+@import "./pages/_stats.css";

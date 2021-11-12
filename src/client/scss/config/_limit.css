@@ -1,0 +1,17 @@
+#limit {
+  position: absolute;
+  z-index: 99;
+  height: 100vh;
+  background-color: white;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;
+  top: 0;
+}
+@media screen and (min-width: 300px) and (max-width: 800px) {
+  #limit {
+    display: none;
+  }
+}
