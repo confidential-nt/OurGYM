@@ -12,7 +12,7 @@ const userSchema = mongoose.Schema({
   exercises: [
     {
       exrname: { type: String },
-      exrtime: { type: String, default: "00 : 00 : 00" },
+      exrtime: { type: Number, default: 0 },
     },
   ],
   gender: { type: String },

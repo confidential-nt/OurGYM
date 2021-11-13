@@ -1,3 +1,12 @@
+import User from "../models/User";
+
+const id = req.session.user._id;
+const user = await User.findById(id);
+
+const updateExrtime = async (req, res)=>{
+  await User.findByIdAndUpdate(_id, { exercises: { exrtime } } );
+}
+
 //Paint current date
 const currentDate = document.querySelector(".content_top");
 
@@ -22,7 +31,6 @@ let index = 1;
 
 // change start & pause
 function changeValues(event) {
-  console.log(index);
   const exr_timer_index = document.getElementById(`exr_timer_${index}`);
   let timerInterval;
 
@@ -34,6 +42,7 @@ function changeValues(event) {
       changeTime(clickedTime);
     }, 1000);
   } else {
+    //update mongo
     exr_timer_index.innerHTML = "▶";
     clearInterval(timerInterval);
   }
@@ -44,6 +53,9 @@ function changeTime(clickedTime) {
   const exr_timer_time = document.getElementById(`exr_timer_time_${index}`);
   const date = new Date();
   const sumOfTime = parseInt((date.getTime() - clickedTime) / 1000);
+  updateExrtime();
+  console.log(sumOfTime);
+  console.log(typeof sumOfTime);
   const hours = parseInt(sumOfTime / 3600);
   const minutes = parseInt((sumOfTime % 3600) / 60);
   const seconds = parseInt((sumOfTime % 3600) % 60);
