@@ -1,4 +1,6 @@
 /* Config */
+@import "./config/_nomalize.css";
+@import "./config/_reset.css";
 @import "./config/_limit.css";
 
 /* Components */
