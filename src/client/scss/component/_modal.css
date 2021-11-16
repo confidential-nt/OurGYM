@@ -62,6 +62,10 @@
   border: none;
 }
 
+#exr_timer_name {
+  margin-left: 5px;
+}
+
 .content_exr {
   border-bottom: 1px solid rgb(116, 113, 113);
   margin-left: -38px;
@@ -123,4 +127,9 @@ body {
   position: absolute;
   top: 10px;
   right: 15px;
+}
+
+.modal-paragraph {
+  font-weight: 700;
+  color: #f5f6f7;
 }
