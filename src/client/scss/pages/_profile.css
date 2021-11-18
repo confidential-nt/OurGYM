@@ -1,21 +1,13 @@
 #seeProfile {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  left: 35%;
+  top: 20%;
 }
 
 .profile_img {
-  position: absolute;
-  left: 50%;
-  top: 10px;
-}
-
-#nickname_box {
-  margin-top: 50px;
-}
-
-#nickname {
-  width: 100%;
-  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #id {
@@ -36,18 +28,19 @@
 
 .account_delete-btn {
   position: absolute;
-  left: 48%;
-  margin-top: 40px;
+  left: 30%;
+  margin-top: 80px;
   margin-bottom: 30px;
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
 }
 
-.account_edit {
+.account_edit-btn {
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
+  margin-top: 20px;
   position: absolute;
-  left: 48%;
+  left: 30%;
 }
 
 .my_diary_link {
