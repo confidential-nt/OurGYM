@@ -3,18 +3,41 @@ import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
+import Time from "./time.js";
 
 import "../scss/styles.css";
 
 const tmp = [
-  { date: "2021-09-21", time: 4000, id: "1131" },
-  { date: "2021-10-23", time: 2000 },
-  { date: "2021-11-08", time: 1000 },
-  { date: "2021-11-09", time: 1000 * 60 * 60 },
-  { date: "2021-11-11", time: 1000 * 60 * 120 },
+  { date: "2021-09-21", name: "눈깜빡이기", time: 4000, id: "1131" },
+  { date: "2021-10-23", name: "숨쉬기", time: 2000, id: "1234" },
+  { date: "2021-11-08", name: "잠자기", time: 1000, id: "4567" },
+  { date: "2021-11-09", name: "살아있기", time: 1000 * 60 * 60, id: "7899" },
+  { date: "2021-11-11", name: "밥먹기", time: 1000 * 60 * 120, id: "3553" },
 ];
 
-const tmp2 = [{ weight: 20, time: 4000, count: 30, id: "1131" }];
+// 시간 제대로 합해서
+// 시간 형식 제대로 나타내기
+// 아마 sumTime class 만들어야할듯>
+
+const tmp2 = [
+  { date: "2021-09-21", name: "눈깜빡이기", weight: 20, count: 30, id: "1131" },
+  { date: "2021-10-23", name: "숨쉬기", weight: 10, count: 16, id: "1234" },
+  { date: "2021-11-08", name: "잠자기", weight: 15, count: 26, id: "4567" },
+  {
+    date: "2021-11-09",
+    name: "살아있기",
+    weight: 15,
+    count: 30,
+    id: "7899",
+  },
+  {
+    date: "2021-11-11",
+    name: "밥먹기",
+    weight: 20,
+    count: 20,
+    id: "3553",
+  },
+];
 
 class Stats {
   today = new Date().toISOString().substr(0, 10);
@@ -49,12 +72,43 @@ class Stats {
             this.selectedCell.classList.remove("selectedCell");
           this.selectedCell = info.dayEl;
           this.selectedCell.classList.add("selectedCell");
+          Stats.showDetailLog(this.selectedCell);
         },
       });
-
       calendar.render();
       this.run();
     });
+  }
+
+  static showDetailLog(cell) {
+    const mainContainer = document.querySelector(".main-exercise ul");
+    const detailContainer = document.querySelector(".detail-exercise ul");
+
+    const curtain = document.querySelector(".log-container .curtain");
+
+    curtain.style.display = "none";
+
+    const date = cell.dataset.date;
+
+    const workData = tmp.filter((data) => data.date === date);
+    const detailData = tmp2.filter((data) => data.date === date);
+
+    if (!workData.length) {
+      mainContainer.innerHTML = "<li>아직 아무것도 없습니다.</li>";
+      detailContainer.innerHTML = "<li>아직 아무것도 없습니다.</li>";
+      return;
+    }
+
+    mainContainer.innerHTML = workData
+      .map((data) => `<li><h5>${data.name}</h5><span>${data.time}</span></li>`)
+      .join("");
+
+    detailContainer.innerHTML = detailData
+      .map(
+        (data) =>
+          `<li><h5>${data.name}</h5><span>${data.weight}kg</span><span>${data.count}회</span></li>`
+      )
+      .join("");
   }
 
   run() {
@@ -71,15 +125,14 @@ class Stats {
     this.monthBtns.forEach((btn) => {
       btn.addEventListener("click", this.handlePageChange.bind(this));
     });
-
-    this.cellContainer = document.querySelector("table");
-    this.cellContainer.addEventListener("click", this.showDetailLog.bind(this));
   }
 
   highlightToday() {
     this.todayCell = document.querySelector(`td[data-date="${this.today}"]`);
 
     if (!this.todayCell) return;
+
+    this.todayCell.style.backgroundColor = "transparent";
 
     this.todayCell.classList.add("highlightCell");
   }
@@ -90,9 +143,9 @@ class Stats {
 
       if (!cell) continue;
 
-      cell.style.cursor = "pointer";
+      const timeSum = Time.sumTime(el.date);
 
-      cell.style.backgroundColor = this.getColor(el.time);
+      cell.style.backgroundColor = this.getColor(timeSum);
     }
   }
 
@@ -113,11 +166,6 @@ class Stats {
   handlePageChange(e) {
     this.highlightToday();
     this.setStats();
-  }
-
-  showDetailLog(e) {
-    if (e.target.tagName !== "DIV") return;
-    console.log(e.target.parentNode);
   }
 }
 

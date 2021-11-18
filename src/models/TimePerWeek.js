@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 const timePerWeekSchema = mongoose.Schema({
   timePerWeek: [
@@ -15,6 +15,6 @@ const timePerWeekSchema = mongoose.Schema({
   ],
 });
 
-const TimePerWeek = mongoose.model("TimePerWeek", timePerWeekSchema);
+// const TimePerWeek = mongoose.model("TimePerWeek", timePerWeekSchema);
 
-export default TimePerWeek;
+// export default TimePerWeek;
