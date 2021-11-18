@@ -38,16 +38,21 @@ export const getJoin = (req, res) => {
 };
 
 export const postJoin = async (req, res) => {
+  const isHeroku = process.env.NODE_ENV === "production";
+
   const {
-    userId,
-    password,
-    passwordCheck,
-    nickname,
-    email,
-    mainSports,
-    gender,
-    birthday,
-  } = req.body;
+    body: {
+      userId,
+      password,
+      passwordCheck,
+      nickname,
+      email,
+      mainSports,
+      gender,
+      birthday,
+    },
+    file,
+  } = req;
   try {
     if (password !== passwordCheck) {
       throw new Error("비밀번호가 일치하지 않습니다.");
@@ -67,6 +72,7 @@ export const postJoin = async (req, res) => {
       mainSports,
       gender,
       birthday,
+      profileImg: file ? (isHeroku ? file.location : file.path) : "",
     });
     req.session.loggedIn = true;
     req.session.user = user;
@@ -111,17 +117,22 @@ export const getUserEdit = async (req, res) => {
 };
 
 export const postUserEdit = async (req, res) => {
+  const isHeroku = process.env.NODE_ENV === "production";
+
   const {
     body: { nickname, mainSports, birthday },
     file,
     session: {
-      user: { _id },
+      user: { _id, profileImg },
     },
   } = req;
 
-  console.log(file);
-
-  await User.findByIdAndUpdate(_id, { nickname, mainSports, birthday });
+  await User.findByIdAndUpdate(_id, {
+    nickname,
+    mainSports,
+    birthday,
+    profileImg: file ? (isHeroku ? file.location : file.path) : profileImg,
+  });
 
   return res.redirect("/profile");
 };

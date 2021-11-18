@@ -13,7 +13,7 @@ import {
   postLogin,
   logout,
 } from "../controllers/userController";
-import { avatarUpload } from "../middlewares";
+import { imgUpload } from "../middlewares";
 
 const globalRouter = express.Router();
 
@@ -23,7 +23,7 @@ globalRouter.get("/logout", logout);
 globalRouter
   .route("/join")
   .get(getJoin)
-  .post(avatarUpload.single("profileImg"), postJoin);
+  .post(imgUpload.single("profileImg"), postJoin);
 globalRouter.get("/profile", profile);
 globalRouter.get("/stats", getStats);
 globalRouter.get("/ranking", ranking);

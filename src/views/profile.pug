@@ -9,7 +9,10 @@ block content
             div.seeProfile_background
                 div.profile_img
                     div.profile_img_show
-                        img(src="../profile1.jpg")
+                        if !Boolean(user.profileImg)
+                            img(src="/static/images/blankprofile.png")
+                        else 
+                            img(src=`/${user.profileImg}`)
                 div.seeProfile_content_title
                     p#nickname #{user.nickname}님의 프로필 정보
                 div.seeProfile_content
@@ -38,6 +41,6 @@ block content
                         div.profile_button.profile_button_edit
                             a.account_edit-btn(href="/users/edit") 계정 편집
                         div.profile_button.profle_button_daily-log
-                            button.daily-log-btn(data-btntype="addDailyLog") 운동일지    
+                            a.daily-log-btn(href="/users/daily-log") 운동일지    
     include component/modal.pug                    
                 
