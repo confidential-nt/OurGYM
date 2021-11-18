@@ -4,7 +4,7 @@ const currentDate = document.querySelector(".content_top");
 function paintCurrentDate() {
   const date = new Date();
   const year = date.getFullYear();
-  const month = date.getMonth()+1;
+  const month = date.getMonth() + 1;
   const dateToday = date.getDate();
   currentDate.innerText = `${String(year)}. ${String(month).padStart(
     2,
@@ -12,8 +12,6 @@ function paintCurrentDate() {
   )}. ${String(dateToday).padStart(2, "0")}`;
 }
 paintCurrentDate();
-
-
 
 //Timer
 const exr_timer = document.getElementsByClassName("exr_timer");
