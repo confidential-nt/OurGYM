@@ -9,23 +9,26 @@ const s3 = new aws.S3({
   },
 });
 
+const isHeroku = process.env.NODE_ENV === "production";
+
 const s3ImageUploader = multerS3({
   s3: s3,
   bucket: "our-gym/images",
   acl: "public-read",
 });
 
-export const avatarUpload = multer({
+export const imgUpload = multer({
   dest: "uploads/images/",
   limits: {
     fileSize: 3000000,
   },
-  storage: s3ImageUploader,
+  storage: isHeroku ? s3ImageUploader : undefined,
 });
 
 export const localsMiddleare = (req, res, next) => {
   res.locals.siteName = "우리 GYM 타이머";
   res.locals.loggedIn = Boolean(req.session.loggedIn);
   res.locals.loggedInUser = req.session.user || {};
+  res.locals.isHeroku = process.env.NODE_ENV === "production";
   next();
 };

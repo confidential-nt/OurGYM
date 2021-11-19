@@ -3,11 +3,11 @@ extends ./config/base
 block scripts
 
 block content 
-    form(method="post")
+    form(method="post", enctype="multipart/form-data")
         ul
             li 
-                label(for="profileImg")
-                input(type="file", id="profileImg", name="profileImg") 
+                label(for="profileImg") 프로필 이미지
+                input(type="file", id="profileImg", name="profileImg",accept="image/*") 
             li
                 label(for="nickname") 별명
                 input(type="text", id="nickname", name="nickname", placeholder="별명", class="box", value=user.nickname, required)    

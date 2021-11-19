@@ -39,6 +39,18 @@ module.exports = {
           { loader: "css-loader", options: { importLoaders: 1 } },
         ],
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "images",
+              name: "[name].[ext]",
+            },
+          },
+        ],
+      },
     ],
   },
 };

@@ -17,6 +17,33 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
+=======
+  margin-bottom: 15px;
+}
+
+.profile_img_show {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile_img_show img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#nickname_box {
+  margin-top: 50px;
+}
+
+#nickname {
+  width: 100%;
+  border-bottom: 1px solid black;
+  text-align: center;
+>>>>>>> 3393f5d95b42c3b3c0d05096990d486fbabaee0e
 }
 
 #id {
