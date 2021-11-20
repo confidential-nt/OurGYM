@@ -108,7 +108,18 @@ class Stats {
     }
 
     mainContainer.innerHTML = workData
-      .map((data) => `<li><h5>${data.name}</h5><span>${data.time}</span></li>`)
+      .map((data) => {
+        const timeobj = Time.timeFormatter(data.time / 1000);
+        const hour = timeobj.hour;
+        const min = timeobj.min;
+        const sec = timeobj.sec;
+        console.log(data.time / 1000, hour, min, sec);
+        return `<li><h5>${data.name}</h5><span>${
+          hour < 10 ? `0${hour}` : hour
+        }:${min < 10 ? `0${min}` : min}:${
+          sec < 10 ? `0${sec}` : sec
+        }</span></li>`;
+      })
       .join("");
 
     detailContainer.innerHTML = detailData
