@@ -42,7 +42,13 @@ const tmp2 = [
 ];
 
 class Stats {
-  today = new Date().toISOString().substr(0, 10);
+  today = new Date()
+    .toLocaleString()
+    .substr(0, 12)
+    .split(".")
+    .map((str) => str.trim())
+    .join("-");
+
   timeColor = {
     VERY_HIGH: "#82fa11",
     HIGH: "#b2f573",
