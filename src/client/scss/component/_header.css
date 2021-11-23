@@ -1,8 +1,13 @@
-pug {
-  height: 150vh;
+.header {
+  height: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 11;
 }
 
-li {
+.header li {
   margin: 19px 0 8px;
   font-size: 30px;
   font-weight: 700;
@@ -10,14 +15,14 @@ li {
   font-family: "SBAggroB", serif;
 }
 
-a {
+.header a {
   margin: 19px 0 8px;
   font-weight: 700;
   color: #333333;
   font-family: "SBAggroB", serif;
 }
 
-ul {
+.header ul {
   margin: 5px 0 8px;
 }
 

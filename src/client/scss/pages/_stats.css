@@ -11,3 +11,20 @@
 .selectedCell {
   border: 10px solid #4ceb02 !important;
 }
+
+td[role*="gridcell"] {
+  cursor: pointer !important;
+}
+
+.log-container {
+  min-height: 250px;
+  height: 250px;
+}
+
+.log-container .curtain {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  z-index: 10;
+  background-color: #ffff;
+}

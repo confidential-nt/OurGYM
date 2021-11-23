@@ -10,6 +10,7 @@ module.exports = {
     home: BASE_JS + "home.js",
     profile: BASE_JS + "profile.js",
     stats: BASE_JS + "stats.js",
+    dailyLog: BASE_JS + "dailyLog.js",
   },
   plugins: [
     new MiniCssExtractPlugin({
@@ -37,6 +38,18 @@ module.exports = {
         use: [
           { loader: MiniCssExtractPlugin.loader },
           { loader: "css-loader", options: { importLoaders: 1 } },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              outputPath: "images",
+              name: "[name].[ext]",
+            },
+          },
         ],
       },
     ],

@@ -6,21 +6,19 @@ const objectId = mongoose.Schema.Types.ObjectId;
 const userSchema = mongoose.Schema({
   userId: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  profileImg: { type: String },
   nickname: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   mainSports: { type: String, required: true },
   exercises: [
     {
       exrname: { type: String },
-      exrtime: { type: Number, default: 0 },
+      exrtime: { type: Number},
     },
   ],
   gender: { type: String },
   birthday: { type: String },
   //like this?
-  timePerDay: [{ type: objectId, ref: "TimePerDay" }],
-  timePerWeek: [{ type: objectId, ref: "TimePerWeek" }],
-  timePerMonth: [{ type: objectId, ref: "TimePerMonth" }],
 });
 
 userSchema.pre("save", async function () {
@@ -32,3 +30,7 @@ userSchema.pre("save", async function () {
 const User = mongoose.model("User", userSchema);
 
 export default User;
+
+// timePerDay: [{ type: objectId, ref: "TimePerDay" }],
+// timePerWeek: [{ type: objectId, ref: "TimePerWeek" }],
+// timePerMonth: [{ type: objectId, ref: "TimePerMonth" }],

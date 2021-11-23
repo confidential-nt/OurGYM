@@ -27,6 +27,7 @@ app.use(
 app.use(localsMiddleare);
 
 app.use("/static", express.static("assets"));
+app.use("/uploads", express.static("uploads"));
 app.use("/", globalRouter);
 app.use("/users", userRouter);
 

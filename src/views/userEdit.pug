@@ -1,0 +1,25 @@
+extends ./config/base
+
+block scripts
+
+block content 
+    form(method="post", enctype="multipart/form-data")
+        ul
+            li 
+                label(for="profileImg") 프로필 이미지
+                input(type="file", id="profileImg", name="profileImg",accept="image/*") 
+            li
+                label(for="nickname") 별명
+                input(type="text", id="nickname", name="nickname", placeholder="별명", class="box", value=user.nickname, required)    
+            li
+                label(for="mainSports") 주운동종목
+                select(id="mainSports", name="mainSports",class="box", value=user.mainSports, required)
+                    option(value="무산소") 무산소
+                    option(value="유산소") 유산소
+                    option(value="요가/필라테스") 요가/필라테스
+            li 
+                label(for="birthday") 생일
+                input(type="date", id="birthday" name="birthday",
+                    value=user.birthday, class="box",
+                    min=`${new Date(0).getFullYear() - 30}-01-01` max=new Date().toISOString().slice(0, 10))
+        input(type="submit", value="편집완료")            

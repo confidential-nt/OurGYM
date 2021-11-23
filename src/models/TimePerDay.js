@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 
 const timePerDaySchema = mongoose.Schema({
   timePerDay: [
@@ -15,6 +15,6 @@ const timePerDaySchema = mongoose.Schema({
   ],
 });
 
-const TimePerDay = mongoose.model("TimePerDay", timePerDaySchema);
+// const TimePerDay = mongoose.model("TimePerDay", timePerDaySchema);
 
-export default TimePerDay;
+// export default TimePerDay;
