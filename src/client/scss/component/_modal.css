@@ -40,7 +40,7 @@
 .exr_timer_parent {
   width: 500px;
   height: 18.4px;
-  margin-left: 5px;
+  margin-left: 10%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
