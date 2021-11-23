@@ -7,7 +7,7 @@ export const getLogin = (req, res) => {
 
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
-  const user = await User.findOne({ username }); // 소셜로그인...에 관한 정책수랍필요
+  const user = await User.findOne({ username });
   if (!user) {
     return res.status(400).render("login", {
       pageTitle: "Login",

@@ -17,7 +17,7 @@ block content
                     span.content_exrs_title_chars2 운동 시간
                 div.content_exrs_list
                     ul.exrs_ui
-                        if user.length
+                        if user
                             if(user.exercises !== null)
                                 each exercise, index in user.exercises
                                     li.content_exr(id="content_exr_"+(index+1))

@@ -22,77 +22,6 @@
   );
 }
 
-.content_exr {
-  display: flex;
-}
-#exr_timer {
-  display: flex;
-}
-
-.content_exrs_list {
-  margin-bottom: 5px;
-}
-
-.exrs_ui {
-  margin-bottom: 10px;
-}
-
-.exr_timer_parent {
-  width: 500px;
-  height: 18.4px;
-  margin-left: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  background-color: #f5f6f7;
-  border: none;
-}
-
-.exr_timer_time_parent {
-  position: absolute;
-  font-size: 15px;
-  right: 40px;
-}
-
-.exr_timer_specific_parent {
-  position: absolute;
-  right: 3px;
-  width: 10px;
-  background-color: #f5f6f7;
-  border: none;
-}
-
-#exr_timer_name {
-  margin-left: 5px;
-}
-
-.content_exr {
-  border-bottom: 1px solid rgb(116, 113, 113);
-  margin-left: -38px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-}
-
-.plz_signup {
-  margin-top: 200px;
-  justify-content: center;
-  text-align: center;
-}
-
-td {
-  color: #22577a;
-  font-size: 20px;
-}
-.content_exr #exr_timer {
-  display: flex;
-}
-body {
-  margin: 0;
-  height: 150vh;
-  background: #f5f6f7;
-  font-family: Dotum, "돋움", Helvetica, sans-serif;
-}
-
 .show {
   display: block;
 }
@@ -123,7 +52,7 @@ body {
   padding: 35px 10px 10px 10px;
 }
 
-.modal-close {
+.modal_close-btn {
   position: absolute;
   top: 10px;
   right: 15px;
