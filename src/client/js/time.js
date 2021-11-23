@@ -43,17 +43,12 @@ class Time {
     return sum;
   }
 
-  formatTime(time) {
-    if (time >= 1000 && time < 1000 * 60) {
-      return `${time / 1000}초`;
-    } else if (time >= 1000 * 60 && time < 1000 * 60 * 60) {
-      return `${Math.round(time / 1000 / 60)}분 ${(time / 1000) % 60}초`;
-    } else {
-      // 1000 * 67 * 61
-      return `${Math.round(time / 1000 / 60 / 60)}시간 ${
-        (time / 1000 / 60) % 60
-      }분 `;
-    }
+  static timeFormatter(seconds) {
+    const hour = Math.floor(seconds / (60 * 60));
+    const min = Math.floor((seconds % (60 * 60)) / 60);
+    const sec = Math.floor((seconds % (60 * 60)) % 60);
+
+    return { hour, min, sec };
   }
 }
 

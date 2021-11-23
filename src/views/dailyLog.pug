@@ -1,5 +1,12 @@
 extends ./config/base
 block scripts
+    script(src="/static/js/dailyLog.js", defer)
 
 block content   
-    h1 daily log
+    div 
+        ul 
+
+            li 아직 아무것도 없습니다.
+    div
+        button.add_dailyLog 추가
+        button.edit_dailyLog 편집 

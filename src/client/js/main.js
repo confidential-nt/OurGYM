@@ -42,7 +42,13 @@ const tmp2 = [
 ];
 
 class Stats {
-  today = new Date().toISOString().substr(0, 10);
+  today = new Date()
+    .toLocaleString()
+    .substr(0, 12)
+    .split(".")
+    .map((str) => str.trim())
+    .join("-");
+
   timeColor = {
     VERY_HIGH: "#82fa11",
     HIGH: "#b2f573",
@@ -102,7 +108,18 @@ class Stats {
     }
 
     mainContainer.innerHTML = workData
-      .map((data) => `<li><h5>${data.name}</h5><span>${data.time}</span></li>`)
+      .map((data) => {
+        const timeobj = Time.timeFormatter(data.time / 1000);
+        const hour = timeobj.hour;
+        const min = timeobj.min;
+        const sec = timeobj.sec;
+
+        return `<li><h5>${data.name}</h5><span>${
+          hour < 10 ? `0${hour}` : hour
+        }:${min < 10 ? `0${min}` : min}:${
+          sec < 10 ? `0${sec}` : sec
+        }</span></li>`;
+      })
       .join("");
 
     detailContainer.innerHTML = detailData
