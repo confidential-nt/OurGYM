@@ -1,0 +1,9 @@
+mixin dailyLog(log)
+    li
+        span.dailyLog_date=log.date.toLocaleString().substr(0,12)
+        div
+            img(src=`/${log.image}`, alt="")
+        div 
+            p=log.content
+        button.edit_dailyLog_parent
+                    i.fas.fa-edit     
