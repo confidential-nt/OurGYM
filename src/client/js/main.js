@@ -113,7 +113,7 @@ class Stats {
         const hour = timeobj.hour;
         const min = timeobj.min;
         const sec = timeobj.sec;
-        console.log(data.time / 1000, hour, min, sec);
+
         return `<li><h5>${data.name}</h5><span>${
           hour < 10 ? `0${hour}` : hour
         }:${min < 10 ? `0${min}` : min}:${

@@ -1,6 +1,7 @@
 import "dotenv/config";
 import "./db";
 import "./models/User";
+import "./models/DailyLog";
 import "./models/TimePerDay";
 import "./models/TimePerWeek";
 import "./models/TimePerMonth";
