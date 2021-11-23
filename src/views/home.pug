@@ -23,8 +23,8 @@ block content
                                     div.exr_timer
                                         button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
                                             span#exr_timer_name #{exercise.exrname}
-                                    //- span.exr_timer_time_parent(id="exr_timer_time_"+index)
-                                    //- | #{timePerDay.exercises[index].exrtime/3600} : #{(timePerDay.exercises[index].exrtime%3600)/60} : #{(timePerDay.exercises[index].exrtime%3600)%60}
+                                    span.exr_timer_time_parent(id="exr_timer_time_"+index)
+                                    | #{timePerDay.exercises[index].exrtime/3600} : #{(timePerDay.exercises[index].exrtime%3600)/60} : #{(timePerDay.exercises[index].exrtime%3600)%60}
                                     button.exr_timer_specific_parent(id = "exr_timer_specific"+index, type="button")
                                         i.fas.fa-ellipsis-v
                         else

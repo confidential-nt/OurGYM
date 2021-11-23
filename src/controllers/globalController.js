@@ -1,7 +1,7 @@
 import User from "../models/User";
 import TimePerDay from "../models/TimePerDay";
-// import TimePerWeek from "../models/TimePerWeek";
-// import TimePerMonth from "../models/TimePerMonth";
+import TimePerWeek from "../models/TimePerWeek";
+import TimePerMonth from "../models/TimePerMonth";
 
 export const getHome = async (req, res) => {
   try {
@@ -27,6 +27,9 @@ export const postHome = async (req, res) => {
   } = req;
   try {
     await User.findByIdAndUpdate(_id, { $push: { exercises: { exrname } } });
+    // await TimePerDay.findByIdAndUpdate(_id, { timePerDay:{$push: { exercises: { exrname } }}  });
+    //await TimePerWeek.findByIdAndUpdate(_id, { timePerWeek:{$push: { exercises: { exrname } }}  });
+    //await TimePerMonth.findByIdAndUpdate(_id, { timePerMonth:{$push: { exercises: { exrname } }}  });
     return res.redirect("/");
   } catch (error) {
     console.log(error);

@@ -4,7 +4,7 @@ const timePerWeekSchema = mongoose.Schema({
   timePerWeek: [
     {
       week: { type: String },
-      total: { type: Number },
+      total: { type: Number, default:0},
       exrcises: [
         {
           exrname: { type: String },
@@ -13,6 +13,7 @@ const timePerWeekSchema = mongoose.Schema({
       ],
     },
   ],
+  user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
 const TimePerWeek = mongoose.model("TimePerWeek", timePerWeekSchema);

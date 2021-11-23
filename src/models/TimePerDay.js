@@ -3,8 +3,8 @@ import mongoose from "mongoose";
 const timePerDaySchema = mongoose.Schema({
   timePerDay: [
     {
-      date: { type: Date },
-      total: { type: Number },
+      date: { type: String },
+      total: { type: Number, default:0},
       exrcises: [
         {
           exrname: { type: String },
@@ -13,6 +13,7 @@ const timePerDaySchema = mongoose.Schema({
       ],
     },
   ],
+  user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
 const TimePerDay = mongoose.model("TimePerDay", timePerDaySchema);

@@ -4,7 +4,7 @@ const timePerMonthSchema = mongoose.Schema({
   timePerMonth: [
     {
       month: { type: String },
-      total: { type: Number },
+      total: { type: Number, default:0 },
       exrcises: [
         {
           exrname: { type: String },
@@ -13,6 +13,7 @@ const timePerMonthSchema = mongoose.Schema({
       ],
     },
   ],
+  user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
 });
 
 const TimePerMonth = mongoose.model("TimePerMonth", timePerMonthSchema);
