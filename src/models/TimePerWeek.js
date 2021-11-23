@@ -1,20 +1,21 @@
-// // import mongoose from "mongoose";
+import mongoose from "mongoose";
 
-// const timePerWeekSchema = mongoose.Schema({
-//   timePerWeek: [
-//     {
-//       week: { type: String, required: true },
-//       total: { type: Number, required: true },
-//       exrcises: [
-//         {
-//           exrname: { type: String, required: true },
-//           exrtime: { type: Number, required: true, default:0 },
-//         },
-//       ],
-//     },
-//   ],
-// });
+const timePerWeekSchema = mongoose.Schema({
+  timePerWeek: [
+    {
+      week: { type: String },
+      total: { type: Number, default:0},
+      exrcises: [
+        {
+          exrname: { type: String },
+          exrtime: { type: Number, default:0 },
+        },
+      ],
+    },
+  ],
+  user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
+});
 
-// // const TimePerWeek = mongoose.model("TimePerWeek", timePerWeekSchema);
+const TimePerWeek = mongoose.model("TimePerWeek", timePerWeekSchema);
 
-// // export default TimePerWeek;
+export default TimePerWeek;

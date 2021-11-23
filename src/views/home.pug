@@ -19,22 +19,21 @@ block content
                     ul.exrs_ui
                         if user
                             if(user.exercises !== null)
-                                each exercise, index in user.exercises
-                                    li.content_exr(id="content_exr_"+(index+1))
-                                        div.exr_timer
-                                            button.exr_timer_parent(id="exr_timer_"+(index+1), type="button") ▶
-                                                span#exr_timer_name #{exercise.exrname}
-                                        span.exr_timer_time_parent(id="exr_timer_time_"+(index+1)) 00 : 00 : 00
-                                        button.exr_timer_specific_parent(id = "exr_timer_specific"+(index+1), type="button")
-                                            i.fas.fa-ellipsis-v
-                            else
-                                li 
-                                    div 👇👇👇 운동을 추가해주세요! 👇👇👇
+                            each exercise, index in user.exercises
+                                li.content_exr(id="content_exr_"+index)
+                                    div.exr_timer
+                                        button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
+                                            span#exr_timer_name #{exercise.exrname}
+                                    span.exr_timer_time_parent(id="exr_timer_time_"+index)
+                                    | #{timePerDay.exercises[index].exrtime/3600} : #{(timePerDay.exercises[index].exrtime%3600)/60} : #{(timePerDay.exercises[index].exrtime%3600)%60}
+                                    button.exr_timer_specific_parent(id = "exr_timer_specific"+index, type="button")
+                                        i.fas.fa-ellipsis-v
+                        else
+                            li 
+                                div 👇👇👇 운동을 추가해주세요! 👇👇👇
             form.content_exrs_add_list(method="POST")
                 div#add_exrs 운동 추가
-                input(id="plus_input", type="submit" value="➕")
+                input(id="plus_input", type="submit" value="╋")
                 input(id="plus_box", name="exrname",type="text",placeholder="운동 입력", required)
-                                            
-                                    //- i.fas.fa-plus
     else
         div.plz_signup 👆👆👆 회원가입을 완료해주세요! 👆👆👆

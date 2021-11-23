@@ -1,9 +1,14 @@
 import User from "../models/User";
 import bcrypt from "bcrypt";
+import TimePerDay from "../models/TimePerDay";
+import TimePerWeek from "../models/TimePerWeek";
+import TimePerMonth from "../models/TimePerMonth";
 
 export const getLogin = (req, res) => {
   return res.render("login", { pageTitle: "Login" });
 };
+
+
 
 export const postLogin = async (req, res) => {
   const { username, password } = req.body;
@@ -27,18 +32,30 @@ export const postLogin = async (req, res) => {
   return res.redirect("/");
 };
 
+
+
 export const logout = (req, res) => {
   req.session.destroy();
 
   return res.redirect("/");
 };
 
+
+
 export const getJoin = (req, res) => {
   return res.render("join", { pageTitle: "Join" });
 };
 
+
+
 export const postJoin = async (req, res) => {
   const isHeroku = process.env.NODE_ENV === "production";
+  const date = new Date();
+  const year = parseInt(date.getFullYear());
+  const month = parseInt(date.getMonth() + 1);
+  const dateToday = parseInt(date.getDate());
+  const week = parseInt(dateToday / 7 + 1);
+  console.log(`${year}년 ${month}월 ${dateToday}일`);
 
   const {
     body: {
@@ -76,6 +93,25 @@ export const postJoin = async (req, res) => {
     });
     req.session.loggedIn = true;
     req.session.user = user;
+
+    await TimePerDay.create({
+      timePerDay: {
+        date: `${year}년 ${month}월 ${dateToday}일`,
+      },
+      user: user._id,
+    });
+    await TimePerWeek.create({
+      timePerWeek: {
+        week: `${year}년 ${week}번째 주`,
+      },
+      user:user._id,
+    });
+    await TimePerMonth.create({
+      timePerMonth: {
+        month: `${year}년 ${month}월`,
+      },
+      user:user._id,
+    });
     return res.redirect("/");
   } catch (error) {
     return res
@@ -83,6 +119,8 @@ export const postJoin = async (req, res) => {
       .render("join", { pageTitle: "Join", errorMessage: error });
   }
 };
+
+
 
 export const userDelete = async (req, res) => {
   const {
@@ -104,6 +142,8 @@ export const userDelete = async (req, res) => {
   }
 };
 
+
+
 export const getUserEdit = async (req, res) => {
   const {
     session: {
@@ -115,6 +155,8 @@ export const getUserEdit = async (req, res) => {
 
   return res.render("userEdit", { pageTitle: "Edit Profile", user });
 };
+
+
 
 export const postUserEdit = async (req, res) => {
   const isHeroku = process.env.NODE_ENV === "production";

@@ -1,0 +1,53 @@
+.add_dailyLog {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "SBAggroB", serif;
+  position: absolute;
+  left: 38%;
+  bottom: 15%;
+  width: 100px;
+}
+
+.fas.fa-plus.fa-2x {
+  position: absolute;
+  left: 25%;
+}
+
+.edit_dailyLog_parent {
+  background-color: #f5f6f7;
+  border: none;
+  position: absolute;
+  right: 5px;
+}
+
+.ask_title {
+  margin-bottom: 20px;
+}
+
+.ask1 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "SBAggroB", serif;
+}
+
+.ask2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "SBAggroB", serif;
+  border-bottom: 1px solid black;
+}
+
+.Question_title {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "SBAggroB", serif;
+}
+
+.dailyLog_date {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "SBAggroB", serif;
+  margin-left: 5px;
+}
