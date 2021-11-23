@@ -1,13 +1,14 @@
 extends ./config/base
+include mixins/dailylogMixins
+
 block scripts
     script(src="/static/js/dailyLog.js", defer)
 
 block content   
     div 
         ul 
-            if !dailyLogs.length
-                each log in dailyLogs 
-                    li=log.date
+            each log in dailyLogs 
+                +dailyLog(log)         
             else 
                 li 아직 아무것도 없습니다.        
     div

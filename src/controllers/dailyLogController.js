@@ -4,11 +4,12 @@ import User from "../models/User";
 export const getDailyLog = async (req, res) => {
   const { _id } = req.session.user;
 
-  const user = await User.findById(_id);
+  const user = await User.findById(_id).populate("dailyLogs");
 
-  const dailyLogs = user.dailyLogs;
-
-  return res.render("dailyLog", { pageTitle: "운동 일지", dailyLogs });
+  return res.render("dailyLog", {
+    pageTitle: "운동 일지",
+    dailyLogs: user.dailyLogs,
+  });
 };
 
 export const postDailyLog = async (req, res) => {
