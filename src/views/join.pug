@@ -8,19 +8,19 @@ block content
                 ul
                     li
                         label(for="userId") 아이디
-                        input(type="text", name="userId", id="userId", placeholder="아이디", class="box", required)
+                        input(type="text", title="아이디", name="userId", id="userId", placeholder="아이디", class="box", required)
                     li
                         label(for="password") 비밀번호
-                        input(type="password", name="password", id='password',placeholder="비밀번호", class="box", required)
+                        input(type="password", title="비밀번호", name="password", id='password',placeholder="비밀번호", class="box", required)
                     li
                         label(for="passwordCheck") 비밀번호 확인
-                        input(type="password", name="passwordCheck", id="passwordCheck", placeholder="비밀번호 확인", class="box", required)
+                        input(type="password", title="비밀번호 확인", name="passwordCheck", id="passwordCheck", placeholder="비밀번호 확인", class="box", required)
                     li
                         label(for="nickname") 별명
-                        input.nickname_box(type="text", id="nickname", name="nickname", placeholder="별명", class="box", required)
+                        input.nickname_box(type="text", title="별명", id="nickname", name="nickname", placeholder="별명", class="box", required)
                     li
                         label(for="email") 이메일
-                        input(type="email", id="email", name="email", placeholder="이메일", class="box", required)
+                        input(type="email", id="email", title="이메일", name="email", placeholder="이메일", class="box", required)
                     li
                         label(for="mainSports") 주운동종목
                         select(id="mainSports", name="mainSports",class="box", required)

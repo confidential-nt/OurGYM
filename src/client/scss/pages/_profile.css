@@ -57,13 +57,6 @@
   width: 60%;
 }
 
-#plus_input {
-  display: inline-block;
-  background-color: #f5f6f7;
-  border: 1px solid #f5f6f7;
-  width: 15%;
-}
-
 #exr_specific {
   background-color: white;
   border: 1px solid white;
@@ -96,7 +89,7 @@
   right: 0px;
 }
 
-#add_exrs {
+.add_exrs {
   margin-left: 10px;
   font-size: 20px;
   font-weight: 700;

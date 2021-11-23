@@ -5,6 +5,14 @@
   font-size: 20px;
 }
 
+#plus_input {
+  display: inline-block;
+  font-size: 17px;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  width: 15%;
+}
+
 .content_timer_time {
   display: flex;
   justify-content: center;
