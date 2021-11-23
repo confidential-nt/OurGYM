@@ -14,6 +14,9 @@ userRouter
   .route("/edit")
   .get(getUserEdit)
   .post(imgUpload.single("profileImg"), postUserEdit);
-userRouter.route("/daily-log").get(getDailyLog).post(postDailyLog);
+userRouter
+  .route("/daily-log")
+  .get(getDailyLog)
+  .post(imgUpload.single("image"), postDailyLog);
 
 export default userRouter;

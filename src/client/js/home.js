@@ -2,8 +2,23 @@ import User from "../models/User";
 
 const id = req.session.user._id;
 const user = await User.findById(id);
+const date = new Date();
+const year = parseInt(date.getFullYear());
+const month = parseInt(date.getMonth() + 1);
+const dateToday = parseInt(date.getDate());
 
 let sumOfTime;
+
+//Paint current date
+const currentDate = document.querySelector(".content_top");
+
+function paintCurrentDate() {
+  currentDate.innerText = `${year}. ${String(month).padStart(
+    2,
+    "0"
+  )}. ${String(dateToday).padStart(2, "0")}`;
+}
+paintCurrentDate();
 
 //--------------
 const videoContainer = document.getElementById("videoContainer");
@@ -35,20 +50,7 @@ if (form) {
 //------------------------------
 
 
-//Paint current date
-const currentDate = document.querySelector(".content_top");
 
-function paintCurrentDate() {
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const dateToday = date.getDate();
-  currentDate.innerText = `${String(year)}. ${String(month).padStart(
-    2,
-    "0"
-  )}. ${String(dateToday).padStart(2, "0")}`;
-}
-paintCurrentDate();
 
 //Timer
 const exr_timer = document.getElementsByClassName("exr_timer");

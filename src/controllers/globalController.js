@@ -50,6 +50,9 @@ export const registerView = async (req, res) => {
 
 export const profile = async (req, res) => {
   const user = await User.findById(req.session.user._id);
+
+  console.log(user);
+
   return res.render("profile", { pageTitle: "프로필", user });
 };
 

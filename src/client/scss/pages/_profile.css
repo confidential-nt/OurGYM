@@ -7,12 +7,6 @@
   margin-top: -50px;
 }
 
-#seeProfile {
-  position: absolute;
-  left: 35%;
-  top: 20%;
-}
-
 .profile_img {
   display: flex;
   flex-direction: column;
@@ -76,10 +70,6 @@
 }
 
 .account_delete-btn {
-  position: absolute;
-  left: 30%;
-  margin-top: 80px;
-  margin-bottom: 30px;
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
 }
@@ -87,15 +77,6 @@
 .account_edit-btn {
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
-  margin-top: 20px;
-  position: absolute;
-  left: 30%;
-}
-
-.my_diary_link {
-  position: absolute;
-  left: 46%;
-  margin-top: 100px;
 }
 
 #plus_box {

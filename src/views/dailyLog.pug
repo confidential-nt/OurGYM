@@ -5,8 +5,11 @@ block scripts
 block content   
     div 
         ul 
-
-            li 아직 아무것도 없습니다.
+            if !dailyLogs.length
+                each log in dailyLogs 
+                    li=log.date
+            else 
+                li 아직 아무것도 없습니다.        
     div
         button.add_dailyLog 추가
         button.edit_dailyLog 편집 
