@@ -2,14 +2,28 @@ extends ./config/base
 block scripts
     script(src="/static/js/dailyLog.js", defer)
 
-block content   
+block content
+    div.ask_title
+        span.Question_title 다음에 대해 생각해보세요.
+    div.ask1
+        span.Q1 1. 오늘 운동에서 잘한점은 무엇입니까?
+    div.ask2
+        span.Q2 2. 오늘 운동에서 반성할 점은 무엇입니까?
     div 
-        ul 
-            if !dailyLogs.length
-                each log in dailyLogs 
-                    li=log.date
-            else 
-                li 아직 아무것도 없습니다.        
-    div
-        button.add_dailyLog 추가
-        button.edit_dailyLog 편집 
+        ul
+                //- if(user.exercise !=null)
+                    each exercise, index in user.exercises
+                        li.content_dailyLog(id="content_dailyLog_" + (index + 1))
+                            div.dailyLog(id="dailyLog_date_"+ (index + 1))
+                                span.dailyLog_date 2021/11/23
+                            button.edit_dailyLog_parent(id = "edit_dailyLog_" + (index + 1)) 편집
+                
+                span.dailyLog_date 2021.11.23
+                button.edit_dailyLog_parent
+                    i.fas.fa-edit
+                //- else
+                li 아직 아무것도 없습니다.
+    form(method="post")
+        div.add_dailyLog 일지 추가
+            button
+                i.fas.fa-plus.fa-2x

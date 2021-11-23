@@ -4,3 +4,20 @@ block scripts
     script(src="/static/js/ranking.js", defer)
 
 block content
+    form(method="post", enctype="multipart/form-data")
+        div.ranking_title_box
+            div.ranking_title 랭킹
+            select(id = "filter", name="filter" class = "box")
+                option(value="누적 운동시간") 누적 운동시간
+                option(value="주종목") 주종목
+            input(type="submit", id="btn_filter", value = "확인")
+        div
+            ol
+                li 
+                    span.user_rank 1    
+                    span.user_name tkfkADA
+                    span.user_time 22:11:22
+                li
+                    span.user_rank 2    
+                    span.user_name 사람이름
+                    span.user_time 22:11:20

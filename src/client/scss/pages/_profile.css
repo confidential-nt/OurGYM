@@ -70,6 +70,13 @@
 }
 
 .account_delete-btn {
+<<<<<<< HEAD
+=======
+  position: absolute;
+  left: 5%;
+  /* margin-top: 80px;
+  margin-bottom: 30px; */
+>>>>>>> 521af4a6ea878f6fde90111e88b6abdf35fee008
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
 }
@@ -77,6 +84,26 @@
 .account_edit-btn {
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
+<<<<<<< HEAD
+=======
+  margin-top: 40px;
+  position: absolute;
+  left: 5%;
+}
+
+.daily-log-btn {
+  position: absolute;
+  left: 5%;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  margin-top: 80px;
+}
+
+.my_diary_link {
+  position: absolute;
+  left: 46%;
+  margin-top: 100px;
+>>>>>>> 521af4a6ea878f6fde90111e88b6abdf35fee008
 }
 
 #plus_box {
@@ -85,13 +112,6 @@
   border: 1px solid #f5f6f7;
   outline-color: #22577a;
   width: 60%;
-}
-
-#plus_input {
-  display: inline-block;
-  background-color: #f5f6f7;
-  border: 1px solid #f5f6f7;
-  width: 15%;
 }
 
 #exr_specific {
@@ -126,7 +146,7 @@
   right: 0px;
 }
 
-#add_exrs {
+.add_exrs {
   margin-left: 10px;
   font-size: 20px;
   font-weight: 700;

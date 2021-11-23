@@ -1,0 +1,32 @@
+.ranking_title_box {
+  border-bottom: 1px solid black;
+  height: 40px;
+  margin-top: 10px;
+}
+
+.ranking_title {
+  font-weight: 700;
+  font-size: 30px;
+  margin-left: 5px;
+}
+
+#filter {
+  position: absolute;
+  top: 7%;
+  width: 200px;
+  right: 15%;
+  height: 40px;
+}
+
+#btn_filter {
+  position: absolute;
+  top: 6.3%;
+  width: 50px;
+  right: 0%;
+  height: 40px;
+}
+
+.user_time {
+  position: absolute;
+  right: 5px;
+}
