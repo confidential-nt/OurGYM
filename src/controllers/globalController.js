@@ -47,7 +47,7 @@ export const registerView = async (req, res) => {
 
 export const profile = async (req, res) => {
   const user = await User.findById(req.session.user._id);
-  return res.render("profile", { user });
+  return res.render("profile", { pageTitle: "프로필", user });
 };
 
 export const getStats = (req, res) => {
