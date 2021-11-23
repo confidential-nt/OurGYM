@@ -1,20 +1,20 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const timePerDaySchema = mongoose.Schema({
   timePerDay: [
     {
-      date: { type: Date, required: true },
-      total: { type: Number, required: true },
+      date: { type: Date },
+      total: { type: Number },
       exrcises: [
         {
-          exrname: { type: String, required: true },
-          exrtime: { type: Number, required: true, default:0 },
+          exrname: { type: String },
+          exrtime: { type: Number, default:0 },
         },
       ],
     },
   ],
 });
 
-// const TimePerDay = mongoose.model("TimePerDay", timePerDaySchema);
+const TimePerDay = mongoose.model("TimePerDay", timePerDaySchema);
 
-// export default TimePerDay;
+export default TimePerDay;

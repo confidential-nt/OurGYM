@@ -1,20 +1,20 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const timePerMonthSchema = mongoose.Schema({
   timePerMonth: [
     {
-      month: { type: String, required: true },
-      total: { type: Number, required: true },
+      month: { type: String },
+      total: { type: Number },
       exrcises: [
         {
-          exrname: { type: String, required: true },
-          exrtime: { type: Number, required: true, default:0 },
+          exrname: { type: String },
+          exrtime: { type: Number, default:0 },
         },
       ],
     },
   ],
 });
 
-// const TimePerMonth = mongoose.model("TimePerMonth", timePerMonthSchema);
+const TimePerMonth = mongoose.model("TimePerMonth", timePerMonthSchema);
 
-// export default TimePerMonth;
+export default TimePerMonth;

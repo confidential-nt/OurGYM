@@ -1,20 +1,20 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const timePerWeekSchema = mongoose.Schema({
   timePerWeek: [
     {
-      week: { type: String, required: true },
-      total: { type: Number, required: true },
+      week: { type: String },
+      total: { type: Number },
       exrcises: [
         {
-          exrname: { type: String, required: true },
-          exrtime: { type: Number, required: true, default:0 },
+          exrname: { type: String },
+          exrtime: { type: Number, default:0 },
         },
       ],
     },
   ],
 });
 
-// const TimePerWeek = mongoose.model("TimePerWeek", timePerWeekSchema);
+const TimePerWeek = mongoose.model("TimePerWeek", timePerWeekSchema);
 
-// export default TimePerWeek;
+export default TimePerWeek;

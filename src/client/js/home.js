@@ -3,9 +3,37 @@ import User from "../models/User";
 const id = req.session.user._id;
 const user = await User.findById(id);
 
-const updateExrtime = async (req, res)=>{
-  await User.findByIdAndUpdate(_id, { exercises: { exrtime } } );
+let sumOfTime;
+
+//--------------
+const videoContainer = document.getElementById("videoContainer");
+const form = document.getElementById("commentForm");
+
+const handleSubmit = async (event) => {
+  const textarea = form.querySelector("textarea");
+
+  event.preventDefault();
+  const text = textarea.value;
+  const videoId = videoContainer.dataset.id;
+  if (text === "") {
+    return;
+  }
+  await fetch(`/api/videos/${videoId}/comment`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ text }),
+  });
+  textarea.value = "";
+  window.location.reload();
+};
+
+if (form) {
+  form.addEventListener("submit", handleSubmit);
 }
+//------------------------------
+
 
 //Paint current date
 const currentDate = document.querySelector(".content_top");
@@ -28,7 +56,7 @@ const exr_timer = document.getElementsByClassName("exr_timer");
 let index = 1;
 
 // change start & pause
-function changeValues(event) {
+const changeValues = async () => {
   const exr_timer_index = document.getElementById(`exr_timer_${index}`);
   let timerInterval;
 
@@ -40,9 +68,12 @@ function changeValues(event) {
       changeTime(clickedTime);
     }, 1000);
   } else {
-    //update mongo
-    exr_timer_index.innerHTML = "▶";
     clearInterval(timerInterval);
+    //update mongo
+    await fetch(``,{
+      method:"POST",
+    })
+    exr_timer_index.innerHTML = "▶";
   }
 }
 
@@ -62,6 +93,7 @@ function changeTime(clickedTime) {
     minutes
   ).padStart(2, "0")} : ${String(seconds).padStart(2, "0")}`;
 }
+
 
 for (var i = 0; i < exr_timer.length; i++) {
   (function (idx) {

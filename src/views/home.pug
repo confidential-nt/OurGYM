@@ -19,12 +19,13 @@ block content
                     ul.exrs_ui
                         if(user.exercises !== null)
                             each exercise, index in user.exercises
-                                li.content_exr(id="content_exr_"+(index+1))
+                                li.content_exr(id="content_exr_"+index)
                                     div.exr_timer
-                                        button.exr_timer_parent(id="exr_timer_"+(index+1), type="button") ▶
+                                        button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
                                             span#exr_timer_name #{exercise.exrname}
-                                    span.exr_timer_time_parent(id="exr_timer_time_"+(index+1)) 00 : 00 : 00
-                                    button.exr_timer_specific_parent(id = "exr_timer_specific"+(index+1), type="button")
+                                    //- span.exr_timer_time_parent(id="exr_timer_time_"+index)
+                                    //- | #{timePerDay.exercises[index].exrtime/3600} : #{(timePerDay.exercises[index].exrtime%3600)/60} : #{(timePerDay.exercises[index].exrtime%3600)%60}
+                                    button.exr_timer_specific_parent(id = "exr_timer_specific"+index, type="button")
                                         i.fas.fa-ellipsis-v
                         else
                             li 
