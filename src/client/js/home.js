@@ -1,7 +1,8 @@
-import User from "../models/User";
+// import User from "../models/User"; 이거 쓰면 안됨
 
 const id = req.session.user._id;
-const user = await User.findById(id);
+// const user = await User.findById(id); await은 반드시 async 안에
+const user = "";
 const date = new Date();
 const year = parseInt(date.getFullYear());
 const month = parseInt(date.getMonth() + 1);
@@ -13,10 +14,9 @@ let sumOfTime;
 const currentDate = document.querySelector(".content_top");
 
 function paintCurrentDate() {
-  currentDate.innerText = `${year}. ${String(month).padStart(
-    2,
-    "0"
-  )}. ${String(dateToday).padStart(2, "0")}`;
+  currentDate.innerText = `${year}. ${String(month).padStart(2, "0")}. ${String(
+    dateToday
+  ).padStart(2, "0")}`;
 }
 paintCurrentDate();
 
@@ -49,9 +49,6 @@ if (form) {
 }
 //------------------------------
 
-
-
-
 //Timer
 const exr_timer = document.getElementsByClassName("exr_timer");
 //timer 클릭되면 index 추출해서 exr_timer_index + time 만듦
@@ -72,12 +69,12 @@ const changeValues = async () => {
   } else {
     clearInterval(timerInterval);
     //update mongo
-    await fetch(``,{
-      method:"POST",
-    })
+    await fetch(``, {
+      method: "POST",
+    });
     exr_timer_index.innerHTML = "▶";
   }
-}
+};
 
 //change value of time
 function changeTime(clickedTime) {
@@ -95,7 +92,6 @@ function changeTime(clickedTime) {
     minutes
   ).padStart(2, "0")} : ${String(seconds).padStart(2, "0")}`;
 }
-
 
 for (var i = 0; i < exr_timer.length; i++) {
   (function (idx) {
