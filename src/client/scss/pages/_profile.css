@@ -17,8 +17,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< HEAD
-=======
   margin-bottom: 15px;
 }
 
@@ -43,7 +41,6 @@
   width: 100%;
   border-bottom: 1px solid black;
   text-align: center;
->>>>>>> 3393f5d95b42c3b3c0d05096990d486fbabaee0e
 }
 
 #id {
@@ -80,9 +77,9 @@
 
 .account_delete-btn {
   position: absolute;
-  left: 30%;
-  margin-top: 80px;
-  margin-bottom: 30px;
+  left: 5%;
+  /* margin-top: 80px;
+  margin-bottom: 30px; */
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
 }
@@ -90,9 +87,17 @@
 .account_edit-btn {
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;
-  margin-top: 20px;
+  margin-top: 40px;
   position: absolute;
-  left: 30%;
+  left: 5%;
+}
+
+.daily-log-btn {
+  position: absolute;
+  left: 5%;
+  background-color: #f5f6f7;
+  border: 1px solid #f5f6f7;
+  margin-top: 80px;
 }
 
 .my_diary_link {

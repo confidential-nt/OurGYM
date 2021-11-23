@@ -1,4 +1,4 @@
-// import mongoose from "mongoose";
+import mongoose from "mongoose";
 
 const timePerMonthSchema = mongoose.Schema({
   timePerMonth: [
@@ -15,6 +15,6 @@ const timePerMonthSchema = mongoose.Schema({
   ],
 });
 
-// const TimePerMonth = mongoose.model("TimePerMonth", timePerMonthSchema);
+const TimePerMonth = mongoose.model("TimePerMonth", timePerMonthSchema);
 
-// export default TimePerMonth;
+export default TimePerMonth;
