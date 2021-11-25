@@ -4,6 +4,18 @@
   margin-top: 10px;
 }
 
+.rank_li1 {
+  margin-top: -6px;
+}
+
+.user_name {
+  margin-left: 15px;
+}
+
+.rank_li {
+  font-size: 25px;
+}
+
 .ranking_title {
   font-weight: 700;
   font-size: 30px;

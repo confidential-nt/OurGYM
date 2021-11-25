@@ -7,6 +7,13 @@
   margin-top: -50px;
 }
 
+.type {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333333;
+  font-family: "SBAggroB", serif;
+}
+
 .user_edit_btn {
   cursor: pointer;
   color: #fff;
