@@ -100,18 +100,18 @@ export const postJoin = async (req, res) => {
       },
       user: user._id,
     });
-    await TimePerWeek.create({
-      timePerWeek: {
-        week: `${year}년 ${week}번째 주`,
-      },
-      user:user._id,
-    });
-    await TimePerMonth.create({
-      timePerMonth: {
-        month: `${year}년 ${month}월`,
-      },
-      user:user._id,
-    });
+    // await TimePerWeek.create({
+    //   timePerWeek: {
+    //     week: `${year}년 ${week}번째 주`,
+    //   },
+    //   user:user._id,
+    // });
+    // await TimePerMonth.create({
+    //   timePerMonth: {
+    //     month: `${year}년 ${month}월`,
+    //   },
+    //   user:user._id,
+    // });
     return res.redirect("/");
   } catch (error) {
     return res

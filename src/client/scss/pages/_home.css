@@ -16,7 +16,7 @@
 .exr_timer_parent {
   width: 500px;
   height: 18.4px;
-  margin-left: 5px;
+  margin-left: 12%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -39,7 +39,7 @@
 }
 
 #exr_timer_name {
-  margin-left: 5px;
+  margin-left: 3%;
 }
 
 .content_exr {

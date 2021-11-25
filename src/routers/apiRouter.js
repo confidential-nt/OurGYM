@@ -1,8 +1,8 @@
 import express from "express";
-import {  } from "../Controllers/globalController";
+import { addTime } from "../Controllers/globalController";
 
 const apiRouter = express.Router();
 
-apiRouter.post("/timer/time", registerView);
+apiRouter.post("/timer/time", addTime);
 
 export default apiRouter;
