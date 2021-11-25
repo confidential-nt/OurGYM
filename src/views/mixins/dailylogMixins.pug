@@ -1,9 +1,14 @@
 mixin dailyLog(log)
-    li
-        span.dailyLog_date=log.date.toLocaleString().substr(0,12)
-        div
-            img(src=`/${log.image}`, alt="")
-        div 
-            p=log.content
-        button.edit_dailyLog_parent
-                    i.fas.fa-edit     
+    li.dailyLog_item(data-id=log._id)
+        header.dailyLog__header 
+            span.dailyLog_date=log.date.toLocaleString().substr(0,12)
+            button.edit_dailyLog
+                        i.fas.fa-edit     
+        .dailyLog__detail.hide 
+            div.dailyLog_img-box
+                if !Boolean(log.image)
+                    img(src="/static/images/blankprofile.png")
+                else 
+                    img(src=`/${log.image}`, alt="")
+            div.dailyLog_content 
+                p=log.content

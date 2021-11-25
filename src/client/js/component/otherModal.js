@@ -2,6 +2,7 @@ class OtherModal {
   modalContainer = document.createElement("div");
   displayContainer = document.querySelector(".main");
   CLOSE_BTN = "modal_close-btn";
+  static CHANGE_DISPLAY = Date.now();
 
   constructor(display) {
     this.modalContainer.classList.add("modal-container");
@@ -25,6 +26,30 @@ class OtherModal {
   hide() {
     this.modalContainer.style.display = "none";
   }
+
+  setEvent(eventName, identifier, funcName, data = null) {
+    const target = this.modalContainer.querySelector(`.${identifier}`);
+    console.log(target);
+    switch (funcName) {
+      case OtherModal.CHANGE_DISPLAY:
+        target.addEventListener(eventName, () => {
+          console.log(123);
+          console.log(data);
+          this.changeDisplay(data);
+        });
+        break;
+    }
+  }
+
+  changeDisplay(data) {
+    console.log("hihihi");
+    const modalContent = this.modalContainer.querySelector(".modal-content");
+    if (data) {
+      modalContent.innerHTML = "<h1>asdasd</h1>";
+    }
+  }
+
+  changeDisplay() {}
 }
 
 export default OtherModal;
