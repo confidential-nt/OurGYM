@@ -7,6 +7,16 @@
   margin-top: -50px;
 }
 
+.user_edit_btn {
+  cursor: pointer;
+  color: #fff;
+  background-color: #333333;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "SBAggroB", serif;
+  margin-top: 30px;
+}
+
 .profile_img {
   display: flex;
   flex-direction: column;
@@ -33,8 +43,8 @@
 
 #nickname {
   width: 100%;
-  border-bottom: 1px solid black;
-  text-align: center;
+  /* border-bottom: 1px solid black;
+  text-align: center; */
 }
 
 #id {
@@ -119,7 +129,7 @@
   right: 0px;
 }
 
-.add_exrs {
+#add_exrs {
   margin-left: 10px;
   font-size: 20px;
   font-weight: 700;
