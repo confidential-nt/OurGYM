@@ -7,11 +7,11 @@ export const getHome = async (req, res) => {
   try {
     const id = req.session.user._id;
     const user = await User.findById(id);
-    const timePerDay = await TimePerDay.findById(id);
-    console.log(timePerDay);
+    const timePerDays = await TimePerDay.findOne({ user: id });
+    // console.log(timePerDays);
     // const timePerWeek = await TimePerWeek.findById(id);
     // const timePerMonth = await TimePerMonth.findById(id);
-    return res.render("home", { pageTitle: "Our GYM", user, timePerDay });
+    return res.render("home", { pageTitle: "Our GYM", user, timePerDays });
   } catch (error) {
     console.log(error);
     return res.render("home", { pageTitle: "Our GYM" });
@@ -26,10 +26,13 @@ export const postHome = async (req, res) => {
     body: { exrname },
   } = req;
   try {
-    await User.findByIdAndUpdate(_id, { $push: { exercises: { exrname } } });
-    // await TimePerDay.findByIdAndUpdate(_id, { timePerDay:{$push: { exercises: { exrname } }}  });
+    const user = await User.findByIdAndUpdate(_id, {
+      $push: { exercises: { exrname } },
+    });
+    //await TimePerDay.findByIdAndUpdate(_id, { timePerDay:{$push: { exercises: { exrname } }}  });
     //await TimePerWeek.findByIdAndUpdate(_id, { timePerWeek:{$push: { exercises: { exrname } }}  });
     //await TimePerMonth.findByIdAndUpdate(_id, { timePerMonth:{$push: { exercises: { exrname } }}  });
+    await user.save();
     return res.redirect("/");
   } catch (error) {
     console.log(error);
@@ -37,14 +40,23 @@ export const postHome = async (req, res) => {
   }
 };
 
-export const registerView = async (req, res) => {
-  const { id } = req.params;
-  const video = await Video.findById(id);
-  if (!video) {
+export const addTime = async (req, res) => {
+  const id = req.session.user._id;
+  const indexExr = req.body.index;
+  const user = await User.findById(id);
+  const timePerDays = await TimePerDay.findOne({ user: id });
+  const { timePerDay } = timePerDays;
+  const indexTotal = timePerDay.findIndex((x) => {
+    return x.date === "2021년 11월 24일";
+  });
+  
+  if (!user.exercises) {
     return res.sendStatus(404);
   }
-  video.meta.views = video.meta.views + 1;
-  await video.save();
+  user.exercises[indexExr].exrtime += 1;
+  timePerDays.timePerDay[indexTotal].total += 1;
+  await user.save();
+  await timePerDays.save();
   return res.sendStatus(200);
 };
 

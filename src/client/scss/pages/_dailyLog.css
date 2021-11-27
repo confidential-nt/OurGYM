@@ -6,12 +6,6 @@ i {
   font-size: 20px;
   font-weight: 700;
   font-family: "SBAggroB", serif;
-  border: 1px solid rgb(124, 124, 124);
-  width: 100px;
-  padding: 5px 5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .fas.fa-plus.fa-2x {

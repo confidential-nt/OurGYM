@@ -6,6 +6,11 @@ body {
   color: white;
 }
 
+.rank_img {
+  height: 32px;
+  width: 36px;
+}
+
 .navi {
   position: fixed;
   bottom: 0px;

@@ -7,7 +7,10 @@ block content
     if loggedIn
         div.content_top 0000.00.00
         div.content_timer
-            div.content_timer_time 00 : 00 : 00
+            div.content_timer_time
+                | #{String(parseInt(timePerDays.timePerDay[0].total/3600)).padStart(2,"0")}
+                | : #{String(parseInt((timePerDays.timePerDay[0].total%3600)/60)).padStart(2,"0")}
+                | : #{String(parseInt((timePerDays.timePerDay[0].total%3600)%60)).padStart(2,"0")}
         br
         div.minvh
             div.content_exrs
@@ -25,7 +28,9 @@ block content
                                         button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
                                             span#exr_timer_name #{exercise.exrname}
                                     span.exr_timer_time_parent(id="exr_timer_time_"+index)
-                                    | #{timePerDay.exercises[index].exrtime/3600} : #{(timePerDay.exercises[index].exrtime%3600)/60} : #{(timePerDay.exercises[index].exrtime%3600)%60}
+                                        | #{String(parseInt(user.exercises[index].exrtime/3600)).padStart(2,"0")}
+                                        | : #{String(parseInt((user.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
+                                        | : #{String(parseInt((user.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
                                     button.exr_timer_specific_parent(id = "exr_timer_specific"+index, type="button")
                                         i.fas.fa-ellipsis-v
                         else

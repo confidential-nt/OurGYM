@@ -1,6 +1,5 @@
 import express from "express";
 import morgan from "morgan";
-import globalRouter from "./routers/globalRouter";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import { localsMiddleare } from "./middlewares";
@@ -16,6 +15,7 @@ app.set("view engine", "pug");
 
 app.use(logger);
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(
   session({
     secret: process.env.COOKIE_SECRET,
