@@ -4,8 +4,7 @@ import session from "express-session";
 import MongoStore from "connect-mongo";
 import { localsMiddleare } from "./middlewares";
 import userRouter from "./routers/userRouter";
-import globalRouter from "./routers/globalRouter";
-import apiRouter from "./routers/apiRouter"
+import apiRouter from "./routers/apiRouter";
 
 const app = express();
 

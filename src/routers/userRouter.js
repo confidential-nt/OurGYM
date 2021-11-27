@@ -1,5 +1,10 @@
 import express from "express";
-import { getDailyLog, postDailyLog } from "../controllers/dailyLogController";
+import {
+  deleteDailyLog,
+  editDailyLog,
+  getDailyLog,
+  postDailyLog,
+} from "../controllers/dailyLogController";
 import {
   getUserEdit,
   postUserEdit,
@@ -18,5 +23,7 @@ userRouter
   .route("/daily-log")
   .get(getDailyLog)
   .post(imgUpload.single("image"), postDailyLog);
+userRouter.get("/daily-log/:id/delete", deleteDailyLog);
+userRouter.post("/daily-log/:id/edit", imgUpload.single("image"), editDailyLog);
 
 export default userRouter;

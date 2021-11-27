@@ -7,6 +7,6 @@ import "./models/TimePerWeek";
 import "./models/TimePerMonth";
 import app from "./app";
 
-const PORT = 7000;
+const PORT = 8000;
 
 app.listen(PORT, () => console.log(`Listening to http://localhost:${PORT}`));

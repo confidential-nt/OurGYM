@@ -2,6 +2,7 @@ class OtherModal {
   modalContainer = document.createElement("div");
   displayContainer = document.querySelector(".main");
   CLOSE_BTN = "modal_close-btn";
+  static CHANGE_DISPLAY = Date.now();
 
   constructor(display) {
     this.modalContainer.classList.add("modal-container");
