@@ -7,15 +7,14 @@ const year = parseInt(date.getFullYear());
 const month = parseInt(date.getMonth() + 1);
 const dateToday = parseInt(date.getDate());
 
+const Today = `${year}. ${String(month).padStart(2, "0")}. ${String(dateToday).padStart(2, "0")}`
 let sumOfTime = 0;
 
 //Paint current date
 const currentDate = document.querySelector(".content_top");
 
 function paintCurrentDate() {
-  currentDate.innerText = `${year}. ${String(month).padStart(2, "0")}. ${String(
-    dateToday
-  ).padStart(2, "0")}`;
+  currentDate.innerText = Today;
 }
 paintCurrentDate();
 
@@ -24,24 +23,19 @@ paintCurrentDate();
 const exr_timer = document.getElementsByClassName("exr_timer");
 //timer 클릭되면 index 추출해서 exr_timer_index + time 만듦
 let index = 0;
+let timerInterval=0;
 
 // change start & pause
 const changeValues = () => {
   const exr_timer_index = document.getElementById(`exr_timer_${index}`);
-  let timerInterval;
 
   if (exr_timer_index.textContent === "▶") {
-    console.log("됨??????????????");
     exr_timer_index.innerHTML = "| |";
     timerInterval = setInterval(function () {
       changeTime();
     }, 1000);
   } else {
-    // clearInterval(timerInterval);
-    //update mongo
-    // await fetch(``, {
-    //   method: "POST",
-    // });
+    clearInterval(timerInterval);
     exr_timer_index.innerHTML = "▶";
   }
 };
@@ -55,7 +49,7 @@ const changeTime = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ index }),
+      body: JSON.stringify({ index, Today }),
     });
   } catch (error) {
     console.log(error);

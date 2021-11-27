@@ -19,7 +19,7 @@ const userSchema = mongoose.Schema({
   gender: { type: String },
   birthday: { type: String },
   dailyLogs: [
-    { type: mongoose.Schema.Types.ObjectId, required: true, ref: "DailyLog" },
+    { type: objectId, required: true, ref: "DailyLog" },
   ],
   //like this?
 });

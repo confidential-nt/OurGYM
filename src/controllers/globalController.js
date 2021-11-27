@@ -8,10 +8,29 @@ export const getHome = async (req, res) => {
     const id = req.session.user._id;
     const user = await User.findById(id);
     const timePerDays = await TimePerDay.findOne({ user: id });
-    // console.log(timePerDays);
+    const { timePerDay } = timePerDays;
+
+    const date = new Date();
+    const year = parseInt(date.getFullYear());
+    const month = parseInt(date.getMonth() + 1);
+    const dateToday = parseInt(date.getDate());
+    const Today = `${year}. ${String(month).padStart(2, "0")}. ${String(
+      dateToday
+    ).padStart(2, "0")}`;
+
+    //find index of today's doc in timePerDay collection
+    const indexTotal = timePerDay.findIndex((x) => {
+      return x.date === Today;
+    });
+
     // const timePerWeek = await TimePerWeek.findById(id);
     // const timePerMonth = await TimePerMonth.findById(id);
-    return res.render("home", { pageTitle: "Our GYM", user, timePerDays });
+    return res.render("home", {
+      pageTitle: "Our GYM",
+      user,
+      timePerDays,
+      indexTotal,
+    });
   } catch (error) {
     console.log(error);
     return res.render("home", { pageTitle: "Our GYM" });
@@ -41,23 +60,74 @@ export const postHome = async (req, res) => {
 };
 
 export const addTime = async (req, res) => {
-  const id = req.session.user._id;
-  const indexExr = req.body.index;
-  const user = await User.findById(id);
-  const timePerDays = await TimePerDay.findOne({ user: id });
-  const { timePerDay } = timePerDays;
-  const indexTotal = timePerDay.findIndex((x) => {
-    return x.date === "2021년 11월 24일";
-  });
-  
-  if (!user.exercises) {
+  try {
+    const {
+      session: {
+        user: { _id: id },
+      },
+      body: { index: indexExr, Today },
+    } = req;
+    const user = await User.findById(id);
+    const timePerDays = await TimePerDay.findOne({ user: id });
+    const { timePerDay } = timePerDays;
+    // console.log(user);
+
+    //find index of today's doc in timePerDay collection
+    const indexTotal = timePerDay.findIndex((x) => {
+      return x.date === Today;
+    });
+
+    for (const exercise of user.exercises) {
+      // console.log(exercise.exrname);
+      const updateTimePerDay = await TimePerDay.findOneAndUpdate(
+        { $elemMatch: { user: id, timePerDay: { date: Today } } },
+        {
+          $push: {
+            timePerDay: {
+              exercises: {
+                exrname: exercise.exrname,
+                exrtime: exercise.exrtime,
+              },
+            },
+          },
+        }
+      );
+      // exercise.exrtime = 0;
+      console.log(updateTimePerDay);
+      // await updateTimePerDay.save();
+    }
+
+    // console.log(user.exercises.length);
+    if (indexTotal === -1) {
+      //user exr 전달
+
+      // exrtime 초기화
+      exercise.exrname = 0;
+      exercise.exrtime = 0;
+      //timePerDay에 새로운 날짜 추가
+      const updateTimePerDay = await TimePerDay.findOneAndUpdate(
+        { user: id },
+        {
+          $push: {
+            timePerDay: {
+              date: Today,
+            },
+          },
+        }
+      );
+      await updateTimePerDay.save();
+    }
+    //add 1 to exrtime & total time
+    user.exercises[indexExr].exrtime += 1;
+    timePerDays.timePerDay[indexTotal].total += 1;
+
+    await user.save();
+    await timePerDays.save();
+    return res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
     return res.sendStatus(404);
   }
-  user.exercises[indexExr].exrtime += 1;
-  timePerDays.timePerDay[indexTotal].total += 1;
-  await user.save();
-  await timePerDays.save();
-  return res.sendStatus(200);
 };
 
 export const profile = async (req, res) => {

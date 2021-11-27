@@ -5,7 +5,7 @@ const timePerDaySchema = mongoose.Schema({
     {
       date: { type: String },
       total: { type: Number, default:0},
-      exrcises: [
+      exercises: [
         {
           exrname: { type: String },
           exrtime: { type: Number, default:0 },
