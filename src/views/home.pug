@@ -27,9 +27,9 @@ block content
                                         button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
                                             span#exr_timer_name #{exercise.exrname}
                                     span.exr_timer_time_parent(id="exr_timer_time_"+index)
-                                    | #{String(parseInt(user.exercises[index].exrtime/3600)).padStart(2,"0")}
-                                    | : #{String(parseInt((user.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
-                                    | : #{String(parseInt((user.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
+                                        | #{String(parseInt(user.exercises[index].exrtime/3600)).padStart(2,"0")}
+                                        | : #{String(parseInt((user.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
+                                        | : #{String(parseInt((user.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
                                     button.exr_timer_specific_parent(id = "exr_timer_specific"+index, type="button")
                                         i.fas.fa-ellipsis-v
                         else

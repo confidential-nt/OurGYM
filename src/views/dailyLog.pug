@@ -12,10 +12,11 @@ block content
     div.ask2
         span.Q2 2. 오늘 운동에서 반성할 점은 무엇입니까?
     div 
-        ul 
+        ul.dailyLog_items 
             each log in dailyLogs 
                 +dailyLog(log)         
             else 
                 li 아직 아무것도 없습니다.        
-    div
+    div.add_dailyLog-container
+
         button.add_dailyLog 일지 추가
