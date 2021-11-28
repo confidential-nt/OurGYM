@@ -3,6 +3,7 @@
 }
 #exr_timer {
   display: flex;
+  width: 500px;
 }
 
 .content_exrs_list {
@@ -16,14 +17,18 @@
 .exr_timer_parent {
   font-size: 20px;
   font-weight: 700;
-  width: 500px;
   height: 18.4px;
   margin-left: 12%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
   background-color: #f5f6f7;
   border: none;
+}
+
+#exr_timer_name {
+  font-size: 20px;
+  font-weight: 700;
+  height: 18.4px;
+  margin-left: 20%;
+  background-color: #f5f6f7;
 }
 
 .exr_timer_time_parent {
@@ -40,9 +45,6 @@
   border: none;
 }
 
-#exr_timer_name {
-  margin-left: 3%;
-}
 
 .content_exr {
   border-bottom: 1px solid rgb(116, 113, 113);

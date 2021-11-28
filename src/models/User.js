@@ -10,17 +10,10 @@ const userSchema = mongoose.Schema({
   nickname: { type: String, required: true, unique: true },
   email: { type: String, required: true, unique: true },
   mainSports: { type: String, required: true },
-  exercises: [
-    {
-      exrname: { type: String },
-      exrtime: { type: Number, default:0 },
-    },
-  ],
+  exercises: [{ type: String }],
   gender: { type: String },
   birthday: { type: String },
-  dailyLogs: [
-    { type: objectId, required: true, ref: "DailyLog" },
-  ],
+  dailyLogs: [{ type: objectId, required: true, ref: "DailyLog" }],
   //like this?
 });
 

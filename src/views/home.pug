@@ -4,12 +4,15 @@ block scripts
     script(type="text/javascript",src="/static/js/home.js",  defer)
     
 block content   
-    if loggedIn
+    if (loggedIn)
         div.content_top 0000.00.00
-        div.content_timer_time
-            | #{String(parseInt(timePerDays.timePerDay[indexTotal].total/3600)).padStart(2,"0")}
-            | : #{String(parseInt((timePerDays.timePerDay[indexTotal].total%3600)/60)).padStart(2,"0")}
-            | : #{String(parseInt((timePerDays.timePerDay[indexTotal].total%3600)%60)).padStart(2,"0")}
+        if(timePerDay)
+            div.content_timer_time
+                | #{String(parseInt(timePerDay.total/3600)).padStart(2,"0")}
+                | : #{String(parseInt((timePerDay.total%3600)/60)).padStart(2,"0")}
+                | : #{String(parseInt((timePerDay.total%3600)%60)).padStart(2,"0")}
+        else 
+            div.content_timer_time 00 : 00 : 00
         br
         div.minvh
             div.content_exrs
@@ -20,16 +23,18 @@ block content
                 div.content_exrs_list
                     ul.exrs_ui
                         if user
-                            if(user.exercises !== null)
                             each exercise, index in user.exercises
                                 li.content_exr(id="content_exr_"+index)
                                     div.exr_timer
                                         button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
-                                            span#exr_timer_name #{exercise.exrname}
-                                    span.exr_timer_time_parent(id="exr_timer_time_"+index)
-                                        | #{String(parseInt(user.exercises[index].exrtime/3600)).padStart(2,"0")}
-                                        | : #{String(parseInt((user.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
-                                        | : #{String(parseInt((user.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
+                                        span#exr_timer_name #{exercise}
+                                    if(timePerDay)
+                                        span.exr_timer_time_parent(id="exr_timer_time_"+index)
+                                            | #{String(parseInt(timePerDay.exercises[index].exrtime/3600)).padStart(2,"0")}
+                                            | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
+                                            | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
+                                    else
+                                        div.exr_timer_time_parent 00 : 00 : 00        
                                     button.exr_timer_specific_parent(id = "exr_timer_specific"+index, type="button")
                                         i.fas.fa-ellipsis-v
                         else
@@ -38,6 +43,6 @@ block content
             form.content_exrs_add_list(method="POST")
                 div#add_exrs 운동 추가
                 input(id="plus_input", type="submit" value="╋")
-                input(id="plus_box", name="exrname",type="text",placeholder="운동 입력", required)
+                input(id="plus_box", name="exercise",type="text",placeholder="운동 입력", required)
     else
         div.plz_signup 👆👆👆 회원가입을 완료해주세요! 👆👆👆

@@ -6,9 +6,9 @@ const date = new Date();
 const year = parseInt(date.getFullYear());
 const month = parseInt(date.getMonth() + 1);
 const dateToday = parseInt(date.getDate());
-
-const Today = `${year}. ${String(month).padStart(2, "0")}. ${String(dateToday).padStart(2, "0")}`
-let sumOfTime = 0;
+const Today = `${year}. ${String(month).padStart(2, "0")}. ${String(
+  dateToday
+).padStart(2, "0")}`;
 
 //Paint current date
 const currentDate = document.querySelector(".content_top");
@@ -18,12 +18,25 @@ function paintCurrentDate() {
 }
 paintCurrentDate();
 
+//Paint exr time
+// const paintExrTime = (text) => {
+//   const videoComments = document.querySelector(".video__comments ul");
+//   const newComment = document.createElement("li");
+//   newComment.className = "video__comment";
+//   const icon = document.createElement("i");
+//   icon.className = "fas fa-comment";
+//   const span = document.createElement("span");
+//   span.innerText = ` ${text}`;
+//   newComment.appendChild(icon);
+//   newComment.appendChild(span);
+//   videoComments.prepend(newComment);
+// };
 
 //Timer
 const exr_timer = document.getElementsByClassName("exr_timer");
 //timer 클릭되면 index 추출해서 exr_timer_index + time 만듦
 let index = 0;
-let timerInterval=0;
+let timerInterval = 0;
 
 // change start & pause
 const changeValues = () => {
@@ -43,7 +56,6 @@ const changeValues = () => {
 //change value of time
 const changeTime = async () => {
   try {
-    // console.log(JSON.stringify({ index }));
     await fetch("/api/timer/time", {
       method: "POST",
       headers: {
@@ -56,6 +68,7 @@ const changeTime = async () => {
   }
 };
 
+//click 된 요소 index 추출
 for (var i = 0; i < exr_timer.length; i++) {
   (function (idx) {
     exr_timer[idx].onclick = function () {
