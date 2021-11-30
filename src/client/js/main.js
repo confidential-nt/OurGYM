@@ -193,8 +193,6 @@ class Stats {
 
       const cell = document.querySelector(`td[data-date="${date}"]`);
 
-      console.log(cell);
-
       if (!cell) continue;
 
       // const timeSum = Time.sumTime(el.date);
