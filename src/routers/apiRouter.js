@@ -8,5 +8,6 @@ const apiRouter = express.Router();
 apiRouter.get("/daily-log/:id", getDailyLogInfo);
 apiRouter.post("/timer/time", addTime);
 apiRouter.post("/timer/time/remove", deleteExr);
+apiRouter.get("/exercise/data");
 
 export default apiRouter;

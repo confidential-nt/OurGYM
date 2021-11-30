@@ -217,7 +217,7 @@ export const getStats = (req, res) => {
   return res.render("stats");
 };
 
-export const ranking = async (req, res) => {
+export const getRanking = async (req, res) => {
   const now = new Date().toLocaleString().substr(0, 12); // 현재 날짜 및 시간
   // const yesterday = new Date(now.setDate(now.getDate() - 1))
   //   .toLocaleString()
@@ -235,3 +235,41 @@ export const ranking = async (req, res) => {
 };
 
 // 1. 그날의 누적 운동 시간합.
+
+export const postRanking = async (req, res) => {
+  const {
+    body: { filter },
+    session: {
+      user: { _id: id },
+    },
+  } = req;
+
+  const user = await User.findById(id);
+
+  const now = new Date().toLocaleString().substr(0, 12); // 현재 날짜 및 시간
+  // const yesterday = new Date(now.setDate(now.getDate() - 1))
+  //   .toLocaleString()
+  //   .substr(0, 12); // 어제
+
+  // 1. 어제
+
+  if (filter === "주종목") {
+    const mainSports = user.mainSports;
+
+    let timePerDays = await TimePerDay.find({ date: now }).populate("user");
+    timePerDays = Array.from(timePerDays).filter(
+      (el) => el.user.mainSports === mainSports
+    );
+
+    return res.render("ranking", { pageTitle: "랭킹", timePerDays, filter });
+  }
+  if (filter === "누적 운동시간") {
+    const timePerDays = await TimePerDay.find({ date: now })
+      .sort({
+        total: "desc",
+      })
+      .populate("user");
+
+    return res.render("ranking", { pageTitle: "랭킹", timePerDays, filter });
+  }
+};

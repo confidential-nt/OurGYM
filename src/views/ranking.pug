@@ -5,12 +5,16 @@ block scripts
     script(src="/static/js/ranking.js", defer)
 
 block content
-    form(method="post", enctype="multipart/form-data")
+    form(method="post")
         div.ranking_title_box
             div.ranking_title 랭킹
             select(id = "filter", name="filter" class = "box")
-                option(value="누적 운동시간") 누적 운동시간
-                option(value="주종목") 주종목
+                if !filter || filter === "누적 운동시간"
+                    option(value="누적 운동시간", selected) 누적 운동시간
+                    option(value="주종목") 주종목
+                if filter === "주종목"
+                    option(value="누적 운동시간") 누적 운동시간    
+                    option(value="주종목", selected) 주종목
             input(type="submit", id="btn_filter", value = "확인")
         div
             ol

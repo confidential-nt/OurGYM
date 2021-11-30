@@ -1,3 +1,5 @@
+import Time from "./time";
+
 class Ranking {
   rankingItems;
   constructor() {
@@ -8,7 +10,10 @@ class Ranking {
   formattingRankingTime() {
     this.rankingItems.forEach((item) => {
       const sec = parseInt(item.dataset.sec, 10);
-      console.log(sec);
+      const formattedTime = Time.makeTimeString(Time.timeFormatter(sec));
+
+      const userTime = item.querySelector(".user_time");
+      userTime.innerText = formattedTime;
     });
   }
 }

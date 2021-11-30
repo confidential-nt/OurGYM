@@ -50,6 +50,14 @@ class Time {
 
     return { hour, min, sec };
   }
+
+  static makeTimeString(formattedTime) {
+    return `${
+      formattedTime.hour < 10 ? `0${formattedTime.hour}` : formattedTime.hour
+    }:${formattedTime.min < 10 ? `0${formattedTime.min}` : formattedTime.min}:${
+      formattedTime.sec < 10 ? `0${formattedTime.sec}` : formattedTime.sec
+    }`;
+  }
 }
 
 export default Time;
