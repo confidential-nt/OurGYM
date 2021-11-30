@@ -2,6 +2,7 @@ import User from "../models/User";
 import TimePerDay from "../models/TimePerDay";
 import TimePerWeek from "../models/TimePerWeek";
 import TimePerMonth from "../models/TimePerMonth";
+import "babel-polyfill";
 import { DataBrew } from "aws-sdk";
 
 const date = new Date();
@@ -76,21 +77,21 @@ export const postHome = async (req, res) => {
     });
     await user.save();
     const timePerDay = await TimePerDay.findOneAndUpdate(
-      { user:_id,date: Today },
+      { user: _id, date: Today },
       {
         $push: { exercises: { exrname: exercise } },
       }
     );
     await timePerDay.save();
     const timePerWeek = await TimePerWeek.findOneAndUpdate(
-      { user:_id, week : thisWeek },
+      { user: _id, week: thisWeek },
       {
         $push: { exercises: { exrname: exercise } },
       }
     );
     await timePerWeek.save();
     const timePerMonth = await TimePerMonth.findOneAndUpdate(
-      {user:_id, month : thisMonth },
+      { user: _id, month: thisMonth },
       {
         $push: { exercises: { exrname: exercise } },
       }
@@ -114,7 +115,10 @@ export const addTime = async (req, res) => {
     const user = await User.findById(id);
     const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
     const timePerWeek = await TimePerWeek.findOne({ user: id, week: thisWeek });
-    const timePerMonth = await TimePerMonth.findOne({ user: id, month: thisMonth });
+    const timePerMonth = await TimePerMonth.findOne({
+      user: id,
+      month: thisMonth,
+    });
 
     if (!timePerMonth) {
       const createTimePerMonth = await TimePerMonth.create({
@@ -176,6 +180,27 @@ export const addTime = async (req, res) => {
     await timePerDay.save();
     await timePerWeek.save();
     await timePerMonth.save();
+    return res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(404);
+  }
+};
+
+export const deleteExr = async (req, res) => {
+  try {
+    const {
+      session: {
+        user: { _id: id },
+      },
+      body: { index: indexExr },
+    } = req;
+    const user = await User.findById(id);
+    const deleteExr = await User.findByIdAndUpdate(id, {
+      $pull: { exercises: user.exercises[indexExr] },
+    });
+    await deleteExr.save();
+    //user.exercises.splice(indexExr)
     return res.sendStatus(200);
   } catch (error) {
     console.log(error);

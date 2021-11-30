@@ -34,9 +34,9 @@ block content
                                             | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
                                             | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
                                     else
-                                        div.exr_timer_time_parent 00 : 00 : 00        
-                                    button.exr_timer_specific_parent(id = "exr_timer_specific"+index, type="button")
-                                        i.fas.fa-ellipsis-v
+                                        div.exr_timer_time_parent 00 : 00 : 00
+                                    div.exr_timer_btns
+                                        button.exr_timer_remove_parent(id = "exr_timer_remove_"+index) ❌
                         else
                             li 
                                 div 👇👇👇 운동을 추가해주세요! 👇👇👇

@@ -1,5 +1,3 @@
-// const id = req.session.user._id;
-// const user = "";
 import "babel-polyfill";
 
 const date = new Date();
@@ -41,7 +39,6 @@ let timerInterval = 0;
 // change start & pause
 const changeValues = () => {
   const exr_timer_index = document.getElementById(`exr_timer_${index}`);
-
   if (exr_timer_index.textContent === "▶") {
     exr_timer_index.innerHTML = "| |";
     timerInterval = setInterval(function () {
@@ -68,12 +65,39 @@ const changeTime = async () => {
   }
 };
 
-//click 된 요소 index 추출
+//click 된 ▶️요소 index 추출
 for (var i = 0; i < exr_timer.length; i++) {
   (function (idx) {
     exr_timer[idx].onclick = function () {
       index = idx;
       changeValues();
+    };
+  })(i);
+}
+
+//delet Exercise
+const exr_timer_btns = document.getElementsByClassName("exr_timer_btns");
+
+const deleteExr = async () => {
+  try {
+    await fetch("/api/timer/time/remove", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ index }),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//click 된 수정 삭제요소 index 추출
+for (var i = 0; i < exr_timer_btns.length; i++) {
+  (function (idx) {
+    exr_timer_btns[idx].onclick = function () {
+      index = idx;
+      deleteExr();
     };
   })(i);
 }
