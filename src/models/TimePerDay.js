@@ -7,7 +7,13 @@ const timePerDaySchema = mongoose.Schema({
     {
       exrname: { type: String },
       exrtime: { type: Number, default: 0 },
-      
+      exrmeta: [
+        {
+          exrmetaName: { type: String },
+          exrmetaCount: { type: Number, default: 0 },
+          exrmetaOther: { type: String },
+        },
+      ],
     },
   ],
   user: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },

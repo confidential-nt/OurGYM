@@ -25,31 +25,27 @@ block content
                         if user
                             each exercise, index in user.exercises
                                 li.content_exr(id="content_exr_"+index)
-                                    div.exr_timer
-                                        div.exr_timer_main
-                                            div.exr_timer_content
-                                                button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
-                                                span#exr_timer_name #{exercise}
-                                            if(timePerDay)
-                                                span.exr_timer_time_parent(id="exr_timer_time_"+index)
-                                                    | #{String(parseInt(timePerDay.exercises[index].exrtime/3600)).padStart(2,"0")}
-                                                    | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
-                                                    | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
-                                            else
-                                                div.exr_timer_time_parent 00 : 00 : 00
-                                            div.exr_timer_btns
-                                                button.exr_timer_remove_parent(id = "exr_timer_remove_"+index) ❌
-                                        div.exr_meta
-                                            div.exr_meta_name
-                                                input(id="exr_meta_name", name="exercise_meta_name",type="text",placeholder="운동을 자세히 기록하세요.", required)
-                                            div.exr_meta_count
-                                                input(id="exr_meta_count", name="exercise_meta_count",type="number",min ="0",placeholder="운동 횟수를 기록하세요.", required)
-                                            div.exr_meta_other
-                                                input(id="exr_meta_other", name="exercise_meta_other",type="text",placeholder="기타 정보(중량, 시간 등)를 기록하세요.")
-                                            div.exr_meta_submit
-                                                input(id="exr_meta_submit",type="submit",value="입력")
+                                        form.exr_timer(action="/api/timer/meta",method="POST")
+                                            div.exr_timer_main
+                                                div.exr_timer_content
+                                                    button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
+                                                    span#exr_timer_name(name="exr_name") #{exercise}
+                                                if(timePerDay)
+                                                    span.exr_timer_time_parent(id="exr_timer_time_"+index)
+                                                        | #{String(parseInt(timePerDay.exercises[index].exrtime/3600)).padStart(2,"0")}
+                                                        | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
+                                                        | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
+                                                else
+                                                    div.exr_timer_time_parent 00 : 00 : 00
+                                                div.exr_timer_btns
+                                                    button.exr_timer_remove_parent(id = "exr_timer_remove_"+index) ❌
+                                            div.exr_meta
+                                                input(id="exr_meta_name_"+index, name="exercise_meta_name",type="text",placeholder="운동을 자세히 기록하세요.", required)
+                                                input(id="exr_meta_count_"+index, name="exercise_meta_count",type="number",min ="0",placeholder="운동 횟수를 기록하세요.", required)
+                                                input(id="exr_meta_other_"+index, name="exercise_meta_other",type="text",placeholder="기타 정보(중량, 시간 등)를 기록하세요.")
+                                                input(id="exr_meta_submit_"+index,type="submit",value="입력")
                         else
-                            li 
+                            li
                                 div 👇👇👇 운동을 추가해주세요! 👇👇👇
             form.content_exrs_add_list(method="POST")
                 div#add_exrs 운동 추가
