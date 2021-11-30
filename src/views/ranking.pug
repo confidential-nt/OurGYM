@@ -1,4 +1,5 @@
 extends ./config/base
+include mixins/rankingMixins
 
 block scripts
     script(src="/static/js/ranking.js", defer)
@@ -13,14 +14,5 @@ block content
             input(type="submit", id="btn_filter", value = "확인")
         div
             ol
-                li
-                    i.fas.fa-crown
-                li.rank_li.rank_li1
-                    span.user_rank ①
-                    //- ㅇ + 한자
-                    span.user_name tkfkADA
-                    span.user_time 22:11:22
-                li.rank_li
-                    span.user_rank ②
-                    span.user_name 사람이름
-                    span.user_time 22:11:20
+                each timePerDay, index in timePerDays
+                    +ranking(timePerDay, index)
