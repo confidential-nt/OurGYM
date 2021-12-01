@@ -1,4 +1,4 @@
-import OtherModal from "./component/otherModal";
+import Modal from "./component/modal";
 import { async } from "regenerator-runtime";
 class DailyLog {
   addBtn = document.querySelector(".add_dailyLog");
@@ -19,8 +19,7 @@ class DailyLog {
   }
 
   handleAddBtn(e) {
-    const modal =
-      new OtherModal(`<form method="post" enctype="multipart/form-data">
+    const modal = new Modal(`<form method="post" enctype="multipart/form-data">
         <label for="image"> 올릴 이미지 </label>
         <input type="file" id="image" name="image" accept="image/*" />
         <label for="content"> 오늘의 일지 </label>
@@ -44,7 +43,7 @@ class DailyLog {
     const li = e.target.parentNode.parentNode;
     const id = li.dataset.id;
 
-    const modal = new OtherModal(`<div>
+    const modal = new Modal(`<div>
       <a href="/users/daily-log/${id}/delete">삭제</a>
       <button class="${this.ITEM_MODIFY_BTN}">수정</button>
     </div>`);
@@ -65,7 +64,7 @@ class DailyLog {
       modal.hide();
 
       const otherModal =
-        new OtherModal(`<form action="/users/daily-log/${id}/edit" method="post" enctype="multipart/form-data">
+        new Modal(`<form action="/users/daily-log/${id}/edit" method="post" enctype="multipart/form-data">
       <label for="image"> 올릴 이미지 </label>
       <input type="file" id="image" name="image" accept="image/*" />
       <label for="content"> 오늘의 일지 </label>
