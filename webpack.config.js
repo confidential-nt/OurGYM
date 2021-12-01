@@ -9,7 +9,6 @@ module.exports = {
     main: BASE_JS + "main.js",
     home: BASE_JS + "home.js",
     profile: BASE_JS + "profile.js",
-    stats: BASE_JS + "stats.js",
     dailyLog: BASE_JS + "dailyLog.js",
     ranking: BASE_JS + "ranking.js",
   },
