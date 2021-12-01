@@ -86,6 +86,21 @@
   border: 1px solid rgb(163, 161, 161);
 }
 
+.modal-btn {
+  display: flex;
+  justify-content: space-around;
+}
+
+.accept-btn {
+  color: #f5f6f7;
+  font-weight: 700;
+}
+
+.refuse-btn {
+  color: #f5f6f7;
+  font-weight: 700;
+}
+
 .account_delete-btn {
   background-color: #f5f6f7;
   border: 1px solid #f5f6f7;

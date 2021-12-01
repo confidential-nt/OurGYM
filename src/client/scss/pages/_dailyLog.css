@@ -8,6 +8,18 @@ i {
   font-family: "SBAggroB", serif;
 }
 
+a {
+  color: white;
+  font-weight: 700;
+}
+
+.modifyBtn {
+  color: white;
+  font-weight: 700;
+  position: absolute;
+  left: 50%;
+}
+
 .fas.fa-plus.fa-2x {
   position: absolute;
   left: 25%;
