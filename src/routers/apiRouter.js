@@ -9,6 +9,7 @@ apiRouter.get("/daily-log/:id", getDailyLogInfo);
 apiRouter.post("/timer/time", addTime);
 apiRouter.post("/timer/meta", exrMeta);
 apiRouter.post("/timer/time/remove", deleteExr);
+// apiRouter.post("/timer/meta/remove", deleteExrMeta);
 // apiRouter.get("/exercise/data", getExerciseInfo);
 
 export default apiRouter;

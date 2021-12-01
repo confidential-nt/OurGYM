@@ -75,12 +75,6 @@ export const exrMeta = async (req, res) => {
     },
   } = req;
   try {
-    console.log(
-      exr_name,
-      exercise_meta_name,
-      exercise_meta_count,
-      exercise_meta_other
-    );
     const timePerDay = await TimePerDay.findOne({ user: _id, date: Today });
     const target = timePerDay.exercises.find((it) => it.exrname === exr_name);
     target.exrmetas.push({
@@ -247,6 +241,27 @@ export const deleteExr = async (req, res) => {
     return res.sendStatus(404);
   }
 };
+
+// export const deleteExrMeta = async (req, res) => {
+//   try {
+//     const {
+//       session: {
+//         user: { _id: id },
+//       },
+//       body: { index: indexExr, indexMeta: indexExrMeta },
+//     } = req;
+//     const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
+//     console.log(timePerDay.exercises[indexExr].exrmetas[indexExrMeta]);
+//     // const deleteExrMeta = await timePerDay.exercises[indexExr].pull({
+//     //   exrmetas: timePerDay.exercises[indexExr].exrmetas[indexExrMeta],
+//     // });
+//     await deleteExrMeta.save();
+//     return res.sendStatus(200);
+//   } catch (error) {
+//     console.log(error);
+//     return res.sendStatus(404);
+//   }
+// };
 
 export const profile = async (req, res) => {
   const user = await User.findById(req.session.user._id);

@@ -45,10 +45,12 @@ block content
                                             input(id="exr_meta_submit",type="submit",value="입력")
                                         if(timePerDay.exercises[index].exrmetas)
                                             each exrmeta in timePerDay.exercises[index].exrmetas
-                                                div #{exrmeta.exrmetaName} 
-                                                div #{exrmeta.exrmetaCount}회
-                                                div #{exrmeta.exrmetaOther}
-                                                button.exr_meta_remove_parent(id = "exr_meta_remove_"+index) ❌
+                                                div.exr_meta
+                                                    div #{exrmeta.exrmetaName} 
+                                                    div #{exrmeta.exrmetaCount}회
+                                                    div #{exrmeta.exrmetaOther}
+                                                    //- div.exr_meta_btns(id="exr_meta_btn"+index)
+                                                    //-     button.exr_meta_remove_parent(id = "exr_meta_remove_"+index) ❌
                         else
                             li 
                                 div 👇👇👇 운동을 추가해주세요! 👇👇👇
