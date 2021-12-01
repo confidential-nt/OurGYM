@@ -4,6 +4,7 @@ import TimePerWeek from "../models/TimePerWeek";
 import TimePerMonth from "../models/TimePerMonth";
 import "babel-polyfill";
 import { DataBrew } from "aws-sdk";
+import { async } from "regenerator-runtime";
 
 const date = new Date();
 const year = parseInt(date.getFullYear());
@@ -50,9 +51,6 @@ export const getHome = async (req, res) => {
     const id = req.session.user._id;
     const user = await User.findById(id);
     const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
-    // const timePerWeek = await TimePerWeek.findById(id);
-    // const timePerMonth = await TimePerMonth.findById(id);
-
     return res.render("home", {
       pageTitle: "Our GYM",
       user,
@@ -61,6 +59,40 @@ export const getHome = async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.render("home", { pageTitle: "Our GYM" });
+  }
+};
+
+export const exrMeta = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+    body: {
+      exercise_meta_name,
+      exercise_meta_count,
+      exercise_meta_other,
+      exr_name,
+    },
+  } = req;
+  try {
+    console.log(
+      exr_name,
+      exercise_meta_name,
+      exercise_meta_count,
+      exercise_meta_other
+    );
+    const timePerDay = await TimePerDay.findOne({ user: _id, date: Today });
+    const target = timePerDay.exercises.find((it) => it.exrname === exr_name);
+    target.exrmetas.push({
+      exrmetaName: exercise_meta_name,
+      exrmetaCount: exercise_meta_count,
+      exrmetaOther: exercise_meta_other,
+    });
+    await timePerDay.save();
+    return res.redirect("/");
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(404);
   }
 };
 
@@ -196,10 +228,18 @@ export const deleteExr = async (req, res) => {
       body: { index: indexExr },
     } = req;
     const user = await User.findById(id);
-    const deleteExr = await User.findByIdAndUpdate(id, {
+    const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
+    const deleteExrFromUser = await User.findByIdAndUpdate(id, {
       $pull: { exercises: user.exercises[indexExr] },
     });
-    await deleteExr.save();
+    const deleteExrFromTPD = await TimePerDay.findOneAndUpdate(
+      { user: id, date: Today },
+      {
+        $pull: { exercises: timePerDay.exercises[indexExr] },
+      }
+    );
+    await deleteExrFromUser.save();
+    await deleteExrFromTPD.save();
     //user.exercises.splice(indexExr)
     return res.sendStatus(200);
   } catch (error) {
