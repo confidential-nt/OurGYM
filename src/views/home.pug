@@ -25,36 +25,32 @@ block content
                         if user
                             each exercise, index in user.exercises
                                 li.content_exr(id="content_exr_"+index)
-                                    div.exr_timer
-                                        div.exr_timer_main
-                                            div.exr_timer_content
-                                                div.exr_timer_top
-                                                    div.exr_timer_btn_parent(id="exr_timer_"+index)
-                                                        button.exr_timer_parent( type="button") ▶
-                                                    form(action="/api/timer/meta",method="POST")
-                                                    input#exr_timer_name(name="exr_name", value=`${exercise}`, disabled) 
-                                                    if(timePerDay)
-                                                        span.exr_timer_time_parent(id="exr_timer_time_"+index)
-                                                            | #{String(parseInt(timePerDay.exercises[index].exrtime/3600)).padStart(2,"0")}
-                                                            | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
-                                                            | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
-                                                    else
-                                                        div.exr_timer_time_parent 00 : 00 : 00
-                                                    div.exr_timer_btns
-                                                        button.exr_timer_remove_parent(id = "exr_timer_remove_"+index) ❌
-                                                div.exr_meta_name
-                                                    div.exr_meta
-                                                        input(id="exr_meta_name", name="exercise_meta_name",title = "운동명",type="text",placeholder="운동명", required)
-                                                        input(id="exr_meta_count", name="exercise_meta_count",type="number",title = "횟수",min ="0",placeholder="횟수", required)
-                                                        input(id="exr_meta_other", name="exercise_meta_other",type="text",placeholder="기타(중량, 시간 등)")
-                                                        input(id="exr_meta_submit",type="submit",value="입력")
-                                                    if(timePerDay.exercises[index].exrmetas)
-                                                        each exrmeta in timePerDay.exercises[index].exrmetas
-                                                            div #{exrmeta.exrmetaName} 
-                                                            div #{exrmeta.exrmetaCount}
-                                                            div #{exrmeta.exrmetaOther}
+                                    form(action="/api/timer/meta",method="POST")
+                                        div.exr_timer
+                                            button.exr_timer_parent(id="exr_timer_"+index, type="button") ▶
+                                            input(id ="exr_timer_name",name="exr_name", value=`${exercise}`,readonly)
+                                        if(timePerDay)
+                                            span.exr_timer_time_parent(id="exr_timer_time_"+index)
+                                                | #{String(parseInt(timePerDay.exercises[index].exrtime/3600)).padStart(2,"0")}
+                                                | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
+                                                | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
+                                        else
+                                            div.exr_timer_time_parent 00 : 00 : 00
+                                        div.exr_timer_btns
+                                            button.exr_timer_remove_parent(id = "exr_timer_remove_"+index) ❌
+                                        div.exr_meta
+                                            input(id="exr_meta_name", name="exercise_meta_name",title = "운동명",type="text",placeholder="운동명", required)
+                                            input(id="exr_meta_count", name="exercise_meta_count",type="number",title = "횟수",min ="0",placeholder="횟수")
+                                            input(id="exr_meta_other", name="exercise_meta_other",type="text",placeholder="기타(중량, 시간 등)")
+                                            input(id="exr_meta_submit",type="submit",value="입력")
+                                        if(timePerDay.exercises[index].exrmetas)
+                                            each exrmeta in timePerDay.exercises[index].exrmetas
+                                                div #{exrmeta.exrmetaName} 
+                                                div #{exrmeta.exrmetaCount}회
+                                                div #{exrmeta.exrmetaOther}
+                                                button.exr_meta_remove_parent(id = "exr_meta_remove_"+index) ❌
                         else
-                            li
+                            li 
                                 div 👇👇👇 운동을 추가해주세요! 👇👇👇
             form.content_exrs_add_list(method="POST")
                 div#add_exrs 운동 추가
@@ -62,3 +58,28 @@ block content
                 input(id="plus_box", name="exercise",type="text",title = "운동 입력",placeholder="운동 입력", required)
     else
         div.plz_signup 👆👆👆 회원가입을 완료해주세요! 👆👆👆
+
+
+
+        //- form(action="/api/timer/meta",method="POST")
+        //-                                             input#exr_timer_name(name="exr_name", value=`${exercise}`, disabled) 
+        //-                                             if(timePerDay)
+        //-                                                 span.exr_timer_time_parent(id="exr_timer_time_"+index)
+        //-                                                     | #{String(parseInt(timePerDay.exercises[index].exrtime/3600)).padStart(2,"0")}
+        //-                                                     | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)/60)).padStart(2,"0")}
+        //-                                                     | : #{String(parseInt((timePerDay.exercises[index].exrtime%3600)%60)).padStart(2,"0")}
+        //-                                             else
+        //-                                                 div.exr_timer_time_parent 00 : 00 : 00
+        //-                                             div.exr_timer_btns
+        //-                                                 button.exr_timer_remove_parent(id = "exr_timer_remove_"+index) ❌
+        //-                                         div.exr_meta_name
+        //-                                             div.exr_meta
+        //-                                                 input(id="exr_meta_name", name="exercise_meta_name",title = "운동명",type="text",placeholder="운동명", required)
+        //-                                                 input(id="exr_meta_count", name="exercise_meta_count",type="number",title = "횟수",min ="0",placeholder="횟수", required)
+        //-                                                 input(id="exr_meta_other", name="exercise_meta_other",type="text",placeholder="기타(중량, 시간 등)")
+        //-                                                 input(id="exr_meta_submit",type="submit",value="입력")
+        //-                                             if(timePerDay.exercises[index].exrmetas)
+        //-                                                 each exrmeta in timePerDay.exercises[index].exrmetas
+        //-                                                     div #{exrmeta.exrmetaName} 
+        //-                                                     div #{exrmeta.exrmetaCount}
+        //-                                                     div #{exrmeta.exrmetaOther}

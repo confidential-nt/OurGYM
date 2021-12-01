@@ -51,7 +51,6 @@ export const getHome = async (req, res) => {
     const id = req.session.user._id;
     const user = await User.findById(id);
     const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
-
     return res.render("home", {
       pageTitle: "Our GYM",
       user,
@@ -63,7 +62,7 @@ export const getHome = async (req, res) => {
   }
 };
 
-export const exrMeta = async (req,res) => {
+export const exrMeta = async (req, res) => {
   const {
     session: {
       user: { _id },
@@ -76,11 +75,17 @@ export const exrMeta = async (req,res) => {
     },
   } = req;
   try {
+    console.log(
+      exr_name,
+      exercise_meta_name,
+      exercise_meta_count,
+      exercise_meta_other
+    );
     const timePerDay = await TimePerDay.findOne({ user: _id, date: Today });
     const target = timePerDay.exercises.find((it) => it.exrname === exr_name);
     target.exrmetas.push({
       exrmetaName: exercise_meta_name,
-      exrmetaCount : exercise_meta_count,
+      exrmetaCount: exercise_meta_count,
       exrmetaOther: exercise_meta_other,
     });
     await timePerDay.save();
@@ -223,10 +228,18 @@ export const deleteExr = async (req, res) => {
       body: { index: indexExr },
     } = req;
     const user = await User.findById(id);
-    const deleteExr = await User.findByIdAndUpdate(id, {
+    const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
+    const deleteExrFromUser = await User.findByIdAndUpdate(id, {
       $pull: { exercises: user.exercises[indexExr] },
     });
-    await deleteExr.save();
+    const deleteExrFromTPD = await TimePerDay.findOneAndUpdate(
+      { user: id, date: Today },
+      {
+        $pull: { exercises: timePerDay.exercises[indexExr] },
+      }
+    );
+    await deleteExrFromUser.save();
+    await deleteExrFromTPD.save();
     //user.exercises.splice(indexExr)
     return res.sendStatus(200);
   } catch (error) {
