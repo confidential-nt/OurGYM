@@ -130,7 +130,7 @@ export const postHome = async (req, res) => {
   }
 };
 
-export const addTime = async (req, res) => {
+export const postAddTime = async (req, res) => {
   try {
     const {
       session: {

@@ -1,5 +1,4 @@
 import "babel-polyfill";
-import { exrMeta } from "../../Controllers/globalController";
 
 const date = new Date();
 const year = parseInt(date.getFullYear());
@@ -19,7 +18,6 @@ paintCurrentDate();
 
 //Paint exr time
 // const paintExrTime = (text) => {
-//   const videoComments = document.querySelector(".video__comments ul");
 //   const newComment = document.createElement("li");
 //   newComment.className = "video__comment";
 //   const icon = document.createElement("i");
@@ -35,6 +33,7 @@ paintCurrentDate();
 const exr_timer = document.getElementsByClassName("exr_timer");
 //timer 클릭되면 index 추출해서 exr_timer_index + time 만듦
 let index = 0;
+let exrTotal = 0;
 let timerInterval = 0;
 
 // change start & pause
