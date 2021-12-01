@@ -1,6 +1,7 @@
 import img from "../../../images/blankprofile.png";
+import svg from "../../../images/podium.svg";
 
-import { Calendar } from "@fullcalendar/core";
+import { Calendar, formatDate } from "@fullcalendar/core";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
