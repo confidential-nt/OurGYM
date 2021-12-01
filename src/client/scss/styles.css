@@ -19,3 +19,13 @@
 .main {
   padding-top: 50px;
 }
+
+.account_edit-btn {
+  color: black;
+  font-weight: normal;
+}
+
+.daily-log-btn {
+  color: black;
+  font-weight: normal;
+}

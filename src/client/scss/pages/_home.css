@@ -1,5 +1,6 @@
 .content_exr {
   display: flex;
+  flex-direction: column;
   border-bottom: 1px solid rgb(116, 113, 113);
   margin-top: 5px;
   margin-bottom: 10px;
@@ -38,6 +39,7 @@
 }
 
 .exr_timer_top {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -45,7 +47,7 @@
 
 .exrmetaCount_div {
   position: absolute;
-  left: 25%;
+  left: 42%;
 }
 
 .exrmetaOther_div {
@@ -82,6 +84,12 @@
 }
 
 .exr_input_meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.abcd {
   display: flex;
   justify-content: space-between;
   width: 100%;
