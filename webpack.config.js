@@ -11,6 +11,7 @@ module.exports = {
     profile: BASE_JS + "profile.js",
     stats: BASE_JS + "stats.js",
     dailyLog: BASE_JS + "dailyLog.js",
+    ranking: BASE_JS + "ranking.js",
   },
   plugins: [
     new MiniCssExtractPlugin({

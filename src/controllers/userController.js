@@ -44,8 +44,8 @@ export const getLogin = (req, res) => {
 };
 
 export const postLogin = async (req, res) => {
-  const { username, password } = req.body;
-  const user = await User.findOne({ username });
+  const { userId, password } = req.body;
+  const user = await User.findOne({ userId });
   if (!user) {
     return res.status(400).render("login", {
       pageTitle: "Login",
@@ -62,12 +62,14 @@ export const postLogin = async (req, res) => {
   }
   req.session.loggedIn = true;
   req.session.user = user;
-  return res.redirect("/");
+
+  setTimeout(() => {
+    return res.redirect("/");
+  }, 1000);
 };
 
-export const logout = (req, res) => {
-  req.session.destroy();
-
+export const logout = async (req, res) => {
+  await req.session.destroy();
   return res.redirect("/");
 };
 
@@ -152,7 +154,7 @@ export const userDelete = async (req, res) => {
     await TimePerDay.deleteMany({ user: _id });
     await TimePerWeek.deleteMany({ user: _id });
     await TimePerMonth.deleteMany({ user: _id });
-    req.session.destroy();
+    await req.session.destroy();
 
     return res.redirect("/"); // flash 메시지..
   } else {

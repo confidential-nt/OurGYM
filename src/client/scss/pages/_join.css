@@ -18,6 +18,10 @@ body {
   font-family: Dotum, "돋움", Helvetica, sans-serif;
 }
 
+.scroll.join {
+  height: 165vh;
+}
+
 header {
   padding-top: 5px;
   padding-bottom: 5px;

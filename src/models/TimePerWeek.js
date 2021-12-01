@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const timePerWeekSchema = mongoose.Schema({
-  week: { type: String },
+  week: { type: String }, //2021. 49th
   total: { type: Number, default: 0 },
   exercises: [
     {
