@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const timePerDaySchema = mongoose.Schema({
   date: { type: String, required: true },
-  total: { type: Number, default: 0 },
+  total: { type: Number, default: 0 }, // 하루동안 한 총  운동 시간량
   exercises: [
     {
       exrname: { type: String },

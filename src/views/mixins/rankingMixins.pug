@@ -1,0 +1,14 @@
+mixin ranking(timePerDay, index)
+    if index === 0
+        li
+            i.fas.fa-crown
+        li.rank_li.rank_li1(data-sec=timePerDay.total)
+            span.user_rank=index + 1
+            //- ㅇ + 한자
+            span.user_name=timePerDay.user.nickname
+            span.user_time=timePerDay.total
+    else             
+        li.rank_li(data-sec=timePerDay.total)
+            span.user_rank=index+1
+            span.user_name=timePerDay.user.nickname
+            span.user_time=timePerDay.total            
