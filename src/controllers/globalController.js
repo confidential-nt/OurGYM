@@ -63,7 +63,7 @@ export const getHome = async (req, res) => {
   }
 };
 
-export const exrMeta = async () => {
+export const exrMeta = async (req,res) => {
   const {
     session: {
       user: { _id },
@@ -78,8 +78,7 @@ export const exrMeta = async () => {
   try {
     const timePerDay = await TimePerDay.findOne({ user: _id, date: Today });
     const target = timePerDay.exercises.find((it) => it.exrname === exr_name);
-    console.log(target.exrmeta);
-    target.exrmeta.push({
+    target.exrmetas.push({
       exrmetaName: exercise_meta_name,
       exrmetaCount : exercise_meta_count,
       exrmetaOther: exercise_meta_other,
@@ -90,7 +89,6 @@ export const exrMeta = async () => {
     console.log(error);
     return res.sendStatus(404);
   }
-  return res.redirect("/");
 };
 
 export const postHome = async (req, res) => {
