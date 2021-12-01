@@ -1,6 +1,7 @@
 import img from "../../../images/blankprofile.png";
+import svg from "../../../images/podium.svg";
 
-import { Calendar } from "@fullcalendar/core";
+import { Calendar, formatDate } from "@fullcalendar/core";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
@@ -46,11 +47,17 @@ const tmp2 = [
 class Stats {
   today = new Date()
     .toLocaleString()
-    .substr(0, 12)
+    .substr(0, 11)
     .split(".")
-    .map((str) => str.trim())
+    .map((str) => {
+      if (str < 10) {
+        return `0${str.trim()}`;
+      } else {
+        return str.trim();
+      }
+    })
     .join("-");
-
+  calendarToday = new Date();
   timeColor = {
     VERY_HIGH: "#82fa11",
     HIGH: "#b2f573",
@@ -75,7 +82,7 @@ class Stats {
       const calendarEl = document.getElementById("calendar");
 
       const calendar = new Calendar(calendarEl, {
-        initialDate: this.today,
+        initialDate: this.calendarToday,
         plugins: [dayGridPlugin, interactionPlugin],
         initialView: "dayGridMonth",
         dateClick: function (info) {
@@ -108,9 +115,8 @@ class Stats {
         .join("-");
       return fomattedDate === date;
     });
-    const detailData = tmp2.filter((data) => data.date === date);
 
-    if (!workData.length) {
+    if (!workData[0].exercises.length) {
       mainContainer.innerHTML = "<li>아직 아무것도 없습니다.</li>";
       detailContainer.innerHTML = "<li>아직 아무것도 없습니다.</li>";
       return;
@@ -135,18 +141,25 @@ class Stats {
       })
       .join("");
 
-    detailContainer.innerHTML = detailData
-      .map(
-        (data) =>
-          `<li><h5>${data.name}</h5><span>${data.weight}kg</span><span>${data.count}회</span></li>`
-      )
+    detailContainer.innerHTML = workData
+      .map((data) => {
+        return data.exercises
+          .map((el) => {
+            return el.exrmetas
+              .map((meta) => {
+                return `<li><h5>${meta.exrmetaName}</h5><span>${meta.exrmetaCount}회</span><span> 기타: ${meta.exrmetaOther}</span></li>`;
+              })
+              .join("");
+          })
+          .join("");
+      })
       .join("");
   }
 
   async run() {
     this.initialize();
-    await this.getData();
     this.highlightToday();
+    await this.getData();
     this.setStats();
   }
 
@@ -195,8 +208,6 @@ class Stats {
 
       if (!cell) continue;
 
-      // const timeSum = Time.sumTime(el.date);
-
       cell.style.backgroundColor = this.getColor(el.total * 1000);
     }
   }
@@ -224,3 +235,6 @@ class Stats {
 if (window.location.href.substr(22) === "stats") {
   const stats = new Stats();
 }
+
+// 1. public only
+// 2. modal 수정

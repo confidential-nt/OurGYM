@@ -258,7 +258,7 @@ export const getStats = (req, res) => {
 };
 
 export const getRanking = async (req, res) => {
-  const now = new Date().toLocaleString().substr(0, 12); // 현재 날짜 및 시간
+  const now = new Date().toISOString().substr(0, 10).split("-").join(". "); // 현재 날짜 및 시간
   // const yesterday = new Date(now.setDate(now.getDate() - 1))
   //   .toLocaleString()
   //   .substr(0, 12); // 어제
@@ -270,6 +270,8 @@ export const getRanking = async (req, res) => {
       total: "desc",
     })
     .populate("user");
+
+  console.log(now);
 
   return res.render("ranking", { pageTitle: "랭킹", timePerDays });
 };
@@ -286,7 +288,7 @@ export const postRanking = async (req, res) => {
 
   const user = await User.findById(id);
 
-  const now = new Date().toLocaleString().substr(0, 12); // 현재 날짜 및 시간
+  const now = new Date().toISOString().substr(0, 10).split("-").join(". "); // 현재 날짜 및 시간
   // const yesterday = new Date(now.setDate(now.getDate() - 1))
   //   .toLocaleString()
   //   .substr(0, 12); // 어제

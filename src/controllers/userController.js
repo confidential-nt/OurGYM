@@ -131,7 +131,9 @@ export const postJoin = async (req, res) => {
       month: `${year}. ${month}.`,
       user: user._id,
     });
-    return res.redirect("/");
+    setTimeout(() => {
+      return res.redirect("/");
+    }, 1000);
   } catch (error) {
     return res
       .status(400)

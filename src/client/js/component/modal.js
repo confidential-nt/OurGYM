@@ -1,49 +1,31 @@
 class Modal {
-  isDisplayed = false;
-  modalContainer;
-  static TYPE_KEY = {
-    DELETE_ACCOUNT: "deleteAccount",
-    EDIT_ACCOUNT: "editAccount",
-  };
+  modalContainer = document.createElement("div");
+  displayContainer = document.querySelector(".main");
+  CLOSE_BTN = "modal_close-btn";
+  static CHANGE_DISPLAY = Date.now();
 
-  constructor() {
-    this.modalContainer = document.querySelector(".modal-container");
-    this.hideModalBtn = document.querySelector(".modal-hide");
-    this.acceptBtn = document.querySelector(".accept-btn");
-    this.refuseBtn = document.querySelector(".refuse-btn");
+  constructor(display) {
+    this.modalContainer.classList.add("modal-container");
+    this.modalContainer.innerHTML = `<div class="modal-shade"><div class="modal"><div class="modal-content"></div><button class="${this.CLOSE_BTN}">❌</button></div></div>`;
+    const modalContent = this.modalContainer.querySelector(".modal-content");
 
-    this.hideModalBtn.addEventListener("click", this.hide.bind(this));
-    this.acceptBtn.addEventListener(
-      "click",
-      this.handleDeleteAccount.bind(this)
-    );
-    this.refuseBtn.addEventListener("click", this.hide.bind(this));
+    modalContent.innerHTML = display;
+
+    this.displayContainer.appendChild(this.modalContainer);
+
+    this.show();
+
+    const closeBtn = this.modalContainer.querySelector(`.${this.CLOSE_BTN}`);
+    closeBtn.addEventListener("click", this.hide.bind(this));
   }
 
-  display(type) {
-    this.isDisplayed = true;
-    this.makeHTML(type);
+  show() {
     this.modalContainer.style.display = "block";
   }
 
   hide() {
-    this.isDisplayed = false;
     this.modalContainer.style.display = "none";
-  }
-
-  handleDeleteAccount() {
-    const modal = document.querySelector(".modal");
-    modal.innerHTML = `<form method="post" action="/users/delete"><input type="password" name="password" placeholder="패스워드를 입력하세요."/><input type="submit" value="삭제"/></form>`;
-  }
-
-  makeHTML(type) {
-    switch (type) {
-      case Modal.DELETE_ACCOUNT:
-        break;
-      // pug 요소로 만드는 게 나을지도..
-      default:
-        break;
-    }
+    this.displayContainer.removeChild(this.modalContainer);
   }
 }
 
