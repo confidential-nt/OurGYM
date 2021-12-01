@@ -7,6 +7,8 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import Time from "./time.js";
 
+import { async } from "regenerator-runtime";
+
 import "../scss/styles.css";
 
 const tmp = [
@@ -66,6 +68,7 @@ class Stats {
   monthBtns;
   cellContainer;
   selectedCell;
+  static exerciseData = [];
 
   constructor() {
     document.addEventListener("DOMContentLoaded", () => {
@@ -98,7 +101,13 @@ class Stats {
 
     const date = cell.dataset.date;
 
-    const workData = tmp.filter((data) => data.date === date);
+    const workData = Stats.exerciseData.filter((data) => {
+      const fomattedDate = data.date
+        .split(".")
+        .map((el) => el.trim())
+        .join("-");
+      return fomattedDate === date;
+    });
     const detailData = tmp2.filter((data) => data.date === date);
 
     if (!workData.length) {
@@ -109,16 +118,20 @@ class Stats {
 
     mainContainer.innerHTML = workData
       .map((data) => {
-        const timeobj = Time.timeFormatter(data.time / 1000);
-        const hour = timeobj.hour;
-        const min = timeobj.min;
-        const sec = timeobj.sec;
+        return data.exercises
+          .map((el) => {
+            const timeobj = Time.timeFormatter(el.exrtime);
+            const hour = timeobj.hour;
+            const min = timeobj.min;
+            const sec = timeobj.sec;
 
-        return `<li><h5>${data.name}</h5><span>${
-          hour < 10 ? `0${hour}` : hour
-        }:${min < 10 ? `0${min}` : min}:${
-          sec < 10 ? `0${sec}` : sec
-        }</span></li>`;
+            return `<li><h5>${el.exrname}</h5><span>${
+              hour < 10 ? `0${hour}` : hour
+            }:${min < 10 ? `0${min}` : min}:${
+              sec < 10 ? `0${sec}` : sec
+            }</span></li>`;
+          })
+          .join("");
       })
       .join("");
 
@@ -130,8 +143,9 @@ class Stats {
       .join("");
   }
 
-  run() {
+  async run() {
     this.initialize();
+    await this.getData();
     this.highlightToday();
     this.setStats();
   }
@@ -146,6 +160,20 @@ class Stats {
     });
   }
 
+  async getData() {
+    let result;
+
+    const exerInfo = await fetch(`/api/exercise/data`, {
+      headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+    });
+
+    result = await exerInfo.json();
+
+    Stats.exerciseData.push(result);
+  }
+
   highlightToday() {
     this.todayCell = document.querySelector(`td[data-date="${this.today}"]`);
 
@@ -157,14 +185,19 @@ class Stats {
   }
 
   setStats() {
-    for (let el of tmp) {
-      const cell = document.querySelector(`td[data-date="${el.date}"]`);
+    for (let el of Stats.exerciseData) {
+      const date = el.date
+        .split(".")
+        .map((el) => el.trim())
+        .join("-");
+
+      const cell = document.querySelector(`td[data-date="${date}"]`);
 
       if (!cell) continue;
 
-      const timeSum = Time.sumTime(el.date);
+      // const timeSum = Time.sumTime(el.date);
 
-      cell.style.backgroundColor = this.getColor(timeSum);
+      cell.style.backgroundColor = this.getColor(el.total * 1000);
     }
   }
 

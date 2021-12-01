@@ -4,7 +4,8 @@ import {
   postHome,
   profile,
   getStats,
-  ranking,
+  getRanking,
+  postRanking,
 } from "../controllers/globalController";
 import {
   getJoin,
@@ -26,5 +27,5 @@ globalRouter
   .post(imgUpload.single("profileImg"), postJoin);
 globalRouter.get("/profile", profile);
 globalRouter.get("/stats", getStats);
-globalRouter.get("/ranking", ranking);
+globalRouter.route("/ranking").get(getRanking).post(postRanking);
 export default globalRouter;
