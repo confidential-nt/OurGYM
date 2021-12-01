@@ -1,5 +1,6 @@
 .content_exr {
   display: flex;
+  flex-direction: column;
   border-bottom: 1px solid rgb(116, 113, 113);
   margin-top: 5px;
   margin-bottom: 10px;
@@ -8,6 +9,7 @@
 .exr_timer {
   display: flex;
   width: 100%;
+  align-items: center;
 }
 
 .content_exrs_list {
@@ -33,29 +35,32 @@
   background-color: #f5f6f7;
   border: none;
   margin-left: 3%;
+  width: 50px;
 }
 
 .exr_timer_top {
   width: 100%;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-#exr_meta_submit {
-  background-color: #333333;
-  font-size: 20px;
-  font-weight: 400;
-  font-family: "SBAggroB", serif;
-  cursor: pointer;
-  color: #fff;
+.exrmetaCount_div {
+  position: absolute;
+  left: 42%;
+}
+
+.exrmetaOther_div {
+  position: absolute;
+  right: 25%;
 }
 
 #exr_timer_name {
-  position: absolute;
   font-size: 20px;
   font-weight: 700;
-  height: 18.4px;
-  margin-left: 7%;
+  height: 12px;
   background-color: #f5f6f7;
+  border: none;
 }
 
 .exr_timer_time_parent {
@@ -74,9 +79,20 @@
   border: none;
 }
 
-.exr_timer_remove_parent {
-  position: absolute;
-  right: 3px;
+.exr_form {
+  width: 100%;
+}
+
+.exr_input_meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.abcd {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .exr_meta {
@@ -86,7 +102,7 @@
 }
 
 #exr_meta_name {
-  width: 150px;
+  width: 250px;
   margin-right: 5px;
   height: 35px;
 }
@@ -100,9 +116,16 @@
 #exr_meta_other {
   height: 35px;
   margin-right: 5px;
+  width: 210px;
 }
 
 #exr_meta_submit {
+  background-color: #333333;
+  font-size: 20px;
+  font-weight: 400;
+  font-family: "SBAggroB", serif;
+  cursor: pointer;
+  color: #fff;
   width: 80px;
   height: 35px;
 }
