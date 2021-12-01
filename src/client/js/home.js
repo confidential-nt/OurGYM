@@ -102,33 +102,33 @@ for (var i = 0; i < exr_timer_btns.length; i++) {
   })(i);
 }
 
-// //delet Exercise metas
-// const exr_meta_btns = document.getElementsByClassName("exr_meta_btns");
-// let indexMeta = 0;
-// const deleteExrMeta = async () => {
-//   const idOfExrMeta = exr_meta_btns.id;
-//   console.log(idOfExrMeta);
-//   index = idOfExrMeta.replace(/[^0-9]/g, "");
-//   console.log(index);
-//   try {
-//     await fetch("/api/timer/meta/remove", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//       },
-//       body: JSON.stringify({ index, indexMeta }),
-//     });
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+//delet Exercise metas
+const exr_meta_btns = document.getElementsByClassName("exr_meta_btns");
+let indexMeta = 0;
+const deleteExrMeta = async () => {
+  const idOfExrMeta = exr_meta_btns.id;
+  console.log(idOfExrMeta);
+  // index = idOfExrMeta.replace(/[^0-9]/g, "");
+  // console.log(index);
+  // try {
+  //   await fetch("/api/timer/meta/remove", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ index, indexMeta }),
+  //   });
+  // } catch (error) {
+  //   console.log(error);
+  // }
+};
 
-// //click 된 수정 삭제요소 index 추출
-// for (var i = 0; i < exr_meta_btns.length; i++) {
-//   (function (idx) {
-//     exr_meta_btns[idx].onclick = function () {
-//       indexMeta = idx;
-//       deleteExrMeta();
-//     };
-//   })(i);
-// }
+//click 된 수정 삭제요소 index 추출
+for (var i = 0; i < exr_meta_btns.length; i++) {
+  (function (idx) {
+    exr_meta_btns[idx].onclick = function () {
+      indexMeta = idx;
+      deleteExrMeta();
+    };
+  })(i);
+}
