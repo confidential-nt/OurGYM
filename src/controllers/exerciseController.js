@@ -1,17 +1,37 @@
 import TimePerDay from "../models/TimePerDay";
 
-export const getExerciseInfo = async (req, res) => {
-  const {
-    session: {
-      user: { _id },
-    },
-  } = req;
+// export const getExerciseInfo = async (req, res) => {
+//   const {
+//     session: {
+//       user: { _id },
+//     },
+//   } = req;
 
-  const timePerDays = await TimePerDay.find({}).populate("user");
+//   const timePerDays = await TimePerDay.find({}).populate("user");
 
-  const target = Array.from(timePerDays).filter((el) => {
-    return el.user._id.toString() === _id;
-  });
+//   const target = Array.from(timePerDays).filter((el) => {
+//     return el.user._id.toString() === _id;
+//   });
 
-  return res.status(201).json(...target);
-};
+//   return res.status(201).json(...target);
+// };
+
+class ExerciseController {
+  getExerciseInfo = async (req, res) => {
+    const {
+      session: {
+        user: { _id },
+      },
+    } = req;
+
+    const timePerDays = await TimePerDay.find({}).populate("user");
+
+    const target = Array.from(timePerDays).filter((el) => {
+      return el.user._id.toString() === _id;
+    });
+
+    return res.status(201).json(...target);
+  };
+}
+
+export default ExerciseController;
