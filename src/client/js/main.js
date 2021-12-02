@@ -84,7 +84,7 @@ class Stats {
       return fomattedDate === date;
     });
 
-    if (!workData[0].exercises.length) {
+    if (!workData.length || !workData[0].exercises.length) {
       mainContainer.innerHTML = "<li>아직 아무것도 없습니다.</li>";
       detailContainer.innerHTML = "<li>아직 아무것도 없습니다.</li>";
       return;
@@ -108,6 +108,11 @@ class Stats {
           .join("");
       })
       .join("");
+
+    if (!workData[0].exercises[0].exrmetas.length) {
+      detailContainer.innerHTML = "<li>아직 아무것도 없습니다.</li>";
+      return;
+    }
 
     detailContainer.innerHTML = workData
       .map((data) => {

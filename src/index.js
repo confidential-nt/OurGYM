@@ -5,8 +5,20 @@ import "./models/DailyLog";
 import "./models/TimePerDay";
 import "./models/TimePerWeek";
 import "./models/TimePerMonth";
-import app from "./app";
+import App from "./app";
 
-const PORT = 7000;
+// const PORT = 7000;
 
-app.listen(PORT, () => console.log(`Listening to http://localhost:${PORT}`));
+// app.listen(PORT, () => console.log(`Listening to http://localhost:${PORT}`));
+
+class Server {
+  constructor() {
+    const PORT = 7000;
+    const server = new App();
+    server.app.listen(PORT, () =>
+      console.log(`Listening to http://localhost:${PORT}`)
+    );
+  }
+}
+
+new Server();
