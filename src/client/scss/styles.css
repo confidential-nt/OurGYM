@@ -29,3 +29,50 @@
   color: black;
   font-weight: normal;
 }
+
+@keyframes flash {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+
+  40% {
+    height: 50px;
+    opacity: 1;
+  }
+
+  100% {
+    height: 0;
+    display: none;
+    opacity: 0;
+  }
+}
+
+.message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: flash 2s ease-in-out forwards;
+  z-index: 1;
+}
+.message.error {
+  background-color: tomato;
+  color: #fff;
+}
+
+.message.success {
+  background-color: rgb(136, 212, 136);
+  color: #fff;
+}
+
+.message.info {
+  background-color: powderblue;
+  color: rgb(104, 104, 238);
+}

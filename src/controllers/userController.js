@@ -244,23 +244,24 @@ class UserController {
     const { userId, password } = req.body;
     const user = await User.findOne({ userId });
     if (!user) {
+      req.flash("info", "존재하지 않는 아이디 입니다.");
       return res.status(400).render("login", {
         pageTitle: "Login",
-        errorMessage: "An account with this username doesn't exists.",
       });
     }
     // check if password correct
     const ok = await bcrypt.compare(password, user.password);
     if (!ok) {
+      req.flash("info", "잘못된 비밀번호입니다.");
       return res.status(400).render("login", {
         pageTitle: "Login",
-        errorMessage: "Wrong password",
       });
     }
     req.session.loggedIn = true;
     req.session.user = user;
 
     setTimeout(() => {
+      req.flash("success", "로그인 성공!");
       return res.redirect("/");
     }, 1000);
   };
@@ -329,12 +330,12 @@ class UserController {
         user: user._id,
       });
       setTimeout(() => {
+        req.flash("success", "환영합니다!");
         return res.redirect("/");
       }, 1000);
     } catch (error) {
-      return res
-        .status(400)
-        .render("join", { pageTitle: "Join", errorMessage: error });
+      req.flash("info", error);
+      return res.status(400).render("join", { pageTitle: "Join" });
     }
   };
 

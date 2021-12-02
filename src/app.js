@@ -6,6 +6,7 @@ import Middlewares from "./middlewares";
 import UserRouter from "./routers/userRouter";
 import APIRouter from "./routers/apiRouter";
 import GlobalRouter from "./routers/globalRouter";
+import flash from "express-flash";
 
 // const app = express();
 
@@ -56,7 +57,7 @@ class App {
         store: MongoStore.create({ mongoUrl: process.env.DB_URL }),
       })
     );
-
+    this.app.use(flash());
     this.app.use(Middlewares.localsMiddleare);
 
     this.app.use("/static", express.static("assets"));
