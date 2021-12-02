@@ -3,7 +3,6 @@ import { async } from "regenerator-runtime";
 class DailyLog {
   addBtn = document.querySelector(".add_dailyLog");
   itemsContainer = document.querySelector(".dailyLog_items");
-  selectedItem;
   ITEM_MODIFY_BTN = "modifyBtn";
 
   constructor() {
