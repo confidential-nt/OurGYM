@@ -44,7 +44,7 @@ class DailyLog {
     const id = li.dataset.id;
 
     const modal = new Modal(`<div>
-      <a href="/users/daily-log/${id}/delete">삭제</a>
+      <a class = "dailyLog_delete_btn" href="/users/daily-log/${id}/delete">삭제</a>
       <button class="${this.ITEM_MODIFY_BTN}">수정</button>
     </div>`);
 
