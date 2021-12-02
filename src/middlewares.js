@@ -42,7 +42,7 @@ class Middlewares {
     if (req.session.loggedIn) {
       return next();
     }
-    // req.flash("error", "Not Authorized");
+    req.flash("error", "유효하지 않은 접근입니다");
     return res.redirect("/login");
   };
 
@@ -50,7 +50,7 @@ class Middlewares {
     if (!req.session.loggedIn) {
       return next();
     }
-    // req.flash("error", "Not Authorized");
+    req.flash("error", "유효하지 않은 접근입니다");
     return res.redirect("/");
   };
 
