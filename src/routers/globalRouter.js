@@ -27,22 +27,35 @@ class GlobalRouter {
       .post(this.globalController.postHome);
     this.router
       .route("/login")
-      .get(this.userController.getLogin)
-      .post(this.userController.postLogin);
-    this.router.get("/logout", this.userController.logout);
+      .get(Middlewares.publicOnlyMiddleware, this.userController.getLogin)
+      .post(Middlewares.publicOnlyMiddleware, this.userController.postLogin);
+    this.router.get(
+      "/logout",
+      Middlewares.protectorMiddleware,
+      this.userController.logout
+    );
     this.router
       .route("/join")
-      .get(this.userController.getJoin)
+      .get(Middlewares.publicOnlyMiddleware, this.userController.getJoin)
       .post(
+        Middlewares.publicOnlyMiddleware,
         Middlewares.imgUpload.single("profileImg"),
         this.userController.postJoin
       );
-    this.router.get("/profile", this.globalController.profile);
-    this.router.get("/stats", this.globalController.getStats);
+    this.router.get(
+      "/profile",
+      Middlewares.protectorMiddleware,
+      this.globalController.profile
+    );
+    this.router.get(
+      "/stats",
+      Middlewares.protectorMiddleware,
+      this.globalController.getStats
+    );
     this.router
       .route("/ranking")
-      .get(this.globalController.getRanking)
-      .post(this.globalController.postRanking);
+      .get(Middlewares.protectorMiddleware, this.globalController.getRanking)
+      .post(Middlewares.protectorMiddleware, this.globalController.postRanking);
   }
 }
 

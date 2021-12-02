@@ -38,6 +38,22 @@ class Middlewares {
 
   isHeroku = process.env.NODE_ENV === "production";
 
+  static protectorMiddleware = (req, res, next) => {
+    if (req.session.loggedIn) {
+      return next();
+    }
+    // req.flash("error", "Not Authorized");
+    return res.redirect("/login");
+  };
+
+  static publicOnlyMiddleware = (req, res, next) => {
+    if (!req.session.loggedIn) {
+      return next();
+    }
+    // req.flash("error", "Not Authorized");
+    return res.redirect("/");
+  };
+
   static localsMiddleare = (req, res, next) => {
     res.locals.siteName = "우리 GYM 타이머";
     res.locals.loggedIn = Boolean(req.session.loggedIn);

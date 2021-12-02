@@ -26,9 +26,14 @@ class UserRouter {
   dailyLogController = new DailyLogController();
   userController = new UserController();
   constructor() {
-    this.router.post("/delete", this.userController.userDelete);
+    this.router.post(
+      "/delete",
+      Middlewares.protectorMiddleware,
+      this.userController.userDelete
+    );
     this.router
       .route("/edit")
+      .all(Middlewares.protectorMiddleware)
       .get(this.userController.getUserEdit)
       .post(
         Middlewares.imgUpload.single("profileImg"),
@@ -36,6 +41,7 @@ class UserRouter {
       );
     this.router
       .route("/daily-log")
+      .all(Middlewares.protectorMiddleware)
       .get(this.dailyLogController.getDailyLog)
       .post(
         Middlewares.imgUpload.single("image"),
@@ -43,10 +49,12 @@ class UserRouter {
       );
     this.router.get(
       "/daily-log/:id/delete",
+      Middlewares.protectorMiddleware,
       this.dailyLogController.deleteDailyLog
     );
     this.router.post(
       "/daily-log/:id/edit",
+      Middlewares.protectorMiddleware,
       Middlewares.imgUpload.single("image"),
       this.dailyLogController.editDailyLog
     );
