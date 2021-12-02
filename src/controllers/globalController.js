@@ -658,7 +658,11 @@ class GlobalController {
     if (filter === "주종목") {
       const mainSports = user.mainSports;
 
-      let timePerDays = await TimePerDay.find({ date: now }).populate("user");
+      let timePerDays = await TimePerDay.find({ date: now })
+        .sort({
+          total: "desc",
+        })
+        .populate("user");
       timePerDays = Array.from(timePerDays).filter(
         (el) => el.user.mainSports === mainSports
       );
