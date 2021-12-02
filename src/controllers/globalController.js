@@ -242,26 +242,26 @@ export const deleteExr = async (req, res) => {
   }
 };
 
-// export const deleteExrMeta = async (req, res) => {
-//   try {
-//     const {
-//       session: {
-//         user: { _id: id },
-//       },
-//       body: { index: indexExr, indexMeta: indexExrMeta },
-//     } = req;
-//     const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
-//     console.log(timePerDay.exercises[indexExr].exrmetas[indexExrMeta]);
-//     // const deleteExrMeta = await timePerDay.exercises[indexExr].pull({
-//     //   exrmetas: timePerDay.exercises[indexExr].exrmetas[indexExrMeta],
-//     // });
-//     await deleteExrMeta.save();
-//     return res.sendStatus(200);
-//   } catch (error) {
-//     console.log(error);
-//     return res.sendStatus(404);
-//   }
-// };
+export const deleteExrMeta = async (req, res) => {
+  try {
+    const {
+      session: {
+        user: { _id: id },
+      },
+      body: { index: indexExr, indexMeta: indexExrMeta },
+    } = req;
+    const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
+    await timePerDay.exercises[indexExr].exrmetas.splice(
+      indexExrMeta,
+      1
+    );
+    await timePerDay.save();
+    return res.sendStatus(200);
+  } catch (error) {
+    console.log(error);
+    return res.sendStatus(404);
+  }
+};
 
 export const profile = async (req, res) => {
   const user = await User.findById(req.session.user._id);

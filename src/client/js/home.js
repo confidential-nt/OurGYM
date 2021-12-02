@@ -29,6 +29,9 @@ paintCurrentDate();
 //   videoComments.prepend(newComment);
 // };
 
+// gps 신호로 올려보는거
+// gps 신호 -> 이동경로 -> 속도
+
 //Timer
 const exr_timer = document.getElementsByClassName("exr_timer");
 //timer 클릭되면 index 추출해서 exr_timer_index + time 만듦
@@ -106,21 +109,19 @@ for (var i = 0; i < exr_timer_btns.length; i++) {
 const exr_meta_btns = document.getElementsByClassName("exr_meta_btns");
 let indexMeta = 0;
 const deleteExrMeta = async () => {
-  const idOfExrMeta = exr_meta_btns.id;
-  console.log(idOfExrMeta);
-  // index = idOfExrMeta.replace(/[^0-9]/g, "");
-  // console.log(index);
-  // try {
-  //   await fetch("/api/timer/meta/remove", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ index, indexMeta }),
-  //   });
-  // } catch (error) {
-  //   console.log(error);
-  // }
+  const idOfExrMeta = exr_meta_btns[indexMeta].id;
+  index = idOfExrMeta.replace(/[^0-9]/g, "");
+  try {
+    await fetch("/api/timer/meta/remove", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ index, indexMeta }),
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 //click 된 수정 삭제요소 index 추출

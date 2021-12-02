@@ -2,13 +2,19 @@ import express from "express";
 
 import { getDailyLogInfo } from "../controllers/dailyLogController";
 import { getExerciseInfo } from "../controllers/exerciseController";
-import { postAddTime, deleteExr, exrMeta } from "../Controllers/globalController";
+import {
+  postAddTime,
+  deleteExr,
+  exrMeta,
+  deleteExrMeta,
+} from "../Controllers/globalController";
 
 const apiRouter = express.Router();
 
 apiRouter.get("/daily-log/:id", getDailyLogInfo);
-apiRouter.post("/timer/time", postAddTime);
 apiRouter.post("/timer/meta", exrMeta);
+apiRouter.post("/timer/meta/remove", deleteExrMeta);
+apiRouter.post("/timer/time", postAddTime);
 apiRouter.post("/timer/time/remove", deleteExr);
 apiRouter.get("/exercise/data", getExerciseInfo);
 

@@ -48,10 +48,10 @@ block content
                                         each exrmeta in timePerDay.exercises[index].exrmetas
                                             div.exr_meta
                                                 div.exrmetaName #{exrmeta.exrmetaName}
-                                                div.exrmetaCount_div #{exrmeta.exrmetaCount}회
+                                                div.exrmetaCount_div #{exrmeta.exrmetaCount?`${exrmeta.exrmetaCount} 회`:""}
                                                 div.exrmetaOther_div #{exrmeta.exrmetaOther}
-                                                div.exr_meta_btns
-                                                    button.exr_meta_remove_parent(id = "exr_meta_remove_"+index) ✖️
+                                                div.exr_meta_btns(id = "exr_meta_remove_"+index) 
+                                                    button.exr_meta_remove_parent ✖️
                         else
                             li 
                                 div 👇👇👇 운동을 추가해주세요! 👇👇👇
