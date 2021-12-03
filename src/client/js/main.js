@@ -109,7 +109,13 @@ class Stats {
       })
       .join("");
 
-    if (!workData[0].exercises[0].exrmetas.length) {
+    const isExrmetas = workData.find((el) => {
+      return el.exercises.find((exer) => {
+        return exer.exrmetas.length > 0;
+      });
+    });
+
+    if (!isExrmetas) {
       detailContainer.innerHTML = "<li>아직 아무것도 없습니다.</li>";
       return;
     }
@@ -158,8 +164,7 @@ class Stats {
     });
 
     result = await exerInfo.json();
-
-    Stats.exerciseData.push(result);
+    Stats.exerciseData = Stats.exerciseData.concat(result);
   }
 
   highlightToday() {
@@ -196,8 +201,10 @@ class Stats {
       return this.timeColor.MIDDLE;
     } else if (time >= this.timeScale.LOW) {
       return this.timeColor.LOW;
-    } else {
+    } else if (time > 0 && time < this.timeScale.LOW) {
       return this.timeColor.VERY_LOW;
+    } else {
+      return "#fff";
     }
   }
 

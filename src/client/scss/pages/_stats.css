@@ -19,8 +19,7 @@ td[role*="gridcell"] {
 
 .log-container {
   position: relative;
-  min-height: 250px;
-  height: 250px;
+  min-height: 500px;
 }
 
 .log-container .curtain {
