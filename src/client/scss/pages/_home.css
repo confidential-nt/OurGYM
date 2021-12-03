@@ -6,6 +6,11 @@
   margin-bottom: 10px;
   width: 100%;
 }
+
+.fc-toolbar-title {
+  color: #333333;
+}
+
 .exr_timer {
   display: flex;
   width: 100%;
