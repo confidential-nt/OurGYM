@@ -30,7 +30,7 @@ class ExerciseController {
       return el.user._id.toString() === _id;
     });
 
-    return res.status(201).json(...target);
+    return res.status(201).json(target);
   };
 }
 
