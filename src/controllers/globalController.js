@@ -3,6 +3,7 @@ import TimePerDay from "../models/TimePerDay";
 import TimePerWeek from "../models/TimePerWeek";
 import TimePerMonth from "../models/TimePerMonth";
 import "babel-polyfill";
+
 import { DataBrew } from "aws-sdk";
 import { async } from "regenerator-runtime";
 
@@ -219,7 +220,7 @@ class GlobalController {
       timePerDay.total += 1;
       timePerWeek.total += 1;
       timePerMonth.total += 1;
-
+      //nodefetch
       await timePerDay.save();
       await timePerWeek.save();
       await timePerMonth.save();

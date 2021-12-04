@@ -58,6 +58,7 @@ class Home {
         };
       })(i);
     }
+    
     //delete Exercise metas
     const exr_meta_btns = document.getElementsByClassName("exr_meta_btns");
     let indexMeta = 0;
