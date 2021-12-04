@@ -34,9 +34,28 @@ import aws from "aws-sdk";
 // };
 
 class Middlewares {
-  constructor() {}
-
   isHeroku = process.env.NODE_ENV === "production";
+  static s3ImageUploader = multerS3({
+    s3: new aws.S3({
+      credentials: {
+        accessKeyId: process.env.AWS_ID,
+        secretAccessKey: process.env.AWS_SECRET,
+      },
+    }),
+    bucket: "our-gym/images",
+    acl: "public-read",
+  });
+
+  static imgUpload = multer({
+    dest: "uploads/images/",
+    limits: {
+      fileSize: 3000000,
+    },
+    storage:
+      process.env.NODE_ENV === "production"
+        ? Middlewares.s3ImageUploader
+        : undefined,
+  });
 
   static protectorMiddleware = (req, res, next) => {
     if (req.session.loggedIn) {
@@ -61,28 +80,6 @@ class Middlewares {
     res.locals.isHeroku = process.env.NODE_ENV === "production";
     next();
   };
-
-  static s3ImageUploader = multerS3({
-    s3: new aws.S3({
-      credentials: {
-        accessKeyId: process.env.AWS_ID,
-        secretAccessKey: process.env.AWS_SECRET,
-      },
-    }),
-    bucket: "our-gym/images",
-    acl: "public-read",
-  });
-
-  static imgUpload = multer({
-    dest: "uploads/images/",
-    limits: {
-      fileSize: 3000000,
-    },
-    storage:
-      process.env.NODE_ENV === "production"
-        ? Middlewares.s3ImageUploader
-        : undefined,
-  });
 }
 
 export default Middlewares;
