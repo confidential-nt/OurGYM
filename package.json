@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build/index.js",
     "build": "npm run build:server && npm run build:assets",
-    "build:server": "babel src -d build",
+    "build:server": "npx babel src -d build",
     "build:assets": "webpack --mode=production",
     "dev:server": "nodemon --exec babel-node src/index.js",
     "dev:assets": "webpack -w --mode=development"
