@@ -2,7 +2,7 @@ import express from "express";
 
 import DailyLogController from "../controllers/dailyLogController";
 import ExerciseController from "../controllers/exerciseController";
-import GlobalController from "../Controllers/globalController";
+import GlobalController from "../controllers/globalController";
 import Middlewares from "../middlewares";
 
 class APIRouter {
