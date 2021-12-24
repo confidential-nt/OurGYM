@@ -4,7 +4,6 @@ const path = require("path");
 const BASE_JS = "./src/client/js/";
 
 module.exports = {
-  mode: "development",
   entry: {
     main: BASE_JS + "main.js",
     home: BASE_JS + "home.js",
