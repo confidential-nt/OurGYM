@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+import { async } from "regenerator-runtime";
 
 const objectId = mongoose.Schema.Types.ObjectId;
 
