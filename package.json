@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node build/index.js",
     "build": "npm run build:server && npm run build:assets",
-    "build:server": "npx babel src -d build",
+    "build:server": "babel src -d build",
     "build:assets": "webpack --mode=production",
     "dev:server": "nodemon --exec babel-node src/index.js",
     "dev:assets": "webpack -w --mode=development"
@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/AlwaysBeMyDay1/OurGYM#readme",
   "dependencies": {
-    "@babel/core": "^7.15.5",
     "@babel/node": "^7.15.4",
     "@babel/preset-env": "^7.15.6",
     "@babel/runtime": "^7.16.3",
@@ -61,6 +60,8 @@
     "babel-preset-stage-0": "^6.24.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.5",
     "nodemon": "^2.0.13"
   }
 }
