@@ -215,5 +215,6 @@ class Stats {
 }
 
 if (window.location.href.substr(22) === "stats") {
+  console.log(123);
   const stats = new Stats();
 }
