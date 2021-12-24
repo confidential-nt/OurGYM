@@ -44,11 +44,7 @@ block content
                                             input(id="exr_meta_count", name="exercise_meta_count",type="number",title = "횟수",min ="0",placeholder="횟수")
                                             input(id="exr_meta_other", name="exercise_meta_other",type="text",placeholder="기타(중량, 시간 등)")
                                             input(id="exr_meta_submit",type="submit",value="입력")
-<<<<<<< HEAD
-                                    if(timePerDay)
-=======
                                     if(timePerDay && timePerDay.exercises[index].exrmetas)
->>>>>>> c23cacecf04cf719305b128a596e4b93e458ece1
                                         each exrmeta in timePerDay.exercises[index].exrmetas
                                             div.exr_meta
                                                 div.exrmetaName #{exrmeta.exrmetaName}
