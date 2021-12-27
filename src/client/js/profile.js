@@ -6,7 +6,6 @@ class Profile {
   acceptBtn;
 
   constructor() {
-    console.log(123);
     this.deleteAccountBtn.addEventListener(
       "click",
       this.handleDeleteAccount.bind(this)
