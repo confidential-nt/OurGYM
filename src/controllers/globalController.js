@@ -215,6 +215,9 @@ class GlobalController {
 
       //add 1 to exrtime & total time error......
       console.log(timePerDay.exercises[indexExr]);
+      console.log(timePerWeek.exercises[indexExr]);
+      console.log(timePerMonth.exercises[indexExr]);
+
       timePerDay.exercises[indexExr].exrtime += 1;
       timePerWeek.exercises[indexExr].exrtime += 1;
       timePerMonth.exercises[indexExr].exrtime += 1;
