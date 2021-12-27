@@ -1,27 +1,16 @@
-console.log(123);
 import img from "../../../images/blankprofile.png";
-console.log(123);
 import svg from "../../../images/podium.svg";
-console.log(123);
 
 import { Calendar, formatDate } from "@fullcalendar/core";
-console.log(123);
 import interactionPlugin from "@fullcalendar/interaction";
-console.log(123);
 import dayGridPlugin from "@fullcalendar/daygrid";
-console.log(123);
 import timeGridPlugin from "@fullcalendar/timegrid";
-console.log(123);
 import listPlugin from "@fullcalendar/list";
-console.log(123);
 import Time from "./time.js";
-console.log(123);
 
 import { async } from "regenerator-runtime";
-console.log(123);
 
 import "../scss/styles.css";
-console.log(123);
 
 class Stats {
   today = new Date()
@@ -57,7 +46,6 @@ class Stats {
   static exerciseData = [];
 
   constructor() {
-    console.log(123);
     document.addEventListener("DOMContentLoaded", () => {
       const calendarEl = document.getElementById("calendar");
 
@@ -226,7 +214,6 @@ class Stats {
   }
 }
 
-console.log(123);
-if (window.location.href.substr(30) === "stats") {
+if (window.location.href.substr(22) === "stats") {
   const stats = new Stats();
 }
