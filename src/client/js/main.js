@@ -214,6 +214,6 @@ class Stats {
   }
 }
 
-if (window.location.href.substr(22) === "stats") {
+if (window.location.href.substr(30) === "stats") {
   const stats = new Stats();
 }
