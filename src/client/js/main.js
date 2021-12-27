@@ -46,6 +46,7 @@ class Stats {
   static exerciseData = [];
 
   constructor() {
+    console.log(123);
     document.addEventListener("DOMContentLoaded", () => {
       const calendarEl = document.getElementById("calendar");
 
