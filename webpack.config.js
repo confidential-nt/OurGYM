@@ -10,6 +10,7 @@ module.exports = {
     profile: BASE_JS + "profile.js",
     dailyLog: BASE_JS + "dailyLog.js",
     ranking: BASE_JS + "ranking.js",
+    pwa: BASE_JS + "pwa.js",
   },
   plugins: [
     new MiniCssExtractPlugin({

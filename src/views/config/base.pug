@@ -8,11 +8,11 @@ html(lang="en")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
         //- link(rel="stylesheet", href="https://unpkg.com/mvp.css")
         link(rel="stylesheet", href="/static/css/styles.css")
-        link(rel="manifest",href="./manifest.json")
+        link(rel="manifest",href="/pwa/manifest.json")
         title #{pageTitle}| #{siteName}
         block scripts
         script(src="https://kit.fontawesome.com/6478f529f2.js",crossorigin="anonymous")
-
+        script(src="/static/js/pwa.js", defer) 
     body
         include ../component/header
         if messages.error 

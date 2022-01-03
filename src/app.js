@@ -62,6 +62,8 @@ class App {
 
     this.app.use("/static", express.static("assets"));
     this.app.use("/uploads", express.static("uploads"));
+    this.app.use("/pwa", express.static("pwa"));
+
     this.app.use("/", this.globalRouter.router);
     this.app.use("/users", this.userRouter.router);
     this.app.use("/api", this.apiRouter.router);
