@@ -12,11 +12,7 @@ html(lang="en")
         title #{pageTitle}| #{siteName}
         block scripts
         script(src="https://kit.fontawesome.com/6478f529f2.js",crossorigin="anonymous")
-        <script type="module">
-   import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate';
-   const el = document.createElement('pwa-update');
-   document.body.appendChild(el);
-</script>
+
     body
         include ../component/header
         if messages.error 
