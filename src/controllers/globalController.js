@@ -147,6 +147,7 @@ class GlobalController {
         },
         body: { index: indexExr, Today }, // "yyyy. mm. dd"
       } = req;
+
       const user = await User.findById(id);
       const timePerDay = await TimePerDay.findOne({ user: id, date: Today });
       const timePerWeek = await TimePerWeek.findOne({
@@ -213,10 +214,10 @@ class GlobalController {
         return timePerDay;
       }
 
-      //add 1 to exrtime & total time error......
-      console.log(timePerDay.exercises[indexExr]);
-      console.log(timePerWeek.exercises[indexExr]);
-      console.log(timePerMonth.exercises[indexExr]);
+      //add 1 to exrtime & total time ::::::::: error......
+      console.log(timePerDay);
+      console.log(timePerWeek);
+      console.log(timePerMonth);
 
       timePerDay.exercises[indexExr].exrtime += 1;
       timePerWeek.exercises[indexExr].exrtime += 1;
